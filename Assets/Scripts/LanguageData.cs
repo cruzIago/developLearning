@@ -13,7 +13,7 @@ public class LanguageData
         string file;
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-             file = File.ReadAllText(Application.dataPath + "/../Assets/Languages/lang.json");
+             file = File.ReadAllText(Application.dataPath + "/Assets/Languages/lang.json");
         }
         else {
 
