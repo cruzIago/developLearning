@@ -10,7 +10,15 @@ public class LanguageData
 
     public LanguageData()
     {
-        string file = File.ReadAllText(Application.dataPath + "/Languages/lang.json");
+        string file;
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+             file = File.ReadAllText(Application.dataPath + "/../Assets/Languages/lang.json");
+        }
+        else {
+
+             file = File.ReadAllText(Application.dataPath + "/Languages/lang.json");
+        }
         language_parser language_strings = language_parser.CreateFromJSON(file);
         spanish_strings = new Dictionary<string, string>();
         english_strings = new Dictionary<string, string>();
