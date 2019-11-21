@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class LanguageData
 {
@@ -10,20 +11,28 @@ public class LanguageData
 
     public LanguageData()
     {
-        string file;
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        string filepath = System.IO.Path.Combine(Application.streamingAssetsPath, "lang.json");
+        string file="";
+        if (filepath.Contains("://") || filepath.Contains(":///"))
         {
-             file = File.ReadAllText(Application.dataPath + "/Assets/Languages/lang.json");
+            WWW www = new WWW(filepath);
+            
+            file = www.url;
         }
-        else {
+        else
+        {
+            file = System.IO.File.ReadAllText(filepath);
+        }
 
-             file = File.ReadAllText(Application.dataPath + "/Languages/lang.json");
-        }
+        /*file = File.ReadAllText(Application.dataPath + "/Assets/Languages/lang.json");
+         file = File.ReadAllText(Application.dataPath + "/Languages/lang.json");*/
+
         language_parser language_strings = language_parser.CreateFromJSON(file);
         spanish_strings = new Dictionary<string, string>();
         english_strings = new Dictionary<string, string>();
         toDictionaries(language_strings);
     }
+    
 
     private void toDictionaries(language_parser l_p)
     {
