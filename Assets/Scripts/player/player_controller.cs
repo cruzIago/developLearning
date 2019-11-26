@@ -9,40 +9,45 @@ public class player_controller : MonoBehaviour
 
     private Rigidbody rigidbody;
     public bool isJumping;
+    public bool isItemHeld; // To avoid picking two items
 
-    private bool isItemPicked;
-    // Start is called before the first frame update
+    public Block held_item;
+
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        isJumping = false;
-        isItemPicked = false;
-    }
 
-    // Update is called once per frame
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.constraints = RigidbodyConstraints.FreezePositionY 
+            | RigidbodyConstraints.FreezeRotationX 
+            | RigidbodyConstraints.FreezeRotationY 
+            | RigidbodyConstraints.FreezeRotationZ;
+        isJumping = false;
+        isItemHeld = false;
+    }
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            pickUpItem();
-        }
+        
     }
 
     private void FixedUpdate()
     {
         player_movement();
 
-        if (!isJumping && Input.GetButtonDown("Jump"))
+        if (!isJumping)
         {
-            isJumping = true;
-            rigidbody.AddForce(Vector3.up * thrust);
+            if (Input.GetButtonDown("Jump"))
+            {
+                isJumping = true;
+                rigidbody.constraints = RigidbodyConstraints.FreezeRotationX 
+                    | RigidbodyConstraints.FreezeRotationY 
+                    | RigidbodyConstraints.FreezeRotationZ;
+                rigidbody.AddForce(Vector3.up * thrust);
+            }
         }
     }
 
-    private void pickUpItem()
-    {
-
-    }
+    
     /* Checks player controlled movement and jumping*/
     private void player_movement()
     {
@@ -72,6 +77,11 @@ public class player_controller : MonoBehaviour
         else if (collision.gameObject.name.Contains("floor"))
         {//To check if player is still airborne
             isJumping = false;
+
+            rigidbody.constraints = RigidbodyConstraints.FreezePositionY 
+                | RigidbodyConstraints.FreezeRotationX
+                | RigidbodyConstraints.FreezeRotationY 
+                | RigidbodyConstraints.FreezeRotationZ;
         }
     }
 }
