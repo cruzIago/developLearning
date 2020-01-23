@@ -32,7 +32,8 @@ public class Block : MonoBehaviour
         }
         else if (isPicked
             && player.GetComponent<player_controller>().isItemHeld
-            && Input.GetKeyDown(KeyCode.E))
+            && Input.GetKeyDown(KeyCode.E)
+            && Time.timeScale==1)
         {
             print(Vector3.Distance(player.transform.position, item.transform.position));
 

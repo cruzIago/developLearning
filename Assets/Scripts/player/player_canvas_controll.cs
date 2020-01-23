@@ -7,6 +7,9 @@ public class player_canvas_controll : MonoBehaviour
 {
     public InputField variable_input;
     public player_controller player;
+
+    private bool givenName; // to check if the item was given a name once picked up
+
     void Start()
     {
         variable_input.gameObject.SetActive(false);
@@ -14,6 +17,7 @@ public class player_canvas_controll : MonoBehaviour
         submiter.AddListener(SubmitVariableName);
         variable_input.onEndEdit = submiter;
         player = gameObject.GetComponent<player_controller>();
+        givenName = false;
     }
 
     void Update()
@@ -23,21 +27,35 @@ public class player_canvas_controll : MonoBehaviour
         {
             if (player.held_item != null)
             {
-                if (player.held_item.kind_of_block == Block.kinds.INPUT)
+                if (player.held_item.kind_of_block == Block.kinds.INPUT
+                    && !givenName)
                 {
                     variable_input.gameObject.SetActive(true);
-                    print(variable_input.onEndEdit);
+                    variable_input.ActivateInputField();
+                    Time.timeScale = 0;
+                }
+                else {
+                    Time.timeScale = 1;
+                    variable_input.gameObject.SetActive(false);
                 }
             }
 
         }
         else
         {
+            givenName = false;
+            Time.timeScale = 1;
             variable_input.gameObject.SetActive(false);
         }
     }
 
-    void SubmitVariableName(string args0) {
-        print(variable_input.text);
+    void SubmitVariableName(string args0)
+    {
+        if (player.isItemHeld
+            && player.held_item != null)
+        {
+            print(variable_input.text);
+            givenName = true;
+        }
     }
 }
