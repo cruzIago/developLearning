@@ -27,7 +27,7 @@ public class player_canvas_controll : MonoBehaviour
         {
             if (player.held_item != null)
             {
-                if (player.held_item.kind_of_block == Block.kinds.INPUT
+                if (player.held_item.kind_of_block == Block.kinds.VARIABLE
                     && !givenName)
                 {
                     variable_input.gameObject.SetActive(true);

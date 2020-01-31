@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Block parent class. Used to have a common Update method and atributes
+ */
 public class Block : MonoBehaviour
 {
-    public enum kinds {INPUT,PRINT,VARIABLE };
+    public enum kinds {INPUT,PRINT,VARIABLE }; // Kind of block to check by the UI
 
-    public kinds kind_of_block;
+    public kinds kind_of_block; //The variable to state the kind
 
-    public GameObject item;
-    public GameObject player;
-    public GameObject guide;
+    public GameObject item; //The proper item to be picked
+    public GameObject player; //The player who will be picking the object
+    public GameObject guide; //Where it needs to be placed once its picked
 
-    public bool isPicked;
+    public bool isPicked; //To check if picked
 
     void Start()
     {
@@ -21,13 +24,12 @@ public class Block : MonoBehaviour
     
     void Update()
     {
+        //Check if the player is in range to hold the item, check if the item is held and if the player has an item.
         if (Vector3.Distance(player.transform.position, item.transform.position) < 2f
            && !isPicked
            && !player.GetComponent<player_controller>().isItemHeld
            && Input.GetKeyDown(KeyCode.E))
         {
-            print(Vector3.Distance(player.transform.position, item.transform.position));
-
             pickUp();
         }
         else if (isPicked
@@ -35,8 +37,6 @@ public class Block : MonoBehaviour
             && Input.GetKeyDown(KeyCode.E)
             && Time.timeScale==1)
         {
-            print(Vector3.Distance(player.transform.position, item.transform.position));
-
             pickDown();
         }
     }

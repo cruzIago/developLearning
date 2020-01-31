@@ -8,10 +8,10 @@ public class player_controller : MonoBehaviour
     public float thrust;
 
     private Rigidbody rigidbody;
-    public bool isJumping;
+    public bool isJumping; //To check jumping
     public bool isItemHeld; // To avoid picking two items
 
-    public Block held_item;
+    public Block held_item; //Item held to check
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class player_controller : MonoBehaviour
             | RigidbodyConstraints.FreezeRotationX 
             | RigidbodyConstraints.FreezeRotationY 
             | RigidbodyConstraints.FreezeRotationZ;
+        //This is done to avoid tumbling of the player and changing Y.
         isJumping = false;
         isItemHeld = false;
     }
@@ -42,6 +43,7 @@ public class player_controller : MonoBehaviour
                 rigidbody.constraints = RigidbodyConstraints.FreezeRotationX 
                     | RigidbodyConstraints.FreezeRotationY 
                     | RigidbodyConstraints.FreezeRotationZ;
+                //Frees the Y position so it can jump.
                 rigidbody.AddForce(Vector3.up * thrust);
             }
         }
