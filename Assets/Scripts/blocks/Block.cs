@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class Block : MonoBehaviour
 {
-    public enum kinds {INPUT,PRINT,VARIABLE }; // Kind of block to check by the UI
+    public enum kinds { INPUT, PRINT, VARIABLE }; // Kind of block to check by the UI
 
     public kinds kind_of_block; //The variable to state the kind
 
@@ -17,11 +17,13 @@ public class Block : MonoBehaviour
 
     public bool isPicked; //To check if picked
 
+    public float tossStrength = 0.0f;
+
     void Start()
     {
-        
+
     }
-    
+
     void Update()
     {
         //Check if the player is in range to hold the item, check if the item is held and if the player has an item.
@@ -35,13 +37,33 @@ public class Block : MonoBehaviour
         else if (isPicked
             && player.GetComponent<player_controller>().isItemHeld
             && Input.GetKeyDown(KeyCode.E)
-            && Time.timeScale==1)
+            && Time.timeScale == 1)
         {
             pickDown();
+        }
+        else if (isPicked
+            && player.GetComponent<player_controller>().isItemHeld
+            && Input.GetKeyDown(KeyCode.F)
+            && Time.timeScale == 1)
+        {
+            toss();
         }
     }
 
     public virtual void pickUp() { }
 
     public virtual void pickDown() { }
+
+    public void toss()
+    {
+        item.GetComponent<Rigidbody>().useGravity = true;
+        item.GetComponent<Rigidbody>().isKinematic = false;
+        Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 2.2f, 0.0f);
+        item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
+        item.transform.parent = null;
+        isPicked = false;
+        player.GetComponent<player_controller>().isItemHeld = false;
+        player.GetComponent<player_controller>().held_item = null;
+
+    }
 }
