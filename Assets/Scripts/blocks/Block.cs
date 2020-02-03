@@ -50,20 +50,47 @@ public class Block : MonoBehaviour
         }
     }
 
-    public virtual void pickUp() { }
-
-    public virtual void pickDown() { }
-
-    public void toss()
+    //Asigns values needed for the player to release the block
+    private void releaseBlock()
     {
         item.GetComponent<Rigidbody>().useGravity = true;
         item.GetComponent<Rigidbody>().isKinematic = false;
-        Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 2.2f, 0.0f);
-        item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
         item.transform.parent = null;
         isPicked = false;
         player.GetComponent<player_controller>().isItemHeld = false;
         player.GetComponent<player_controller>().held_item = null;
+    }
 
+    //Picks up the block
+    public void pickUp() {
+        print("Jugador: " + player);
+        print("Guia: " + guide);
+
+        item.GetComponent<Rigidbody>().useGravity = false;
+        item.GetComponent<Rigidbody>().isKinematic = true;
+        item.transform.position = guide.transform.position;
+        item.transform.rotation = guide.transform.rotation;
+        item.transform.parent = player.transform;
+        isPicked = true;
+        player.GetComponent<player_controller>().isItemHeld = true;
+        player.GetComponent<player_controller>().held_item = this; //To check which item player is carrying
+
+    }
+
+    //Picks down the block
+    public void pickDown() {
+        print("Jugador: " + player);
+        print("Guia: " + guide);
+        releaseBlock();
+        item.transform.position = guide.transform.position;
+        item.transform.rotation = guide.transform.rotation;      
+    }
+
+    //Throws the block
+    public void toss()
+    {
+        releaseBlock();
+        Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 2.2f, 0.0f);
+        item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
     }
 }
