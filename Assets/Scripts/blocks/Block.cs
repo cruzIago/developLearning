@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
 
     public bool isPicked; //To check if picked
 
-    public float tossStrength = 0.0f;
+    public float tossStrength = 600.0f;
 
     void Start()
     {
@@ -61,6 +61,26 @@ public class Block : MonoBehaviour
         player.GetComponent<player_controller>().held_item = null;
     }
 
+    //Ignores or enables collision between player and item.
+    //Ignore -> True for ignore collisions, false for enable them.
+    private void setCollisions(bool ignore)
+    {
+        foreach (Transform child in player.transform)
+        {
+            if (child.tag != "guide")
+            {
+                Physics.IgnoreCollision(item.GetComponent<BoxCollider>(), child.GetComponent<BoxCollider>(), ignore);
+            }
+        }
+    }
+
+    //Calls setCollisions after a few seconds
+    IEnumerator resetCollision()
+    {
+        yield return new WaitForSeconds(2.2f);
+        setCollisions(false);
+    }
+
     //Picks up the block
     public void pickUp() {
         print("Jugador: " + player);
@@ -90,7 +110,11 @@ public class Block : MonoBehaviour
     public void toss()
     {
         releaseBlock();
-        Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 2.2f, 0.0f);
+        item.transform.rotation = guide.transform.rotation;
+        item.transform.position = guide.transform.position;
+        setCollisions(true);
+        StartCoroutine(resetCollision());
+        Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
         item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
     }
 }
