@@ -7,6 +7,7 @@ public class Input_block : Block
    
     void Start()
     {
+        base.Start();
         item = this.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         guide = GameObject.FindGameObjectWithTag("guide");

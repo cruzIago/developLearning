@@ -19,11 +19,12 @@ public class Block : MonoBehaviour
 
     public float tossStrength = 600.0f;
     
-    private Vector3 initial_position;
+    protected Vector3 initial_position;
 
-    void Start()
+    protected void Start()
     {
-        initial_position = transform.position;    
+        initial_position = gameObject.transform.position;
+        print(initial_position);
     }
 
     void Update()
@@ -61,12 +62,12 @@ public class Block : MonoBehaviour
         isPicked = false;
         player.GetComponent<player_controller>().isItemHeld = false;
         player.GetComponent<player_controller>().held_item = null;
+
     }
     public void reset_position() {
-        transform.position = initial_position;
+        transform.position = initial_position+Vector3.up;
     }
-
-    public virtual void pickUp() { }
+    
 
     //Ignores or enables collision between player and item.
     //Ignore -> True for ignore collisions, false for enable them.

@@ -43,8 +43,8 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     //Reset blocks to initial position
     private void blocks_to_default() {
         foreach (Block b in blocks_in_scene) {
-            b.gameObject.SetActive(true);
             b.reset_position();
+            b.gameObject.SetActive(true);
         }
     }
 
