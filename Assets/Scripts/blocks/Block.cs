@@ -18,10 +18,12 @@ public class Block : MonoBehaviour
     public bool isPicked; //To check if picked
 
     public float tossStrength = 600.0f;
+    
+    private Vector3 initial_position;
 
     void Start()
     {
-
+        initial_position = transform.position;    
     }
 
     void Update()
@@ -60,6 +62,11 @@ public class Block : MonoBehaviour
         player.GetComponent<player_controller>().isItemHeld = false;
         player.GetComponent<player_controller>().held_item = null;
     }
+    public void reset_position() {
+        transform.position = initial_position;
+    }
+
+    public virtual void pickUp() { }
 
     //Ignores or enables collision between player and item.
     //Ignore -> True for ignore collisions, false for enable them.
