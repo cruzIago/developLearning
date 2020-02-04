@@ -93,6 +93,8 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 print("ERROR ON CANVAS CONTROLLER, NO KIND OF ITEM ALLOWED");
             }
 
+            other.gameObject.GetComponent<Block>().setCollisions(true);
+            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             other.gameObject.SetActive(false);
         }
     }

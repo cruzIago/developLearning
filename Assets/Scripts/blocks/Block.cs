@@ -70,14 +70,14 @@ public class Block : MonoBehaviour
     
 
     //Ignores or enables collision between player and item.
-    //Ignore -> True for ignore collisions, false for enable them.
-    private void setCollisions(bool ignore)
+    //Ignore -> True for enable collisions, False for ignore them.
+    public void setCollisions(bool isActive)
     {
         foreach (Transform child in player.transform)
         {
             if (child.tag != "guide")
             {
-                Physics.IgnoreCollision(item.GetComponent<BoxCollider>(), child.GetComponent<BoxCollider>(), ignore);
+                Physics.IgnoreCollision(item.GetComponent<BoxCollider>(), child.GetComponent<BoxCollider>(), !isActive);
             }
         }
     }
@@ -86,7 +86,8 @@ public class Block : MonoBehaviour
     IEnumerator resetCollision()
     {
         yield return new WaitForSeconds(2.2f);
-        setCollisions(false);
+        setCollisions(true);
+        print("Corrutina ok");
     }
 
     //Picks up the block
@@ -120,7 +121,7 @@ public class Block : MonoBehaviour
         releaseBlock();
         item.transform.rotation = guide.transform.rotation;
         item.transform.position = guide.transform.position;
-        setCollisions(true);
+        setCollisions(false);
         StartCoroutine(resetCollision());
         Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
         item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
