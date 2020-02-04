@@ -17,9 +17,11 @@ public class Block : MonoBehaviour
 
     public bool isPicked; //To check if picked
 
+    private Vector3 initial_position;
+
     void Start()
     {
-        
+        initial_position = transform.position;    
     }
     
     void Update()
@@ -39,6 +41,10 @@ public class Block : MonoBehaviour
         {
             pickDown();
         }
+    }
+
+    public void reset_position() {
+        transform.position = initial_position;
     }
 
     public virtual void pickUp() { }
