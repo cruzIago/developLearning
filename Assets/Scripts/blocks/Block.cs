@@ -14,6 +14,7 @@ public class Block : MonoBehaviour
     public GameObject item; //The proper item to be picked
     public GameObject player; //The player who will be picking the object
     public GameObject guide; //Where it needs to be placed once its picked
+    public GameObject textGuide; //Text to name the block
 
     public bool isPicked; //To check if picked
 
@@ -50,6 +51,16 @@ public class Block : MonoBehaviour
             && Time.timeScale == 1)
         {
             toss();
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+        //Update parent position
+        if (textGuide != null)
+        {
+            textGuide.transform.position = transform.position + Vector3.up;
         }
     }
 

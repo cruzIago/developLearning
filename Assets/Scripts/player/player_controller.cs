@@ -85,5 +85,20 @@ public class player_controller : MonoBehaviour
                 | RigidbodyConstraints.FreezeRotationY 
                 | RigidbodyConstraints.FreezeRotationZ;
         }
+        else if (collision.gameObject.tag == "item")
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.name == "right_arm")
+                {
+                    Physics.IgnoreCollision(collision.collider, child.GetComponent<BoxCollider>());
+                }
+                if (child.name == "left_arm")
+                {
+                    Physics.IgnoreCollision(collision.collider, child.GetComponent<BoxCollider>());
+
+                }
+            }
+        }
     }
 }

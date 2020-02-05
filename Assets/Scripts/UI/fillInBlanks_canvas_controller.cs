@@ -95,6 +95,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
             other.gameObject.GetComponent<Block>().setCollisions(true);
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            other.gameObject.GetComponent<Block>().textGuide.SetActive(false);
             other.gameObject.SetActive(false);
         }
     }
