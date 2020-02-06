@@ -28,13 +28,15 @@ public class player_canvas_controll : MonoBehaviour
             if (player.held_item != null)
             {
                 if (player.held_item.kind_of_block == Block.kinds.VARIABLE
+                    && player.held_item.GetComponent<Variable_block>().variable_written == null
                     && !givenName)
                 {
                     variable_input.gameObject.SetActive(true);
                     variable_input.ActivateInputField();
                     Time.timeScale = 0;
                 }
-                else {
+                else
+                {
                     Time.timeScale = 1;
                     variable_input.gameObject.SetActive(false);
                 }
@@ -55,6 +57,7 @@ public class player_canvas_controll : MonoBehaviour
             && player.held_item != null)
         {
             print(variable_input.text);
+            player.held_item.GetComponent<Variable_block>().setVariableName(variable_input.text);
             givenName = true;
         }
     }

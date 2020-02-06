@@ -605,18 +605,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96427de9346a7764e99e3c0657a72d8b, type: 3}
---- !u!114 &251183339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
-    type: 3}
-  m_PrefabInstance: {fileID: 2118391674}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0915d04f7f8e4c9469baaa1b80c4176d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &503600413 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
@@ -1047,12 +1035,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: _______
 --- !u!222 &751136266
@@ -1230,12 +1218,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: (
 --- !u!222 &863385707
@@ -1404,12 +1392,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: )
 --- !u!222 &1076941379
@@ -1558,12 +1546,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Hola usuario
 --- !u!222 &1150644660
@@ -1586,6 +1574,11 @@ PrefabInstance:
       propertyPath: tossStrength
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
+        type: 3}
+      propertyPath: variable_written
+      value: 
+      objectReference: {fileID: 2107231178}
     - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1724,12 +1717,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: _______
 --- !u!222 &1170995306
@@ -1854,7 +1847,8 @@ MonoBehaviour:
   - {fileID: 503600413}
   - {fileID: 2123476202}
   - {fileID: 194986219}
-  - {fileID: 251183339}
+  - {fileID: 0}
+  animator: {fileID: 2039888514}
 --- !u!1 &1318462650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,12 +1910,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Resultado
 --- !u!222 &1318462653
@@ -2703,12 +2697,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: ______
 --- !u!222 &1643818768
@@ -2977,12 +2971,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: nombre =
 --- !u!222 &1833414373
@@ -3070,6 +3064,7 @@ GameObject:
   - component: {fileID: 2039888511}
   - component: {fileID: 2039888513}
   - component: {fileID: 2039888512}
+  - component: {fileID: 2039888514}
   m_Layer: 5
   m_Name: codeBackground
   m_TagString: Untagged
@@ -3141,6 +3136,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039888510}
   m_CullTransparentMesh: 0
+--- !u!95 &2039888514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039888510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8eec7b49594340b419469cfa010dbc96, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2054712967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3342,12 +3356,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: _______
 --- !u!222 &2093137097
@@ -3419,14 +3433,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 150
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: nombre;
+  m_Text: nombre
 --- !u!222 &2107231179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3435,95 +3449,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107231176}
   m_CullTransparentMesh: 0
---- !u!1001 &2118391674
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: tossStrength
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.3849998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.49999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8384393678595129720, guid: abff026e57ec5194c9aa4d298370dc04,
-        type: 3}
-      propertyPath: m_Name
-      value: prefab_variable_block (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: abff026e57ec5194c9aa4d298370dc04, type: 3}
 --- !u!114 &2123476202 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 677722454652277814, guid: 96427de9346a7764e99e3c0657a72d8b,
