@@ -17,52 +17,71 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
     public Block[] blocks_in_scene;
 
+    public Animator animator; //Animator to enlarge the console screen and give feedback to the user
+
+    private Block.kinds last_kind_block; // To check last block checked
+
     private void Start()
     {
         user_solution = new List<int>();
+        last_kind_block = Block.kinds.DEFAULT;
     }
 
     private void Update()
     {
-        if (user_solution.Count == game_solution.Length)
-        {
-            if (checkSolutions())
-            {
-                print("Conseguido");
-            }
-            else
-            {
-                user_solution.Clear();
-                blanks_to_default();
-                blocks_to_default();
-                print("No conseguido");
-            }
-        }
     }
 
     //Reset blocks to initial position
-    private void blocks_to_default() {
-        foreach (Block b in blocks_in_scene) {
+    private void blocks_to_default()
+    {
+        foreach (Block b in blocks_in_scene)
+        {
             b.reset_position();
             b.gameObject.SetActive(true);
         }
     }
 
     //Fill the blanks with underscore again
-    private void blanks_to_default() {
-        foreach(Text t in blanks_to_fill) {
+    private void blanks_to_default()
+    {
+        foreach (Text t in blanks_to_fill)
+        {
+            t.color = Color.black;
             t.text = "_______";
         }
     }
 
     // Check if the solution provided by the user is the same as the required
-    private bool checkSolutions()
+    private IEnumerator checkSolutions()
     {
-        if (game_solution.SequenceEqual<int>(user_solution))
+        Time.timeScale = 0;
+        animator.SetBool("checking_conditions", true);
+        yield return new WaitForSeconds(1.0f);
+        for (int i = 0; i < user_solution.Count; i++)
         {
-            return true;
+            if (user_solution[i] == game_solution[i])
+            {
+                blanks_to_fill[i].color = Color.green;
+            }
+            else
+            {
+                blanks_to_fill[i].color = Color.red;
+                print("Fallo");
+                yield return new WaitForSeconds(1.0f);
+                break;
+            }
+            yield return new WaitForSeconds(1.0f);
         }
-        return false;
+        if (user_solution.SequenceEqual<int>(game_solution))
+        {
+            print("Acierto");
+        }
+        animator.SetBool("checking_conditions", false);
+        blanks_to_default();
+        user_solution.Clear();
+        Time.timeScale = 1;
+        print("done");
+
     }
 
     // Checks which blocks enters on the box
@@ -72,11 +91,19 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         if (other.gameObject.tag.Equals("item")
             && user_solution.Count < game_solution.Length)
         {
+
             if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.VARIABLE)
             {
                 user_solution.Add((int)Block.kinds.VARIABLE);
-                blanks_to_fill[user_solution.Count - 1].text = "var";
-
+                if (last_kind_block == Block.kinds.PRINT)
+                {
+                    blanks_to_fill[user_solution.Count - 1].text = other.gameObject.GetComponent<Variable_block>().getVariableName();
+                }
+                else
+                {
+                    blanks_to_fill[user_solution.Count - 1].text = "var";
+                }
+                
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.INPUT)
             {
@@ -93,10 +120,14 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 print("ERROR ON CANVAS CONTROLLER, NO KIND OF ITEM ALLOWED");
             }
 
+            last_kind_block = other.gameObject.GetComponent<Block>().kind_of_block;
             other.gameObject.GetComponent<Block>().setCollisions(true);
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            other.gameObject.GetComponent<Block>().textGuide.SetActive(false);
-            other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<Block>().reset_position();
+            print(user_solution.Count);
+            if (user_solution.Count == game_solution.Length) {
+                StartCoroutine(checkSolutions());
+            }
         }
     }
 }
