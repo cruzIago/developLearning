@@ -10,6 +10,11 @@ public class main_camera : MonoBehaviour
     private Vector3 offset;
     private float damping = 1;
 
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 30;
+    }
     void Start()
     {
 
