@@ -28,7 +28,9 @@ public class Checker : MonoBehaviour
 
     public void removeLast()
     {
-        blockStack.Pop();
+        Block ejectedBlock = blockStack.Pop();
+        print(ejectedBlock.textGuide.GetComponentInChildren<Text>().text + " was poped from the stack");
+        print("Remaining blocks: " + blockStack.Count);
     }
 
     public void removeAll()
@@ -39,16 +41,23 @@ public class Checker : MonoBehaviour
         }
     }
 
+    public bool isEmpty()
+    {
+        return blockStack.Count == 0;
+    }
+
     public void checkLastBlock()
     {
         string blockText = blockStack.Peek().textGuide.GetComponentInChildren<Text>().text;
         if (blockText != currentName)
         {
-            print("EFE");
+            print("EFE: BlockText es " + blockText + " y mi nombre es: " + currentName);
+            removeAll();
         }
         else
         {
             print("Todo ok");
+            print("Remaining blocks: " + blockStack.Count);
         }
     }
 }
