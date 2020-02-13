@@ -136,4 +136,6 @@ public class Block : MonoBehaviour
         Vector3 throwDirection = item.transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
         item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
     }
+
+  
 }
