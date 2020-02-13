@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class well_checker : MonoBehaviour
 {
     private List<GameObject> blocks_inside;
+
+    public Text[] descriptions_to_check;
 
     private void Start()
     {
