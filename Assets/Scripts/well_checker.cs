@@ -29,7 +29,6 @@ public class well_checker : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         Physics.IgnoreCollision(other.GetComponent<Collider>(), this.GetComponent<Collider>(), false);
-        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
         print("Active collision");
     }
 
