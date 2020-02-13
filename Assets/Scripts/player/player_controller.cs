@@ -17,18 +17,23 @@ public class player_controller : MonoBehaviour
     {
 
         rigidbody = GetComponent<Rigidbody>();
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionY 
-            | RigidbodyConstraints.FreezeRotationX 
-            | RigidbodyConstraints.FreezeRotationY 
+        /*
+        rigidbody.constraints = RigidbodyConstraints.FreezePositionY
+            | RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationY
+            | RigidbodyConstraints.FreezeRotationZ;*/
+
+        rigidbody.constraints = RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationY
             | RigidbodyConstraints.FreezeRotationZ;
         //This is done to avoid tumbling of the player and changing Y.
         isJumping = false;
         isItemHeld = false;
     }
-    
+
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -40,8 +45,8 @@ public class player_controller : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 isJumping = true;
-                rigidbody.constraints = RigidbodyConstraints.FreezeRotationX 
-                    | RigidbodyConstraints.FreezeRotationY 
+                rigidbody.constraints = RigidbodyConstraints.FreezeRotationX
+                    | RigidbodyConstraints.FreezeRotationY
                     | RigidbodyConstraints.FreezeRotationZ;
                 //Frees the Y position so it can jump.
                 rigidbody.AddForce(Vector3.up * thrust);
@@ -49,7 +54,7 @@ public class player_controller : MonoBehaviour
         }
     }
 
-    
+
     /* Checks player controlled movement and jumping*/
     private void player_movement()
     {
@@ -66,7 +71,7 @@ public class player_controller : MonoBehaviour
 
         transform.Rotate(tempRot);
 
-        
+
     }
 
     /*Checks collision on real time*/
@@ -80,9 +85,9 @@ public class player_controller : MonoBehaviour
         {//To check if player is still airborne
             isJumping = false;
 
-            rigidbody.constraints = RigidbodyConstraints.FreezePositionY 
+            rigidbody.constraints = RigidbodyConstraints.FreezePositionY
                 | RigidbodyConstraints.FreezeRotationX
-                | RigidbodyConstraints.FreezeRotationY 
+                | RigidbodyConstraints.FreezeRotationY
                 | RigidbodyConstraints.FreezeRotationZ;
         }
         else if (collision.gameObject.tag == "item")
