@@ -21,7 +21,7 @@ public class well_checker : MonoBehaviour
         {
             //b.transform.Translate(new Vector3(0,2,7));
             b.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            b.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1f, -0.2f) * 2000f);
+            b.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1f, -0.2f) * 3000f);
             StartCoroutine(activateCollision(b));
             print("Moved");
         }

@@ -30,7 +30,7 @@ public class Block : MonoBehaviour
     void Update()
     {
         //Check if the player is in range to hold the item, check if the item is held and if the player has an item.
-        if (Vector3.Distance(player.transform.position, item.transform.position) < 2f
+        if (Vector3.Distance(player.transform.position, item.transform.position) < 2.5f
            && !isPicked
            && !player.GetComponent<player_controller>().isItemHeld
            && Input.GetKeyDown(KeyCode.E))
@@ -70,10 +70,15 @@ public class Block : MonoBehaviour
         item.GetComponent<Rigidbody>().isKinematic = false;
         item.transform.parent = null;
         isPicked = false;
+        StartCoroutine(dropingItem());
+    }
+
+    IEnumerator dropingItem() {
+        yield return new WaitForSeconds(0.2f);
         player.GetComponent<player_controller>().isItemHeld = false;
         player.GetComponent<player_controller>().held_item = null;
-
     }
+
     public void reset_position() {
         transform.position = initial_position+Vector3.up;
     }

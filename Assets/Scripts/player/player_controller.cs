@@ -5,7 +5,12 @@ using UnityEngine;
 public class player_controller : MonoBehaviour
 {
     public int speed;
+    public int rotSpeed;
     public float thrust;
+
+    //Jump controllers, depending on button hold
+    private float fallMultiplierFloat = 2.5f;
+    private float lowJumpMultiplierFloat = 2f;
 
     private Rigidbody rigidbody;
     public bool isJumping; //To check jumping
@@ -44,14 +49,22 @@ public class player_controller : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                rigidbody.velocity = Vector3.up * thrust;
                 isJumping = true;
-                rigidbody.constraints = RigidbodyConstraints.FreezeRotationX
-                    | RigidbodyConstraints.FreezeRotationY
-                    | RigidbodyConstraints.FreezeRotationZ;
-                //Frees the Y position so it can jump.
-                rigidbody.AddForce(Vector3.up * thrust);
             }
         }
+
+        
+        if (rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
+        }
+        
+        if (rigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime;
+        }
+
     }
 
 
@@ -65,7 +78,7 @@ public class player_controller : MonoBehaviour
         tempVect = tempVect.normalized * speed * Time.deltaTime;
 
         Vector3 tempRot = new Vector3(0, hMovement, 0);
-        tempRot = tempRot * speed * Time.deltaTime;
+        tempRot = tempRot * rotSpeed * Time.deltaTime;
 
         rigidbody.MovePosition(transform.position + tempVect);
 
@@ -85,8 +98,7 @@ public class player_controller : MonoBehaviour
         {//To check if player is still airborne
             isJumping = false;
 
-            rigidbody.constraints = RigidbodyConstraints.FreezePositionY
-                | RigidbodyConstraints.FreezeRotationX
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotationX
                 | RigidbodyConstraints.FreezeRotationY
                 | RigidbodyConstraints.FreezeRotationZ;
         }
