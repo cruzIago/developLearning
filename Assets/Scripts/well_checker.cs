@@ -12,11 +12,14 @@ public class well_checker : MonoBehaviour
 
     public Text[] descriptions;
     private Text currentDesc;
+
     string[] concepts = { "Variable", "Memoria", "Instrucción", "Secuencia", "Programa" };
 
     private Dictionary<string, Text> descriptions_to_check;
     private string currentConcept;
     IEnumerator enumerator;
+
+    public GameObject player_reference;
 
 
     private void Start()
@@ -62,6 +65,14 @@ public class well_checker : MonoBehaviour
         foreach (Block b in blocks_inside)
         {
             //b.transform.Translate(new Vector3(0,2,7));
+
+            foreach (Transform children in player_reference.transform)
+            {
+                if (children.tag != "guide")
+                {
+                    Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), b.GetComponent<BoxCollider>(), true);
+                }
+            }
             b.GetComponent<Rigidbody>().velocity = Vector3.zero;
             b.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1f, -0.2f) * 3000f);
             StartCoroutine(activateCollision(b));
@@ -85,15 +96,25 @@ public class well_checker : MonoBehaviour
         {
             print("Todo ok. Cantidad: " + blocks_inside.Count);
             nextConcept();
-        } else
+        }
+        else
         {
             print("Se ha acabado el juego y has ganado");
         }
     }
 
-    IEnumerator activateCollision(GameObject other)
+    IEnumerator activateCollision(Block other)
     {
         yield return new WaitForSeconds(2.0f);
+
+        foreach (Transform children in player_reference.transform)
+        {
+            if (children.tag != "guide")
+            {
+                Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), other.GetComponent<BoxCollider>(), false);
+            }
+        }
+
         Physics.IgnoreCollision(other.GetComponent<Collider>(), this.GetComponent<Collider>(), false);
         print("Active collision");
     }
