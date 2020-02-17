@@ -12,7 +12,7 @@ public class player_canvas_controll : MonoBehaviour
 
     void Start()
     {
-        variable_input.gameObject.SetActive(false);
+        //variable_input.gameObject.SetActive(false);
         var submiter = new InputField.SubmitEvent();
         submiter.AddListener(SubmitVariableName);
         variable_input.onEndEdit = submiter;
