@@ -130,6 +130,10 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             last_kind_block = other.gameObject.GetComponent<Block>().kind_of_block;
             other.gameObject.GetComponent<Block>().setCollisions(true);
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            if (other.gameObject.GetComponent<Block>().player.GetComponent<player_controller>().isItemHeld)
+            {
+                other.gameObject.GetComponent<Block>().pickDown();
+            }
             other.gameObject.GetComponent<Block>().reset_position();
             print(user_solution.Count);
             if (user_solution.Count == game_solution.Length) {
