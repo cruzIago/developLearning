@@ -4311,6 +4311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_reset_block
       objectReference: {fileID: 0}
+    - target: {fileID: 2730574527804286645, guid: a7463b55f7b2ab342bd693fd0df927b6,
+        type: 3}
+      propertyPath: m_TagString
+      value: item
+      objectReference: {fileID: 0}
     - target: {fileID: 3505765010155413447, guid: a7463b55f7b2ab342bd693fd0df927b6,
         type: 3}
       propertyPath: textGuide

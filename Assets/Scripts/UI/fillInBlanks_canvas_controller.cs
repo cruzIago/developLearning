@@ -83,6 +83,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         print("done");
 
     }
+    
 
     // Checks which blocks enters on the box
     private void OnTriggerEnter(Collider other)
@@ -114,6 +115,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             {
                 user_solution.Add((int)Block.kinds.PRINT);
                 blanks_to_fill[user_solution.Count - 1].text = "print";
+            }
+            else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.RESET)
+            {
+                user_solution.Clear();
+                blanks_to_default();
+                blocks_to_default();
             }
             else
             {
