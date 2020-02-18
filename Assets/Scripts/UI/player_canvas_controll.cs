@@ -46,7 +46,6 @@ public class player_canvas_controll : MonoBehaviour
         else
         {
             givenName = false;
-            Time.timeScale = 1;
             variable_input.gameObject.SetActive(false);
         }
     }
@@ -59,6 +58,7 @@ public class player_canvas_controll : MonoBehaviour
             print(variable_input.text);
             player.held_item.GetComponent<Variable_block>().setVariableName(variable_input.text);
             givenName = true;
+            Time.timeScale = 1;
         }
     }
 }

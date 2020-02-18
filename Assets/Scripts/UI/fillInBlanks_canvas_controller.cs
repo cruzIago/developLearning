@@ -59,11 +59,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     }
 
     // Check if the solution provided by the user is the same as the required
+    //TODO: Needs total restructuration to be fully modular
     private IEnumerator checkSolutions()
     {
 
         last_kind_block = Block.kinds.DEFAULT;
-        Time.timeScale = 0;
+
         animator.SetBool("checking_conditions", true);
         yield return new WaitForSeconds(1.0f);
         bool isCorrect = true;
@@ -72,11 +73,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             if ((int)user_solution[i].kind_of_block == game_solution[i])
             {
                 blanks_to_fill[i].color = Color.green;
-                
+
                 if (game_solution[i] == 0)
                 {
                     gui_fill_input.gameObject.SetActive(true);
                     gui_fill_input.ActivateInputField();
+                    Time.timeScale = 0;
                     yield return new WaitUntil(() => Time.timeScale == 1);
                     user_solution[i - 1].GetComponent<Variable_block>().setVariableValue(gui_fill_input.text);
                     gui_fill_input.text = "";
@@ -95,25 +97,44 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         }
         if (isCorrect)
         {
-            foreach (Text t in result_text) {
-
-            }
+            blanks_to_fill[blanks_to_fill.Length - 1].text = "Hola " + user_solution[0].GetComponent<Variable_block>().getVariableValue();
             print("Acierto");
         }
+
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 0;
+        yield return WaitForKeyPress(KeyCode.Space);
         animator.SetBool("checking_conditions", false);
         blanks_to_default();
         user_solution.Clear();
-        Time.timeScale = 1;
         print("done");
 
     }
-    
 
+    /*
+     * Waits for the player to press space to continue playing after examination
+     */
+    private IEnumerator WaitForKeyPress(KeyCode key)
+    {
+        bool isPressed = false;
+        while (!isPressed)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                isPressed = true;
+                Time.timeScale = 1;
+            }
+            yield return null;
+        }
+    }
+
+    /*
+     * Waits for the player to input a variable value
+     */
     void SubmitInputVariable(string args0)
     {
         print(gui_fill_input.text);
         Time.timeScale = 1;
-
     }
 
     // Checks which blocks enters on the box
@@ -126,7 +147,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             user_solution.Add(other.GetComponent<Block>());
             if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.VARIABLE)
             {
-                
+
                 if (last_kind_block == Block.kinds.PRINT)
                 {
                     blanks_to_fill[user_solution.Count - 1].text = other.gameObject.GetComponent<Variable_block>().getVariableName();
@@ -139,12 +160,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.INPUT)
             {
-                
+
                 blanks_to_fill[user_solution.Count - 1].text = "input()";
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.PRINT)
             {
-                
+
                 blanks_to_fill[user_solution.Count - 1].text = "print";
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.RESET)
