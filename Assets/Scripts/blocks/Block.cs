@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class Block : MonoBehaviour
 {
-    public enum kinds {INPUT, PRINT, VARIABLE, DEFAULT}; // Kind of block to check by the UI
+    public enum kinds {INPUT, PRINT, VARIABLE, RESET, DEFAULT}; // Kind of block to check by the UI
 
     public kinds kind_of_block; //The variable to state the kind
 

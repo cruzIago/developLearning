@@ -107,6 +107,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         print("done");
 
     }
+    
 
     void SubmitInputVariable(string args0)
     {
@@ -146,6 +147,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 
                 blanks_to_fill[user_solution.Count - 1].text = "print";
             }
+            else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.RESET)
+            {
+                user_solution.Clear();
+                blanks_to_default();
+                blocks_to_default();
+            }
             else
             {
                 print("ERROR ON CANVAS CONTROLLER, NO KIND OF ITEM ALLOWED");
@@ -154,7 +161,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             last_kind_block = other.gameObject.GetComponent<Block>().kind_of_block;
             other.gameObject.GetComponent<Block>().setCollisions(true);
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
             if (other.gameObject.GetComponent<Block>().player.GetComponent<player_controller>().isItemHeld)
             {
                 other.gameObject.GetComponent<Block>().pickDown();
