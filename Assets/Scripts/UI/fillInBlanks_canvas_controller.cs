@@ -23,7 +23,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
     public InputField gui_fill_input; //For the user to make inputs to simulate code running
 
-    public Text[] result_text; //TODO. Array with the results of the program
+    public Text[] result_text; //TODO
 
     public Text pressToContinue;
 
@@ -186,10 +186,12 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             last_kind_block = other.gameObject.GetComponent<Block>().kind_of_block;
             other.gameObject.GetComponent<Block>().setCollisions(true);
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
             if (other.gameObject.GetComponent<Block>().player.GetComponent<player_controller>().isItemHeld)
             {
                 other.gameObject.GetComponent<Block>().pickDown();
             }
+
             other.gameObject.GetComponent<Block>().reset_position();
 
             print(user_solution.Count);
