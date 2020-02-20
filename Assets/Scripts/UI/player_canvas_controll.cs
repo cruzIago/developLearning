@@ -12,7 +12,7 @@ public class player_canvas_controll : MonoBehaviour
 
     void Start()
     {
-        variable_input.gameObject.SetActive(false);
+        //variable_input.gameObject.SetActive(false);
         var submiter = new InputField.SubmitEvent();
         submiter.AddListener(SubmitVariableName);
         variable_input.onEndEdit = submiter;
@@ -46,7 +46,6 @@ public class player_canvas_controll : MonoBehaviour
         else
         {
             givenName = false;
-            Time.timeScale = 1;
             variable_input.gameObject.SetActive(false);
         }
     }
@@ -59,6 +58,7 @@ public class player_canvas_controll : MonoBehaviour
             print(variable_input.text);
             player.held_item.GetComponent<Variable_block>().setVariableName(variable_input.text);
             givenName = true;
+            Time.timeScale = 1;
         }
     }
 }
