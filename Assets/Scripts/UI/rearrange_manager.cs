@@ -24,9 +24,9 @@ public class rearrange_manager : MonoBehaviour
         {
             resetControl();
         }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
+        if (GetComponent<confirm_button>().isReadyToConfirm) {
             checkCompile();
+            GetComponent<confirm_button>().isReadyToConfirm = false;
         }
     }
 
