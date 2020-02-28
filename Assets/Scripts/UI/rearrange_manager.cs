@@ -13,6 +13,7 @@ public class rearrange_manager : MonoBehaviour
     public List<Text> answerTexts; //List of user given answers
     public List<RectTransform> pivots; //List of positions of texts to solve
     public Text messageConfirm;
+    public file_writer logWriter;
 
     public void Start()
     {
@@ -51,6 +52,7 @@ public class rearrange_manager : MonoBehaviour
         {
             print("Correcto");
             messageConfirm.text = "¡Bien hecho!";
+            logWriter.writeFile();
         }
         else
         {
