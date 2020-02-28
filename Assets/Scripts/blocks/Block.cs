@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class Block : MonoBehaviour
 {
-    public enum kinds {INPUT, PRINT, VARIABLE, RESET, DEFAULT}; // Kind of block to check by the UI
+    public enum kinds {INPUT, PRINT, VARIABLE, RESET, CONTROL, DEFAULT}; // Kind of block to check by the UI
 
     public kinds kind_of_block; //The variable to state the kind
 
@@ -24,7 +24,13 @@ public class Block : MonoBehaviour
 
     protected void Start()
     {
-        initial_position = gameObject.transform.position;
+        initial_position =transform.position;
+    }
+
+    //Provisional, will change later TODO
+    protected void Awake()
+    {
+        initial_position = transform.position;
     }
 
     void Update()
