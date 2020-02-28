@@ -12,6 +12,7 @@ public class rearrange_manager : MonoBehaviour
     public List<Text> texts; //List of texts on GUI to arrange
     public List<Text> answerTexts; //List of user given answers
     public List<RectTransform> pivots; //List of positions of texts to solve
+    public Text messageConfirm;
 
     public void Start()
     {
@@ -49,6 +50,7 @@ public class rearrange_manager : MonoBehaviour
         if (isAbleToCompile)
         {
             print("Correcto");
+            messageConfirm.text = "¡Bien hecho!";
         }
         else
         {
@@ -62,6 +64,7 @@ public class rearrange_manager : MonoBehaviour
      */
     public void resetControl()
     {
+        messageConfirm.text = "Pulsa F para confirmar";
         colors = colors.OrderBy(x => Random.value).ToList();
         texts = texts.OrderBy(x => Random.value).ToList();
         List<rearrange_checker> randomPlatforms = platforms.OrderBy(x => Random.value).ToList();
