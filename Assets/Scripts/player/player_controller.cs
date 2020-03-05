@@ -18,6 +18,8 @@ public class player_controller : MonoBehaviour
 
     public Block held_item; //Item held to check
 
+    public bool isInputBlocked;
+
     void Start()
     {
 
@@ -34,6 +36,7 @@ public class player_controller : MonoBehaviour
         //This is done to avoid tumbling of the player and changing Y.
         isJumping = false;
         isItemHeld = false;
+        isInputBlocked = false;
     }
 
     void Update()
@@ -47,7 +50,7 @@ public class player_controller : MonoBehaviour
 
         if (!isJumping)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && !isInputBlocked)
             {
                 rigidbody.velocity = Vector3.up * thrust;
                 isJumping = true;
@@ -71,9 +74,14 @@ public class player_controller : MonoBehaviour
     /* Checks player controlled movement and jumping*/
     private void player_movement()
     {
-        float hMovement = Input.GetAxis("Horizontal") * speed;
-        float vMovement = Input.GetAxis("Vertical") * speed;
+        float hMovement = 0.0f;
+        float vMovement = 0.0f; 
+        if (!isInputBlocked)
+        {
+            hMovement = Input.GetAxis("Horizontal") * speed;
+            vMovement = Input.GetAxis("Vertical") * speed;
 
+        }
         Vector3 tempVect = vMovement * transform.forward;
         tempVect = tempVect.normalized * speed * Time.deltaTime;
 
