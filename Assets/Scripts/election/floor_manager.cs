@@ -16,6 +16,7 @@ public class floor_manager : MonoBehaviour
     public List<Text> questions;
     public List<answer_checker> checkers;
     public List<GameObject> pivots;
+    public success_message message;
 
     //Current objects: The ones that are active in the floor
     private Vector3 currentRespawnPos;
@@ -88,10 +89,12 @@ public class floor_manager : MonoBehaviour
         if (chosenAnswer == currentCorrectAnswer)
         {
             print("Acertaste");
+            message.successMessage();
             correctAnswer();
         } else
         {
             print("La has liao macho");
+            message.failMessage();
             wrongAnswer();
         }
     }
