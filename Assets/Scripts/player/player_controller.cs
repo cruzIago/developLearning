@@ -36,7 +36,6 @@ public class player_controller : MonoBehaviour
         //This is done to avoid tumbling of the player and changing Y.
         isJumping = false;
         isItemHeld = false;
-        isInputBlocked = false;
     }
 
     void Update()
