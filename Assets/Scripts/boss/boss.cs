@@ -69,7 +69,6 @@ public class boss : MonoBehaviour
         for (int i = 0; i < lines.Length; i++)
         {
             texts.Add(lines[i]);
-            print(texts[i]);
         }
     }
 }

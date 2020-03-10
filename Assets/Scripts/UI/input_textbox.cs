@@ -49,9 +49,7 @@ public class input_textbox : MonoBehaviour
 
     //Check if the answer is correct. TODO->A good checking of the input
      void checkIfCorrect(string args0)
-    {
-        print(args0);
-        
+    {        
         gameObject.GetComponent<InputField>().DeactivateInputField();
         if (input.text.Equals(currentCorrectAnswer))
         {
