@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scene_GameRearrange.unity
+    path: Assets/Scenes/scene_rearrangeGame.unity
     guid: f8f0afa929fcbfd429bce29606e8fcf2
   - enabled: 0
     path: Assets/Scenes/scene_electionGame.unity
     guid: 76473c37142c51744b02848fc3783543
   - enabled: 0
-    path: Assets/Scenes/scene_Game.unity
+    path: Assets/Scenes/scene_fillGame.unity
     guid: 7f5f3460abf7c6744a35c20d1259e21b
   - enabled: 0
-    path: Assets/Scenes/scene_second_Game.unity
+    path: Assets/Scenes/scene_descriptionGame.unity
     guid: 04ebaed317589c34a903953ffd7ee52a
   - enabled: 0
     path: Assets/Scenes/scene_Menu.unity

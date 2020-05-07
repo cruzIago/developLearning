@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class Block : MonoBehaviour
 {
-    public enum kinds {INPUT, PRINT, VARIABLE, RESET, CONTROL, DEFAULT}; // Kind of block to check by the UI
+    public enum kinds { INPUT, PRINT, VARIABLE, RESET, CONTROL, REORDER, DEFAULT }; // Kind of block to check by the UI
 
     public kinds kind_of_block; //The variable to state the kind
 
@@ -19,12 +19,14 @@ public class Block : MonoBehaviour
     public bool isPicked; //To check if picked
 
     public float tossStrength = 600.0f;
-    
+
     protected Vector3 initial_position;
+
+    private float dumpTime = 0.5f; //Used to set animations of player
 
     protected void Start()
     {
-        initial_position =transform.position;
+        initial_position = transform.position;
     }
 
     //Provisional, will change later TODO
@@ -79,16 +81,25 @@ public class Block : MonoBehaviour
         StartCoroutine(dropingItem());
     }
 
-    IEnumerator dropingItem() {
+    IEnumerator dropingItem()
+    {
         yield return new WaitForSeconds(0.2f);
         player.GetComponent<player_controller>().isItemHeld = false;
         player.GetComponent<player_controller>().held_item = null;
+        
+
+            player.GetComponent<player_controller>().player_animator.SetFloat("Blend", 0.0f);
+        
+        
+            player.GetComponent<player_controller>().player_animator.SetBool("pickingItem", false);
+        
     }
 
-    public void reset_position() {
-        transform.position = initial_position+Vector3.up;
+    public void reset_position()
+    {
+        transform.position = initial_position + Vector3.up;
     }
-    
+
 
     //Ignores or enables collision between player and item.
     //Ignore -> True for enable collisions, False for ignore them.
@@ -98,7 +109,10 @@ public class Block : MonoBehaviour
         {
             if (child.tag != "guide")
             {
-                Physics.IgnoreCollision(item.GetComponent<BoxCollider>(), child.GetComponent<BoxCollider>(), !isActive);
+                if (child.GetComponent<BoxCollider>() != null)
+                {
+                    Physics.IgnoreCollision(item.GetComponent<BoxCollider>(), child.GetComponent<BoxCollider>(), !isActive);
+                }
             }
         }
     }
@@ -112,7 +126,8 @@ public class Block : MonoBehaviour
     }
 
     //Picks up the block
-    public void pickUp() {
+    public void pickUp()
+    {
         print("Jugador: " + player);
         print("Guia: " + guide);
 
@@ -125,15 +140,24 @@ public class Block : MonoBehaviour
         player.GetComponent<player_controller>().isItemHeld = true;
         player.GetComponent<player_controller>().held_item = this; //To check which item player is carrying
 
+        
+
+            player.GetComponent<player_controller>().player_animator.SetFloat("Blend", 1.0f);
+        
+        
+            player.GetComponent<player_controller>().player_animator.SetBool("pickingItem", true);
+        
+
     }
 
     //Picks down the block
-    public void pickDown() {
+    public void pickDown()
+    {
         print("Jugador: " + player);
         print("Guia: " + guide);
         releaseBlock();
         item.transform.position = guide.transform.position;
-        item.transform.rotation = guide.transform.rotation;      
+        item.transform.rotation = guide.transform.rotation;
     }
 
     //Throws the block
@@ -148,5 +172,5 @@ public class Block : MonoBehaviour
         item.GetComponent<Rigidbody>().AddForce(throwDirection * tossStrength);
     }
 
-  
+
 }

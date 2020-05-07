@@ -33,9 +33,9 @@ public class rearrange_checker : MonoBehaviour
         if (other.tag == "item" && fixed_block == null)
         {
             fixBlock(other.GetComponent<Block>());
-            GetComponent<Renderer>().material.SetColor("_Color",(fixed_block.GetComponent<Control_block>().block_color)-new Color(0.5f,0.5f,0.5f,0f));
-            fixed_block.GetComponent<Control_block>().control_text.gameObject.SetActive(true);
-            fixed_block.GetComponent<Control_block>().control_text.transform.position = gui_position.transform.position;
+            GetComponent<Renderer>().material.SetColor("_Color",(fixed_block.GetComponent<Reorder_block>().block_color)-new Color(0.5f,0.5f,0.5f,0f));
+            fixed_block.GetComponent<Reorder_block>().reorder_text.gameObject.SetActive(true);
+            fixed_block.GetComponent<Reorder_block>().reorder_text.transform.position = gui_position.transform.position;
         }
     }
 
@@ -50,7 +50,7 @@ public class rearrange_checker : MonoBehaviour
                     fixed_block.GetComponent<Rigidbody>().isKinematic = false;
                 }
                 GetComponent<Renderer>().material.SetColor("_Color", Color.grey);
-                fixed_block.GetComponent<Control_block>().control_text.gameObject.SetActive(false);
+                fixed_block.GetComponent<Reorder_block>().reorder_text.gameObject.SetActive(false);
                 fixed_block = null;
             }
         }

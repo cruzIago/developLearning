@@ -18,8 +18,7 @@ public class Variable_block : Block
         guide = GameObject.FindGameObjectWithTag("guide");
         kind_of_block = kinds.VARIABLE;
         isPicked = false;
-        {
-        }
+
         if (variable_written != null)
         {
             variable_name = variable_written.text;

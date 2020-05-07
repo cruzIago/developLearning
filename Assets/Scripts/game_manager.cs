@@ -37,4 +37,5 @@ public class game_manager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
 }

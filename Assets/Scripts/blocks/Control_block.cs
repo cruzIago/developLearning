@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Control_block : Block
 {
-    public Text control_text;
-    public Color block_color;
+    public enum Statement {IF,ELSEIF,ELSE}
+    public Statement state;
+
+    // Start is called before the first frame update
     void Start()
     {
         base.Start();
@@ -15,16 +16,9 @@ public class Control_block : Block
         guide = GameObject.FindGameObjectWithTag("guide");
         kind_of_block = kinds.CONTROL;
         isPicked = false;
-
     }
 
-    /*
-     * To set random color at start or reset so players are discouraged to try at random
-     */
-    public void setColor()
-    {
-        Renderer matRender = this.GetComponent<Renderer>();
-        block_color = control_text.color;
-        matRender.material.SetColor("_Color", block_color);
-    }
+    
+
+    
 }

@@ -26,16 +26,17 @@ public class rearrange_manager : MonoBehaviour
         {
             resetControl();
         }
-        if (GetComponent<confirm_button>().isReadyToConfirm) {
-            checkCompile();
+        if (GetComponent<confirm_button>().isReadyToConfirm)
+        {
+            button_pressed_compile();
             GetComponent<confirm_button>().isReadyToConfirm = false;
         }
     }
 
     /*
-     * It checks if code would compile or if there are errors 
+     * It checks if code would compile 
      */
-    private void checkCompile()
+    private bool checkCompile()
     {
         bool isAbleToCompile = true;
         for (int i = 0; i < platforms.Count(); i++)
@@ -47,8 +48,15 @@ public class rearrange_manager : MonoBehaviour
                 break;
             }
         }
+        return isAbleToCompile;
+    }
 
-        if (isAbleToCompile)
+    /*
+     * Control to compile on button 
+     */
+    private void button_pressed_compile()
+    {
+        if (checkCompile())
         {
             print("Correcto");
             messageConfirm.text = "¡Bien hecho!";
@@ -70,24 +78,28 @@ public class rearrange_manager : MonoBehaviour
         colors = colors.OrderBy(x => Random.value).ToList();
         texts = texts.OrderBy(x => Random.value).ToList();
         List<rearrange_checker> randomPlatforms = platforms.OrderBy(x => Random.value).ToList();
-
-        for (int i = 0; i < colors.Count(); i++)
+        bool isRandomized = false;
+        do
         {
-            texts[i].color = Color.gray;
-            texts[i].color = colors[i];
-        }
-
-        for (int i = 0; i < blocks.Count(); i++)
-        {
-            blocks[i].GetComponent<Control_block>().setColor();
-            blocks[i].GetComponent<Rigidbody>().isKinematic = false;
-            if (blocks[i].player!=null 
-                && blocks[i].player.GetComponent<player_controller>().isItemHeld)
+            for (int i = 0; i < colors.Count(); i++)
             {
-                blocks[i].pickDown();
+                texts[i].color = Color.gray;
+                texts[i].color = colors[i];
             }
-            blocks[i].transform.position = randomPlatforms[i].transform.position + (Vector3.up * 4);
-        }
+
+            for (int i = 0; i < blocks.Count(); i++)
+            {
+                blocks[i].GetComponent<Reorder_block>().setColor();
+                blocks[i].GetComponent<Rigidbody>().isKinematic = false;
+                if (blocks[i].player != null
+                    && blocks[i].player.GetComponent<player_controller>().isItemHeld)
+                {
+                    blocks[i].pickDown();
+                }
+                blocks[i].transform.position = randomPlatforms[i].transform.position + (Vector3.up * 4);
+            }
+            isRandomized = !checkCompile(); //Check if is randomized enough to not be solved at start
+        } while (!isRandomized);
     }
 
     /*

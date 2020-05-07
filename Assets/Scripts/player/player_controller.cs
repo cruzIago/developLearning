@@ -18,6 +18,8 @@ public class player_controller : MonoBehaviour
 
     public Block held_item; //Item held to check
 
+    public Animator player_animator; //Used to manage animations
+
     void Start()
     {
 
@@ -34,6 +36,7 @@ public class player_controller : MonoBehaviour
         //This is done to avoid tumbling of the player and changing Y.
         isJumping = false;
         isItemHeld = false;
+        player_animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,12 +57,12 @@ public class player_controller : MonoBehaviour
             }
         }
 
-        
+
         if (rigidbody.velocity.y < 0)
         {
             rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
         }
-        
+
         if (rigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime;
@@ -73,6 +76,15 @@ public class player_controller : MonoBehaviour
     {
         float hMovement = Input.GetAxis("Horizontal") * speed;
         float vMovement = Input.GetAxis("Vertical") * speed;
+
+        if (hMovement != 0 || vMovement != 0)
+        {
+            player_animator.SetBool("moving", true);
+        }
+        else
+        {
+            player_animator.SetBool("moving", false);
+        }
 
         Vector3 tempVect = vMovement * transform.forward;
         tempVect = tempVect.normalized * speed * Time.deltaTime;

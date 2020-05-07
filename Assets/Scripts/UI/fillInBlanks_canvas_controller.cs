@@ -9,7 +9,7 @@ using UnityEngine.UI;
  */
 public class fillInBlanks_canvas_controller : MonoBehaviour
 {
-    public int[] game_solution; // To modify on editor for each minigame. It stablish how blocks should be stored to complete the level
+    public Block.kinds[] game_solution; // To modify on editor for each minigame. It stablish how blocks should be stored to complete the level
 
     private List<Block> user_solution; // The array that the user will fill throwing cubes to the trigger zone
 
@@ -61,7 +61,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     }
 
     // Check if the solution provided by the user is the same as the required
-    //TODO: Needs total restructuration to be fully modular
+    
     private IEnumerator checkSolutions()
     {
 
@@ -72,7 +72,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         bool isCorrect = true;
         for (int i = 0; i < user_solution.Count; i++)
         {
-            if ((int)user_solution[i].kind_of_block == game_solution[i])
+            if (user_solution[i].kind_of_block == game_solution[i])
             {
                 blanks_to_fill[i].color = Color.green;
 
@@ -158,19 +158,35 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 }
                 else
                 {
-                    blanks_to_fill[user_solution.Count - 1].text = "var";
+                    blanks_to_fill[user_solution.Count - 1].text = "VAR";
                 }
 
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.INPUT)
             {
 
-                blanks_to_fill[user_solution.Count - 1].text = "input()";
+                blanks_to_fill[user_solution.Count - 1].text = "ENTRADA()";
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.PRINT)
             {
 
-                blanks_to_fill[user_solution.Count - 1].text = "print";
+                blanks_to_fill[user_solution.Count - 1].text = "SALIDA";
+            }
+            else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.CONTROL)
+            {
+                if (other.gameObject.GetComponent<Control_block>().state == Control_block.Statement.IF)
+                {
+                    //spawnElseif and spawnElse blocks
+                    blanks_to_fill[user_solution.Count - 1].text = "SI ";
+                }
+                else if (other.gameObject.GetComponent<Control_block>().state == Control_block.Statement.ELSEIF)
+                {
+                    blanks_to_fill[user_solution.Count - 1].text = "SI NO, SI ";
+                }
+                else
+                {
+                    blanks_to_fill[user_solution.Count - 1].text = "SI NO ";
+                }
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.RESET)
             {
