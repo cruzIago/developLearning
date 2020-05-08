@@ -1,11 +1,174 @@
-{"spanish":[{
-    "id": "0",
-    "text": "Hola mundo"
-}
-],
-"english": [{
-    "id": "0",
-    "text": "hello world"
-}
-]
+{
+  "spanish": [
+    {
+      "id": "-1",
+      "text": "Hola mundo"
+    },
+    {
+      "id": "0",
+      "text": "Jugar"
+    },
+    {
+      "id": "1",
+      "text": "Opciones"
+    },
+    {
+      "id": "2",
+      "text": "Ayuda"
+    },
+    {
+      "id": "3",
+      "text": "Salir"
+    },
+    {
+      "id": "4",
+      "text": "Idioma"
+    },
+    {
+      "id": "5",
+      "text": "Español"
+    },
+    {
+      "id": "6",
+      "text": "Inglés"
+    },
+    {
+      "id": "7",
+      "text": "Variable"
+    },
+    {
+      "id": "8",
+      "text": "Espacio de memoria con un nombre propio.\nEj: VAR nombre;"
+    },
+    {
+      "id": "9",
+      "text": "Memoria"
+    },
+    {
+      "id": "10",
+      "text": "Lugar donde se almacenan los datos usados en un programa."
+    },
+    {
+      "id": "11",
+      "text": "Instrucción"
+    },
+    {
+      "id": "12",
+      "text": "Acción básica que puede reproducir un ordenador.\nEj: VAR suma=2+2;"
+    },
+    {
+      "id": "13",
+      "text": "Secuencia"
+    },
+    {
+      "id": "14",
+      "text": "Conjunto de instrucciones ordenadas.\nEj: \nVAR nombre;\nnombre = ENTRADA();\nSALIDA(\"Hola \" + nombre);"
+    },
+    {
+      "id": "15",
+      "text": "Programa"
+    },
+    {
+      "id": "16",
+      "text": "Secuencia de instrucciones con una tarea específica. Por ejemplo, las instrucciones ENTRADA o SALIDA son programas, pues necesitaron crearse con anterioridad"
+    },
+    {
+      "id": "17",
+      "text": "Entrada"
+    },
+    {
+      "id": "18",
+      "text": "Proceso por el que ser recibe información externa al programa, por ejemplo escribir un mensaje de texto o introducir una contraseña.\nEj: VAR nombre = ENTRADA();"
+    },
+    {
+      "id": "19",
+      "text": "Salida"
+    },
+    {
+      "id": "20",
+      "text": "Proceso por el que se emite información del programa al exterior, por ejemplo ver en la pantalla un dibujo o un mensaje que nos enviaron.\nEj: SALIDA(\"Hola mundo\");"
+    },
+    {
+      "id": "21",
+      "text": "Condicionales"
+    },
+    {
+      "id": "22",
+      "text": "Existen 3 tipos de condicionales: SI, SI NO...SI, SI NO.\nSI especifica que solo se ejecutará la/s secuencia/s si ocurre la condición establecida.Ej:VAR numero=2;SI numero==0\nSI NO...SI se usa para comprobar otras condiciones más específicas.Ej: SI NO...SI numero==1\nSI NO se pondrá al final del todo para especificar que pasa si no se cumple ninguna condición."
+    },
+    {
+      "id": "23",
+      "text": "Bucle simple"
+    },
+    {
+      "id": "24",
+      "text": "Un bucle simple se trata de una repetición de una acción infinitamente hasta que se termine el programa. Deben utilizarse con cuidado.\nEj: \nVAR sumaInfinita;\nREPETIR {\nsumaInfinita = sumaInfinita + 1;\n}\nNunca terminará el bucle."
+    },
+    {
+      "id": "25",
+      "text": "Bucle condicional"
+    },
+    {
+      "id": "26",
+      "text": "Un bucle condiional reproduce una acción hasta que se cumpla una condición concreta.\nEj: VAR suma;\nREPETIR HASTA suma==3 {\nsuma = suma + 1;\n}\nEl valor de la variable suma será 3."
+    },
+    {
+      "id": "27",
+      "text": "Bucle finito"
+    },
+    {
+      "id": "28",
+      "text": "Los bucles finitos son aquellos que se repiten una cantidad de veces determinadas.\nEj: VAR suma;\nREPETIR 5 veces{\nsuma = suma + 1;\n}\nEl valor de la variable suma será 5."
+    },
+    {
+      "id": "100",
+      "text": "Volver"
+    },
+    {
+      "id": "101",
+      "text": "Cerrar"
+    }
+  ],
+  "english": [
+    {
+      "id": "-1",
+      "text": "hello world"
+    },
+    {
+      "id": "0",
+      "text": "Play"
+    },
+    {
+      "id": "1",
+      "text": "Settings"
+    },
+    {
+      "id": "2",
+      "text": "Help"
+    },
+    {
+      "id": "3",
+      "text": "Èxit"
+    },
+    {
+      "id": "4",
+      "text": "Language"
+    },
+    {
+      "id": "5",
+      "text": "Spanish"
+    },
+    {
+      "id": "6",
+      "text": "English"
+    },
+    {
+      "id": "100",
+      "text": "Back"
+    },
+    {
+      "id": "101",
+      "text": "Close"
+    }
+  ]
 }

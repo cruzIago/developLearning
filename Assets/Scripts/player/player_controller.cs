@@ -20,6 +20,7 @@ public class player_controller : MonoBehaviour
 
     public Animator player_animator; //Used to manage animations
 
+    public bool isInputBlocked; //To check if player should be able to move
     void Start()
     {
 
@@ -50,7 +51,7 @@ public class player_controller : MonoBehaviour
 
         if (!isJumping)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && !isInputBlocked)
             {
                 rigidbody.velocity = Vector3.up * thrust;
                 isJumping = true;
@@ -74,8 +75,13 @@ public class player_controller : MonoBehaviour
     /* Checks player controlled movement and jumping*/
     private void player_movement()
     {
-        float hMovement = Input.GetAxis("Horizontal") * speed;
-        float vMovement = Input.GetAxis("Vertical") * speed;
+        float hMovement = 0f;
+        float vMovement = 0f;
+        if (!isInputBlocked)
+        {
+            hMovement = Input.GetAxis("Horizontal") * speed;
+            vMovement = Input.GetAxis("Vertical") * speed;
+        }
 
         if (hMovement != 0 || vMovement != 0)
         {

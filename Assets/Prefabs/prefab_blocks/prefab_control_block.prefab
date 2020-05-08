@@ -121,10 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655dedc592f842b34e36f66aaa661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind_of_block: 4
+  kind_of_block: 5
   item: {fileID: 0}
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
   isPicked: 0
   tossStrength: 600
+  reorder_text: {fileID: 0}
+  block_color: {r: 0, g: 0, b: 0, a: 0}
