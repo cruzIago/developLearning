@@ -52,7 +52,6 @@ public class help_concepts : MonoBehaviour {
 
         thePanel.transform.localScale = Vector3.zero;
         LeanTween.scale(thePanel, new Vector3(1, 1, 1), 0.3f); //Scale up UI by tweening
-        //game_manager.globalSettings.languages.getString();
         targetText.text = definition;
         targetText.gameObject.SetActive(true);
     }

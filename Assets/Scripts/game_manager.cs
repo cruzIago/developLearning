@@ -8,6 +8,9 @@ public class game_manager : MonoBehaviour
 {
     public static game_manager instance;
     public static Global globalSettings;
+    private static file_writer writer;
+    private static mono_gmail sender;
+
     private void Awake()
     {
 
@@ -27,7 +30,13 @@ public class game_manager : MonoBehaviour
     {
         globalSettings = new Global();
 
+        writer = new file_writer();
+        writer.writeOnFile("prueba");
+        sender = new mono_gmail();
+
         print(globalSettings.languages.getString("101")); //To test if languages are working
+
+        Application.quitting += OnExitApplication;
     }
 
     void Update()
@@ -36,10 +45,17 @@ public class game_manager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+    }
+
+    void OnExitApplication()
+    {
+        writer.closeStream();
+        sender.SendLog(writer.path);
     }
 
 
-    
+
 
 
 }

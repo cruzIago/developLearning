@@ -3,28 +3,32 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class file_writer : MonoBehaviour
+/*
+ * This class writes on the file to send some information 
+ */
+public class file_writer
 {
-    // Start is called before the first frame update
-    void Start()
+    private StreamWriter writer;
+    public string path;
+
+    public file_writer()
     {
-        
+        openStream();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void openStream()
     {
-        
+        path = "logFile.txt";
+        writer = new StreamWriter(path, true);
     }
 
-    public void writeFile()
+    public void writeOnFile(string line)
     {
-        string path = "log.txt";
-        string message = "Hello";
+        writer.WriteLine(line);
+    }
 
-        //Write message
-        StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine(message);
+    public void closeStream()
+    {
         writer.Close();
     }
 }

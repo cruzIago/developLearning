@@ -27,6 +27,8 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
     public Text pressToContinue;
 
+    private int mistakes; //To check what rating will have the player
+
     private void Start()
     {
         user_solution = new List<Block>();
@@ -61,7 +63,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     }
 
     // Check if the solution provided by the user is the same as the required
-    
+
     private IEnumerator checkSolutions()
     {
 
@@ -91,6 +93,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             {
                 blanks_to_fill[i].color = Color.red;
                 print("Fallo");
+                mistakes += 1; //
                 isCorrect = false;
                 yield return new WaitForSeconds(1.0f);
                 break;
@@ -101,6 +104,18 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         {
             blanks_to_fill[blanks_to_fill.Length - 1].text = "Hola " + user_solution[0].GetComponent<Variable_block>().getVariableValue();
             print("Acierto");
+            if (mistakes <= 1)
+            {
+                scene_manager.checkEndScreen(3);
+            }
+            else if (mistakes <= 4)
+            {
+                scene_manager.checkEndScreen(2);
+            }
+            else
+            {
+                scene_manager.checkEndScreen(1);
+            }
         }
 
         yield return new WaitForSeconds(1.0f);

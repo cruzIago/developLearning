@@ -6,18 +6,63 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scene_rearrangeGame.unity
-    guid: f8f0afa929fcbfd429bce29606e8fcf2
+    path: Assets/Scenes/scene_menu.unity
+    guid: 78721413d785ab54cac9d0ae1a021aa1
+  - enabled: 1
+    path: Assets/Scenes/scene_tutorial.unity
+    guid: cacac4fc3f226454da2df0765715004c
+  - enabled: 1
+    path: Assets/Scenes/scene_descriptionIO.unity
+    guid: 04ebaed317589c34a903953ffd7ee52a
+  - enabled: 1
+    path: Assets/Scenes/scene_electionIO.unity
+    guid: db89d2ac79e51ae4f9f0867d180c2f80
+  - enabled: 1
+    path: Assets/Scenes/scene_rearrangeIO.unity
+    guid: 32532a0494b26e8448e03bd2e6bb55f9
+  - enabled: 1
+    path: Assets/Scenes/scene_fillIO.unity
+    guid: 7f5f3460abf7c6744a35c20d1259e21b
+  - enabled: 1
+    path: Assets/Scenes/scene_reviewIO.unity
+    guid: 7869b3bf541d24f4b837356737cf1637
+  - enabled: 1
+    path: Assets/Scenes/scene_bossIO.unity
+    guid: 2606a6cdbde0e4b4189c7a6dfa963bf9
   - enabled: 0
-    path: Assets/Scenes/scene_electionGame.unity
+    path: Assets/Scenes/scene_descriptionC.unity
+    guid: 70586e0ec4ca2ca49812a671261c303b
+  - enabled: 0
+    path: Assets/Scenes/scene_electionC.unity
     guid: 76473c37142c51744b02848fc3783543
   - enabled: 0
-    path: Assets/Scenes/scene_fillGame.unity
-    guid: 7f5f3460abf7c6744a35c20d1259e21b
+    path: Assets/Scenes/scene_rearrangeC.unity
+    guid: f8f0afa929fcbfd429bce29606e8fcf2
   - enabled: 0
-    path: Assets/Scenes/scene_descriptionGame.unity
-    guid: 04ebaed317589c34a903953ffd7ee52a
+    path: Assets/Scenes/scene_fillC.unity
+    guid: b8861313c2ea4c247bad80177e0aedc8
   - enabled: 0
-    path: Assets/Scenes/scene_Menu.unity
-    guid: 78721413d785ab54cac9d0ae1a021aa1
+    path: Assets/Scenes/scene_reviewC.unity
+    guid: fad4ab528d85e7e49b269416c77c58e4
+  - enabled: 0
+    path: Assets/Scenes/scene_bossC.unity
+    guid: 7977dbce917ab114f9ea7e3453efbaf8
+  - enabled: 0
+    path: Assets/Scenes/scene_descriptionL.unity
+    guid: 4eaa293ae422bba4fa46a779567e4bbc
+  - enabled: 0
+    path: Assets/Scenes/scene_electionL.unity
+    guid: a5c7e7201c2acbf49b6ca2a45516fac9
+  - enabled: 0
+    path: Assets/Scenes/scene_rearrangeL.unity
+    guid: e0901680c0d543f4daf3e8fb6975ae78
+  - enabled: 0
+    path: Assets/Scenes/scene_fillL.unity
+    guid: 5d95eb37f89fc5b468a0b22bfd38ad32
+  - enabled: 0
+    path: Assets/Scenes/scene_reviewL.unity
+    guid: cdee3c9a3b20da948b57a5caa1b7525b
+  - enabled: 0
+    path: Assets/Scenes/scene_bossL.unity
+    guid: 15e06830a2a715a44b06e35fbd9cf243
   m_configObjects: {}

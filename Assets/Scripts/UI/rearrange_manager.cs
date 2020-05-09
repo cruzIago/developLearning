@@ -60,7 +60,6 @@ public class rearrange_manager : MonoBehaviour
         {
             print("Correcto");
             messageConfirm.text = "¡Bien hecho!";
-            logWriter.writeFile();
         }
         else
         {
