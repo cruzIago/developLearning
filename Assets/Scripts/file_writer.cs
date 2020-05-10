@@ -19,7 +19,7 @@ public class file_writer
     private void openStream()
     {
         path = "logFile.txt";
-        writer = new StreamWriter(path, true);
+        writer = new StreamWriter(path);
     }
 
     public void writeOnFile(string line)

@@ -11,7 +11,7 @@ public class LanguageData
 
     public LanguageData()
     {
-        string filepath = System.IO.Path.Combine(Application.streamingAssetsPath, "lang.json");
+        string filepath = Path.Combine(Application.streamingAssetsPath, "lang.json");
         string file="";
         if (filepath.Contains("://") || filepath.Contains(":///"))
         {
@@ -21,7 +21,7 @@ public class LanguageData
         }
         else
         {
-            file = System.IO.File.ReadAllText(filepath);
+            file = File.ReadAllText(filepath,System.Text.Encoding.GetEncoding("Windows-1252"));
         }
 
         /*file = File.ReadAllText(Application.dataPath + "/Assets/Languages/lang.json");

@@ -106,15 +106,15 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             print("Acierto");
             if (mistakes <= 1)
             {
-                scene_manager.checkEndScreen(3);
+                //scene_manager.checkEndScreen(3);
             }
             else if (mistakes <= 4)
             {
-                scene_manager.checkEndScreen(2);
+               // scene_manager.checkEndScreen(2);
             }
             else
             {
-                scene_manager.checkEndScreen(1);
+              //  scene_manager.checkEndScreen(1);
             }
         }
 

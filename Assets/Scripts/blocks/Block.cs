@@ -37,27 +37,30 @@ public class Block : MonoBehaviour
 
     void Update()
     {
-        //Check if the player is in range to hold the item, check if the item is held and if the player has an item.
-        if (Vector3.Distance(player.transform.position, item.transform.position) < 2.5f
-           && !isPicked
-           && !player.GetComponent<player_controller>().isItemHeld
-           && Input.GetKeyDown(KeyCode.E))
+        if (!player.GetComponent<player_controller>().isInputBlocked)
         {
-            pickUp();
-        }
-        else if (isPicked
-            && player.GetComponent<player_controller>().isItemHeld
-            && Input.GetKeyDown(KeyCode.E)
-            && Time.timeScale == 1)
-        {
-            pickDown();
-        }
-        else if (isPicked
-            && player.GetComponent<player_controller>().isItemHeld
-            && Input.GetKeyDown(KeyCode.F)
-            && Time.timeScale == 1)
-        {
-            toss();
+            //Check if the player is in range to hold the item, check if the item is held and if the player has an item.
+            if (Vector3.Distance(player.transform.position, item.transform.position) < 2.5f
+               && !isPicked
+               && !player.GetComponent<player_controller>().isItemHeld
+               && Input.GetKeyDown(KeyCode.E))
+            {
+                pickUp();
+            }
+            else if (isPicked
+                && player.GetComponent<player_controller>().isItemHeld
+                && Input.GetKeyDown(KeyCode.E)
+                && Time.timeScale == 1)
+            {
+                pickDown();
+            }
+            else if (isPicked
+                && player.GetComponent<player_controller>().isItemHeld
+                && Input.GetKeyDown(KeyCode.F)
+                && Time.timeScale == 1)
+            {
+                toss();
+            }
         }
 
     }

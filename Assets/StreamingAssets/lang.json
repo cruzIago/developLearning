@@ -121,6 +121,118 @@
       "text": "Los bucles finitos son aquellos que se repiten una cantidad de veces determinadas.\nEj: VAR suma;\nREPETIR 5 veces{\nsuma = suma + 1;\n}\nEl valor de la variable suma será 5."
     },
     {
+      "id": "29",
+      "text": "Descripciones"
+    },
+    {
+      "id": "30",
+      "text": "Elegir"
+    },
+    {
+      "id": "31",
+      "text": "Reordenar"
+    },
+    {
+      "id": "32",
+      "text": "Rellenar"
+    },
+    {
+      "id": "33",
+      "text": "Repaso"
+    },
+    {
+      "id": "34",
+      "text": "Jefe"
+    },
+    {
+      "id": "35",
+      "text": "¡Hola! Gracias por venir a Ciberespacio. ¡Necesito tu ayuda para recuperar el Nexo!"
+    },
+    {
+      "id": "36",
+      "text": "Me llamo Binary y te ayudaré a viajar por este complejo mundo."
+    },
+    {
+      "id": "37",
+      "text": "Aunque se me han olvidado algunas cosas... ¡las recordaremos juntos!"
+    },
+    {
+      "id": "38",
+      "text": "Lo primero es aprender a moverte por aquí. Pulsa las teclas de dirección o WASD para moverte."
+    },
+    {
+      "id": "39",
+      "text": "¡Genial! Puedes pulsar la barra espaciadora para saltar si lo necesitas."
+    },
+    {
+      "id": "40",
+      "text": "¡Guau! Vaya salto. Mira ese bloque de ahí. Puedes cogerlos o soltarlos si pulsas la tecla 'E'"
+    },
+    {
+      "id": "41",
+      "text": "También puedes lanzarlos con la tecla F."
+    },
+    {
+      "id": "42",
+      "text": "¡Bien hecho! Te has hecho con los controles en un momento."
+    },
+    {
+      "id": "43",
+      "text": "Ahora estamos preparados para recuperar el Nexo. Pero vamos a necesitar prestar atención."
+    },
+    {
+      "id": "44",
+      "text": "Para poder llegar a él, necesitaremos superar una serie de pruebas en Ciberespacio."
+    },
+    {
+      "id": "45",
+      "text": "¡Y no son nada fáciles! Necesitaremos aprender a programar código para superarlas."
+    },
+    {
+      "id": "46",
+      "text": "Y aunque no es tan complicado, es algo diferente. Te voy a dar unos consejos iniciales."
+    },
+    {
+      "id": "47",
+      "text": "Para empezar todo código se escribe y ejecuta de arriba abajo en una consola como esta."
+    },
+    {
+      "id": "48",
+      "text": "El orden es muy importante. Además, verás que todas las lineas terminan con ';'"
+    },
+    {
+      "id": "49",
+      "text": "VAR viene de Variable y se usa para especificar donde vamos a guardar datos con el nombre que le pongas. ¡Hay de muchos tipos!"
+    },
+    {
+      "id": "50",
+      "text": "Por ejemplo, puede contener texto entre comillas \"\". ¡Y si sumas dos variables con texto, se unirá el texto en si!"
+    },
+    {
+      "id": "51",
+      "text": "También puede contener números y ocurre lo mismo puedes operar con ellos."
+    },
+    {
+      "id": "52",
+      "text": "Se pueden realizar todo tipo de operaciones matemáticas: Sumas(+), restas(-), multiplicaciones(*) y divisiones (/)."
+    },
+    {
+      "id": "53",
+      "text": "Una más complicada es el valor booleano. Puede ser VERDADERO o FALSO. ¡0 o 1, como yo!"
+    },
+    {
+      "id": "54",
+      "text": "Cuando se ejecute un código, si tiene una SALIDA se mostrará en la parte inferior de la consola a parte de hacer las operaciones de arriba a abajo."
+    },
+    {
+      "id": "55",
+      "text": "Si tienes cualquier duda, no dudes en consultar el tutorial otra vez o la sección de Ayuda en el menú de pausa o menú principal."
+    },
+    {
+      "id": "56",
+      "text": "¡Vamos! ¡Hay un Nexo que recuperar y muchas cosas que aprender!"
+    },
+    {
       "id": "100",
       "text": "Volver"
     },

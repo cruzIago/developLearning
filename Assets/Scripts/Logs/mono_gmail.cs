@@ -27,7 +27,7 @@ public class mono_gmail
         mail.From = new MailAddress("developlearningtfg@gmail.com");
         mail.To.Add("iagocruzgarcia@gmail.com");
         mail.Subject = "LogFile from DevelopLearning App";
-        mail.Body = "This is for testing SMTP mail from GMAIL";
+        mail.Body = "Logfile";
         mail.Attachments.Add(new Attachment(logPath));
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
@@ -38,6 +38,7 @@ public class mono_gmail
             { return true; };
         smtpServer.Send(mail);
         Debug.Log("success");
+        File.Delete(logPath);
 
     }
 }
