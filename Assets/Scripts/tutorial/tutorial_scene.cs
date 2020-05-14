@@ -9,46 +9,83 @@ public class tutorial_scene : MonoBehaviour
     public Text help_text;
     public Image help_console;
     public player_controller tutorial_player;
+    public Image blinker;
 
     private int text_id = 35; //35 is where tutorials start in lang.json
 
     private bool isWPressed, isAPressed, isDPressed, isSPressed;
-    private bool isSpacePressed = false;
-    private bool isEPressed, isFPressed, isItemHeldOnce = false;
-
+    private bool isSpacePressed;
+    private bool isEPressed, isFPressed, isItemHeldOnce;
+    private bool isAbleToContinue; //Used to not skip texts on tutorial and let players read it
     private float elapsed_time; //Used for Log reasons
+
+    private bool is_tutorial_ended;
+    private Coroutine blink_reference; //Used to be able to stop coroutine
 
     void Start()
     {
         elapsed_time = Time.time;
         tutorial_player.isInputBlocked = true;
         help_text.text = game_manager.getStringFromLang(text_id);
+        blink_reference = StartCoroutine(blinkArrow());
     }
 
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0)) && tutorial_player.isInputBlocked)
+        if (isAbleToContinue && !scene_manager.is_pause_menu_on)
         {
-            nextText();
+            if (!is_tutorial_ended && ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))) && tutorial_player.isInputBlocked)
+            {
+                StopCoroutine(blink_reference);
+                isAbleToContinue = true;
+                blink_reference = StartCoroutine(blinkArrow());
+                nextText();
+            }
         }
 
-        if (text_id == 38)
+        if (!is_tutorial_ended)
         {
-            WASDTutorial();
-        }
-        if (text_id == 39)
-        {
-            SpaceTutorial();
-        }
-        if (text_id == 41)
-        {
-            EFTutorial();
+            if (text_id == 38)
+            {
+                WASDTutorial();
+            }
+            if (text_id == 39)
+            {
+                SpaceTutorial();
+            }
+            if (text_id == 41)
+            {
+                EFTutorial();
+            }
         }
 
 
     }
 
+    /*
+     * To avoid that the player skips a text
+     */
+    IEnumerator blinkArrow()
+    {
+
+        yield return new WaitForSeconds(0.5f);
+        blinker.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        blinker.gameObject.SetActive(true);
+
+        isAbleToContinue = true;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(0.2f);
+            blinker.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            blinker.gameObject.SetActive(true);
+        }
+
+
+    }
     /*
      * Used for Pick and throw of tutorial 
      */
@@ -172,13 +209,12 @@ public class tutorial_scene : MonoBehaviour
         }
         else if (text_id == 56)
         {
+            is_tutorial_ended = true;
             elapsed_time = Time.time - elapsed_time;
-            scene_manager.checkEndScreen(3,elapsed_time,0);
+            scene_manager.checkEndScreen(3, elapsed_time, 0);
         }
         else
         {
-
-
             text_id += 1;
             if (!tutorial_player.isInputBlocked)
             {

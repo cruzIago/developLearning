@@ -13,7 +13,7 @@ public class well_checker : MonoBehaviour
     public Text[] descriptions;
     private Text currentDesc;
 
-    string[] concepts = { "Variable", "Memoria", "Instrucción", "Secuencia", "Programa" };
+    public string[] concepts = { "Variable", "Memoria", "Instrucción", "Secuencia", "Programa" };
 
     private Dictionary<string, Text> descriptions_to_check;
     private string currentConcept;
@@ -21,11 +21,14 @@ public class well_checker : MonoBehaviour
 
     public GameObject player_reference;
 
+    private int mistakes;
+    private float elapsed_time;
 
     private void Start()
     {
         blocks_inside = new Stack<Block>();
         initDictionary();
+        elapsed_time = Time.time;
     }
 
     private void initDictionary()
@@ -89,6 +92,7 @@ public class well_checker : MonoBehaviour
         if (blockText != currentConcept)
         {
             print("EFE: BlockText es " + blockText + " y mi nombre es: " + currentConcept);
+            mistakes += 1;
             ejectBlocks();
             randomizeDictionary();
         }
@@ -99,6 +103,22 @@ public class well_checker : MonoBehaviour
         }
         else
         {
+            int stars = 0;
+            if (mistakes <= 1)
+            {
+                stars = 3;
+            }
+            else if (mistakes <= 3)
+            {
+                stars = 2;
+            }
+            else {
+                stars = 1;
+            }
+            elapsed_time = Time.time - elapsed_time;
+
+            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
+
             print("Se ha acabado el juego y has ganado");
         }
     }

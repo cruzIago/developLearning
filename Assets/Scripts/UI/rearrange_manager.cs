@@ -13,10 +13,13 @@ public class rearrange_manager : MonoBehaviour
     public List<Text> answerTexts; //List of user given answers
     public List<RectTransform> pivots; //List of positions of texts to solve
     public Text messageConfirm;
-    public file_writer logWriter;
+
+    private int mistakes;
+    private float elapsed_time;
 
     public void Start()
     {
+        elapsed_time = Time.time;
         resetControl();
     }
 
@@ -58,8 +61,21 @@ public class rearrange_manager : MonoBehaviour
     {
         if (checkCompile())
         {
-            print("Correcto");
-            messageConfirm.text = "¡Bien hecho!";
+            int stars = 0;
+            if (mistakes <= 2)
+            {
+                stars = 3;
+            }
+            else if (mistakes <= 3)
+            {
+                stars = 2;
+            }
+            else {
+                stars = 1;
+            }
+            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
+            //print("Correcto");
+            //messageConfirm.text = "¡Bien hecho!";
         }
         else
         {

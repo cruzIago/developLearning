@@ -26,9 +26,12 @@ public class floor_manager : MonoBehaviour
     private List<answer_checker> currentCheckers;
     private List<GameObject> currentPivots;
 
+    private int mistakes;
+    private float elapsed_time;
     // Start is called before the first frame update
     void Start()
     {
+        elapsed_time = Time.time;
         currentFloor = 0;
         currentCheckers = new List<answer_checker>();
         currentPivots = new List<GameObject>();
@@ -39,7 +42,7 @@ public class floor_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void changeFloor()
@@ -53,7 +56,8 @@ public class floor_manager : MonoBehaviour
                 floors[i].SetActive(false);
                 questions[i].gameObject.SetActive(false);
 
-            } else
+            }
+            else
             {
                 floors[i].SetActive(true);
                 currentQuestion = questions[i];
@@ -89,7 +93,8 @@ public class floor_manager : MonoBehaviour
         {
             print("Acertaste");
             correctAnswer();
-        } else
+        }
+        else
         {
             print("La has liao macho");
             wrongAnswer();
@@ -102,9 +107,29 @@ public class floor_manager : MonoBehaviour
         if (currentFloor <= MAX_FLOORS)
         {
             changeFloor();
-        } else
+        }
+        else
         {
             gameOver();
+        }
+
+        if (currentFloor > MAX_FLOORS)
+        {
+            int stars = 0;
+            elapsed_time = Time.time - elapsed_time;
+            if (mistakes <= 1)
+            {
+                stars = 3;
+            }
+            else if (mistakes <= 4)
+            {
+                stars = 2;
+            }
+            else
+            {
+                stars = 1;
+            }
+            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
         }
     }
 
@@ -116,11 +141,12 @@ public class floor_manager : MonoBehaviour
 
     private void gameOver()
     {
+        mistakes += 1;
         clearAnswers();
         floors[currentFloor].SetActive(true);
         currentQuestion = questions[currentFloor];
         currentQuestion.gameObject.SetActive(true);
-        questions[currentFloor-1].gameObject.SetActive(false);
+        questions[currentFloor - 1].gameObject.SetActive(false);
         currentRespawnPos = respawnPositions[currentFloor].transform.position;
         player.transform.position = currentRespawnPos;
     }
@@ -149,5 +175,5 @@ public class floor_manager : MonoBehaviour
         currentPivots.Clear();
     }
 
-    
+
 }

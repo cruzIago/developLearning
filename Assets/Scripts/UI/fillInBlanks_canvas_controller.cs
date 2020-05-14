@@ -28,9 +28,10 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     public Text pressToContinue;
 
     private int mistakes; //To check what rating will have the player
-
+    private float elapsed_time;
     private void Start()
     {
+        elapsed_time = Time.time;
         user_solution = new List<Block>();
         last_kind_block = Block.kinds.DEFAULT;
         var submiter = new InputField.SubmitEvent();
@@ -104,18 +105,22 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         {
             blanks_to_fill[blanks_to_fill.Length - 1].text = "Hola " + user_solution[0].GetComponent<Variable_block>().getVariableValue();
             print("Acierto");
+            int stars = 0;
             if (mistakes <= 1)
             {
-                //scene_manager.checkEndScreen(3);
+                stars = 3;
             }
             else if (mistakes <= 4)
             {
-               // scene_manager.checkEndScreen(2);
+                stars = 2;
             }
             else
             {
-              //  scene_manager.checkEndScreen(1);
+                stars = 1;
             }
+            elapsed_time = Time.time - elapsed_time;
+            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
+
         }
 
         yield return new WaitForSeconds(1.0f);

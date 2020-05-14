@@ -375,7 +375,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 18
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -386,9 +386,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "var num1 = 3;\nvar num2 = 5;\nvar num3 = 2;\nif (num1 - num2 == num3){\n
-    \  print(\"Saludos\");\n} else if (num2 - num1 == num3){\n   print(\"Manzana\");\n}
-    else {\n   print(\"Hamburguesa\");\n}"
+  m_Text: 'VAR color;
+
+    color = "azul";
+
+    SALIDA ("El cielo es " + color);'
 --- !u!1 &130203546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1056,113 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228021441}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &286078595
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693460674, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693560034, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_Name
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680533803693560045, guid: 3a428632cd581de4d8123e6f0d30845a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a428632cd581de4d8123e6f0d30845a, type: 3}
+--- !u!114 &286078596 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2680533803693560045, guid: 3a428632cd581de4d8123e6f0d30845a,
+    type: 3}
+  m_PrefabInstance: {fileID: 286078595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286078597}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8436a4fdb08dff44987ca5c375d24038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &286078597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2680533803693560034, guid: 3a428632cd581de4d8123e6f0d30845a,
+    type: 3}
+  m_PrefabInstance: {fileID: 286078595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &290481052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1699,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: El rojo es azul
 --- !u!222 &372234702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1804,7 +1913,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 18
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1815,9 +1924,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "var palabra = \"galleta\";\nif (EmpiezaPorG(palabra)){\n   print(\"Empieza
-    por G\");\n} else if (AcabaEnA(palabra)){\n   print(\"Acaba en A\");\n} else {\n
-    \  print(\"Ninguna\");\n}"
+  m_Text: 'VAR nombre;
+
+    nombre = "SPAM";
+
+    SALIDA("Hola "+nombre);'
 --- !u!1 &427836941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,7 +2161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1e96c4ff0bc214a882aa75fbcadc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3571936820912624155}
+  player: {fileID: 286078597}
 --- !u!81 &457154514
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2071,7 +2182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 3.1579525, z: 1.5030763}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 22.379002, y: 0, z: 0}
 --- !u!1 &464957691
 GameObject:
@@ -3124,7 +3235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Es impar
+  m_Text: SPAM
 --- !u!222 &590788712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4026,7 +4137,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ninguna
+  m_Text: Hola
 --- !u!222 &723534342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5439,19 +5550,22 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 22
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 195
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "var num1 = 8;\nvar num2 = 5;\nif (EsPar(num2)){\n   print(num1+num2);\n}
-    else if (EsImpar(num1)){\n   print(num1-num2);\n} else {\n   print(num1*num2);\n}"
+  m_Text: 'VAR rojo;
+
+    rojo = "azul";
+
+    SALIDA("El cielo es "+ rojo);'
 --- !u!1 &959759934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,7 +5909,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Acaba en A
+  m_Text: Hola SPAM
 --- !u!222 &970569292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6187,110 +6301,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135542567}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1145486385
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2158150821454119783, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 3571936820912624153}
-    - target: {fileID: 2158150821454119783, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774632, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: rotSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774632, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: thrust
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774633, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774634, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_Name
-      value: testing_player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774639, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822057774639, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3571936822224784611, guid: a13607c9b63f7b044a500c936ccbc333,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a13607c9b63f7b044a500c936ccbc333, type: 3}
 --- !u!1 &1146178748
 GameObject:
   m_ObjectHideFlags: 0
@@ -6458,8 +6468,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "var numero = 4;\nif (EsPar(numero)){\n   print(\"Es par\");\n} else {\n
-    \  print(\"Es impar\");\n}\n"
+  m_Text: 'VAR nombre;
+
+    nombre = "SPAM";
+
+    SALIDA (nombre);'
 --- !u!1 &1153660992
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,7 +6825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hola + nombre
+  m_Text: nombre
 --- !u!222 &1201110753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6900,7 +6913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 13
+  m_Text: El cielo es azul
 --- !u!222 &1221010274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8018,7 +8031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 300
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -8397,7 +8410,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Es par
+  m_Text: SALIDA
 --- !u!222 &1423349334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9036,7 +9049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4ebdcaf0155494bbc1af5485095c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3571936820912624157}
+  player: {fileID: 286078596}
   respawnPositions:
   - {fileID: 1954498404}
   - {fileID: 1255289530}
@@ -9044,10 +9057,10 @@ MonoBehaviour:
   - {fileID: 1046568476}
   - {fileID: 399641080}
   correctAnswers:
-  - {fileID: 1423349333}
-  - {fileID: 1611341249}
-  - {fileID: 2132564284}
-  - {fileID: 1740007046}
+  - {fileID: 590788711}
+  - {fileID: 970569291}
+  - {fileID: 1898504544}
+  - {fileID: 1221010273}
   floors:
   - {fileID: 1674838353}
   - {fileID: 1827914141}
@@ -9088,49 +9101,6 @@ MonoBehaviour:
   - {fileID: 2109951481}
   currentFloor: 0
   chosenAnswer: {fileID: 0}
---- !u!1 &1580167177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1580167179}
-  - component: {fileID: 1580167178}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1580167178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580167177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b73bb7088cf8d444b8bf2393c8f8988b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1580167179
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580167177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000012681507, y: 8.740002, z: -16.499998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585351576
 GameObject:
   m_ObjectHideFlags: 0
@@ -9348,7 +9318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Empieza por G
+  m_Text: Hola nombre
 --- !u!222 &1611341250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10212,7 +10182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 40
+  m_Text: El cielo es rojo
 --- !u!222 &1740007047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11038,7 +11008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Saludos
+  m_Text: El cielo es color
 --- !u!222 &1877473756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11148,7 +11118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hamburguesa
+  m_Text: El cielo es azul
 --- !u!222 &1898504545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12691,7 +12661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Manzana
+  m_Text: El color es cielo
 --- !u!222 &2132564285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12810,33 +12780,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139606999}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &3571936820912624153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3571936822057774632, guid: a13607c9b63f7b044a500c936ccbc333,
-    type: 3}
-  m_PrefabInstance: {fileID: 1145486385}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3571936820912624155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b8c92709d25d54a8ba48a64718f0f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &3571936820912624155 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3571936822057774634, guid: a13607c9b63f7b044a500c936ccbc333,
-    type: 3}
-  m_PrefabInstance: {fileID: 1145486385}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3571936820912624157 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2158150821454119783, guid: a13607c9b63f7b044a500c936ccbc333,
-    type: 3}
-  m_PrefabInstance: {fileID: 1145486385}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3571936820912624155}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8436a4fdb08dff44987ca5c375d24038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

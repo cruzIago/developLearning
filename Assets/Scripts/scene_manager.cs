@@ -10,44 +10,47 @@ using UnityEngine.UI;
 public class scene_manager : MonoBehaviour
 {
     public static scene_manager instance; //To satisfy singleton needs
-
-    public Button[] stage_editor_buttons;
     public Sprite[] star_rating;
+    public GameObject end_game_screen;
+    public GameObject pause_game_screen;
+
+    public static bool is_pause_menu_on;
 
     private static List<int> stages;
     private Button[] stage_buttons; //Just to not lose the reference to the buttons. Could be changed later
 
-    private static bool isBackFromGame;
+    private static bool is_back_from_game;
+    private static GameObject end_game_reference;
 
     private void Awake()
     {
-        stages = new List<int>();
         if (instance == null)
         {
+            stages = new List<int>();
             instance = this;
             // Its done by this system so its known which scene has which rating 0 being can be played and no score gotten and -1 can't access
             //Tutorial
-            stage_buttons = new Button[stage_editor_buttons.Length];
-            stage_editor_buttons.CopyTo(stage_buttons, 0);
+            end_game_reference = end_game_screen;
             PlayerPrefs.DeleteAll(); // To debug
 
+            //Tutorial
             if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1))))
             {
-                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 0);
+                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 1); //TODO CAMBIAR
                 stages.Add(1);
 
             }
             else
             {
-                stages.Add(1);
+                stages.Add(PlayerPrefs.GetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1))));
             }
             for (int i = 2; i < SceneManager.sceneCountInBuildSettings; i++)
             {
                 if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i))))
                 {
-                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1);
+                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), 1); //TODO CAMBIAR
 
-                    stages.Add(-1);
+                    stages.Add(1);
                 }
                 else
                 {
@@ -55,14 +58,12 @@ public class scene_manager : MonoBehaviour
                 }
             }
 
-            isBackFromGame = false;
+            is_back_from_game = false;
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
-
-
 
         DontDestroyOnLoad(gameObject);
     }
@@ -77,12 +78,17 @@ public class scene_manager : MonoBehaviour
         //If the scene loaded is the menu scene...
         if (scene.buildIndex == 0)
         {
+            stage_buttons = GameObject.Find("startingMenu").GetComponent<menu_references>().stage_buttons;
             checkAvaliableStages();
-            if (isBackFromGame)
+            if (is_back_from_game)
             {
+                is_back_from_game = false;
                 GameObject.Find("mainMenu").GetComponent<back_from_game>().deactivate();
-               
+
             }
+        }
+        else {
+            Instantiate(pause_game_screen, Vector3.zero, Quaternion.identity);
         }
     }
     
@@ -148,9 +154,11 @@ public class scene_manager : MonoBehaviour
         game_manager.writeOnFile(log);
 
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, stars);
-        stages[SceneManager.GetActiveScene().buildIndex] = stars;
+        stages[SceneManager.GetActiveScene().buildIndex-1] = stars;
 
-        //TODO Show endgame screen
+        GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = true;
+        GameObject temp_end_game=(GameObject) Instantiate(end_game_reference, Vector3.zero, Quaternion.identity);
+        temp_end_game.GetComponentInChildren<end_game_screen>().changeStars(stars);
 
     }
 
@@ -167,10 +175,17 @@ public class scene_manager : MonoBehaviour
      */
     public static void backToMenu()
     {
-        isBackFromGame = true;
+        is_back_from_game = true;
         SceneManager.LoadScene("scene_menu");
     }
 
-
+    /*
+     * For pause menu to avoid player movement
+     */ 
+    public static void checkPause(bool paused) {
+        is_pause_menu_on = paused;
+        GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = paused;
+        
+    }
 
 }
