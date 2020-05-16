@@ -17,18 +17,22 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
     public Block[] blocks_in_scene;
 
-    public Animator animator; //Animator to enlarge the console screen and give feedback to the user
-
     private Block.kinds last_kind_block; // To check last block checked
 
     public InputField gui_fill_input; //For the user to make inputs to simulate code running
 
-    public Text[] result_text; //TODO
-
     public Text pressToContinue;
 
+    public string filled_text; //To write on editor what will prompt at result
+
+    public GameObject background; //To animate
+    
     private int mistakes; //To check what rating will have the player
     private float elapsed_time;
+    //Review variables
+    public review_manager reviewer;
+    public bool is_review_stage;
+
     private void Start()
     {
         elapsed_time = Time.time;
@@ -37,6 +41,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         var submiter = new InputField.SubmitEvent();
         submiter.AddListener(SubmitInputVariable);
         gui_fill_input.onEndEdit = submiter;
+        
     }
 
     private void Update()
@@ -64,13 +69,15 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     }
 
     // Check if the solution provided by the user is the same as the required
-
     private IEnumerator checkSolutions()
     {
 
         last_kind_block = Block.kinds.DEFAULT;
-
-        animator.SetBool("checking_conditions", true);
+        //animator.SetBool("checking_conditions", true);
+        Vector3 tmp_original_position = background.transform.localPosition;
+        LeanTween.moveLocal(background.gameObject, Vector3.zero, 1.0f);
+        LeanTween.scale(background.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
+        
         yield return new WaitForSeconds(1.0f);
         bool isCorrect = true;
         for (int i = 0; i < user_solution.Count; i++)
@@ -85,7 +92,10 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                     gui_fill_input.ActivateInputField();
                     Time.timeScale = 0;
                     yield return new WaitUntil(() => Time.timeScale == 1);
-                    user_solution[i - 1].GetComponent<Variable_block>().setVariableValue(gui_fill_input.text);
+                    if (i - 1 >= 0)
+                    {
+                        user_solution[i - 1].GetComponent<Variable_block>().setVariableValue(gui_fill_input.text);
+                    }
                     gui_fill_input.text = "";
                     gui_fill_input.gameObject.SetActive(false);
                 }
@@ -94,7 +104,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             {
                 blanks_to_fill[i].color = Color.red;
                 print("Fallo");
-                mistakes += 1; //
+                mistakes += 1;
                 isCorrect = false;
                 yield return new WaitForSeconds(1.0f);
                 break;
@@ -103,23 +113,28 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         }
         if (isCorrect)
         {
-            blanks_to_fill[blanks_to_fill.Length - 1].text = "Hola " + user_solution[0].GetComponent<Variable_block>().getVariableValue();
-            print("Acierto");
-            int stars = 0;
-            if (mistakes <= 1)
+            blanks_to_fill[blanks_to_fill.Length - 1].text = filled_text + user_solution[0].GetComponent<Variable_block>().getVariableValue();
+            if (!is_review_stage)
             {
-                stars = 3;
+                int stars = 0;
+                if (mistakes <= 1)
+                {
+                    stars = 3;
+                }
+                else if (mistakes <= 4)
+                {
+                    stars = 2;
+                }
+                else
+                {
+                    stars = 1;
+                }
+                elapsed_time = Time.time - elapsed_time;
+                scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
             }
-            else if (mistakes <= 4)
-            {
-                stars = 2;
+            else {
+                reviewer.nextReview(mistakes);
             }
-            else
-            {
-                stars = 1;
-            }
-            elapsed_time = Time.time - elapsed_time;
-            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
 
         }
 
@@ -127,7 +142,10 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         pressToContinue.gameObject.SetActive(true);
         Time.timeScale = 0;
         yield return WaitForKeyPress(KeyCode.Space);
-        animator.SetBool("checking_conditions", false);
+        
+        LeanTween.moveLocal(background.gameObject, tmp_original_position, 0.2f);
+        LeanTween.scale(background.gameObject, new Vector3(1.0f,1.0f,1.0f), 0.5f);
+        //animator.SetBool("checking_conditions", false);
         blanks_to_default();
         user_solution.Clear();
         print("done");

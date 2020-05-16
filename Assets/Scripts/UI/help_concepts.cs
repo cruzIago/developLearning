@@ -36,7 +36,7 @@ public class help_concepts : MonoBehaviour {
     public void ClosePanel()
     {
         print("Pinchaste en close");
-        LeanTween.scale(thePanel.gameObject, new Vector3(0, 0, 0), 0.2f).setOnComplete(ClosePanel).setOnComplete(CloseDefPanel);
+        LeanTween.scale(thePanel.gameObject, new Vector3(0, 0, 0), 0.2f).setOnComplete(CloseDefPanel);
         
     }
 

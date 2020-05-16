@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class well_checker : MonoBehaviour
 {
-    private int NUM_CONCEPTS = 5;
+    private int NUM_CONCEPTS = 3;
     private Stack<Block> blocks_inside;
 
     public Text[] descriptions;
@@ -23,6 +23,9 @@ public class well_checker : MonoBehaviour
 
     private int mistakes;
     private float elapsed_time;
+
+    public bool is_review_stage;
+    public review_manager reviewer;
 
     private void Start()
     {
@@ -103,21 +106,29 @@ public class well_checker : MonoBehaviour
         }
         else
         {
-            int stars = 0;
-            if (mistakes <= 1)
+            if (!is_review_stage)
             {
-                stars = 3;
-            }
-            else if (mistakes <= 3)
-            {
-                stars = 2;
-            }
-            else {
-                stars = 1;
-            }
-            elapsed_time = Time.time - elapsed_time;
+                int stars = 0;
+                if (mistakes <= 1)
+                {
+                    stars = 3;
+                }
+                else if (mistakes <= 3)
+                {
+                    stars = 2;
+                }
+                else
+                {
+                    stars = 1;
+                }
+                elapsed_time = Time.time - elapsed_time;
 
-            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
+                scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
+            }
+            else
+            {
+                reviewer.nextReview(mistakes);
+            }
 
             print("Se ha acabado el juego y has ganado");
         }

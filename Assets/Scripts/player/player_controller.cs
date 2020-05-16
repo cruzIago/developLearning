@@ -108,11 +108,7 @@ public class player_controller : MonoBehaviour
     /*Checks collision on real time*/
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("wall"))
-        {
-
-        }
-        else if (collision.gameObject.name.Contains("floor"))
+        if (collision.gameObject.name.Contains("floor"))
         {//To check if player is still airborne
             isJumping = false;
 

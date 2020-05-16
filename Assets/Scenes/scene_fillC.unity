@@ -2430,10 +2430,11 @@ MonoBehaviour:
   - {fileID: 2123476202}
   - {fileID: 194986219}
   - {fileID: 579931568}
-  animator: {fileID: 2039888514}
+  animator: {fileID: 0}
   gui_fill_input: {fileID: 2106324291}
-  result_text: []
   pressToContinue: {fileID: 2140212144}
+  filled_text: 
+  background: {fileID: 0}
 --- !u!1 &1280168295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,7 +3854,6 @@ GameObject:
   - component: {fileID: 2039888511}
   - component: {fileID: 2039888513}
   - component: {fileID: 2039888512}
-  - component: {fileID: 2039888514}
   m_Layer: 5
   m_Name: codeBackground
   m_TagString: Untagged
@@ -3926,25 +3926,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039888510}
   m_CullTransparentMesh: 0
---- !u!95 &2039888514
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2039888510}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8eec7b49594340b419469cfa010dbc96, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2054712967
 GameObject:
   m_ObjectHideFlags: 0

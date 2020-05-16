@@ -10,15 +10,18 @@ public class rearrange_manager : MonoBehaviour
     public List<rearrange_checker> platforms; //List of platforms in scene
     public List<Block> blocks; //List of blocks in scene
     public List<Text> texts; //List of texts on GUI to arrange
-    public List<Text> answerTexts; //List of user given answers
     public List<RectTransform> pivots; //List of positions of texts to solve
     public Text messageConfirm;
 
     private int mistakes;
     private float elapsed_time;
 
+    public bool is_review_stage;
+    public review_manager reviewer;
+
     public void Start()
     {
+        mistakes = 0;
         elapsed_time = Time.time;
         resetControl();
     }
@@ -61,24 +64,35 @@ public class rearrange_manager : MonoBehaviour
     {
         if (checkCompile())
         {
-            int stars = 0;
-            if (mistakes <= 2)
+            if (!is_review_stage)
             {
-                stars = 3;
-            }
-            else if (mistakes <= 3)
-            {
-                stars = 2;
+                int stars = 0;
+                if (mistakes <= 2)
+                {
+                    stars = 3;
+                }
+                else if (mistakes <= 3)
+                {
+                    stars = 2;
+                }
+                else
+                {
+                    stars = 1;
+                }
+                scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
             }
             else {
-                stars = 1;
+                foreach (Block b in blocks) {
+                    b.gameObject.SetActive(false);
+                }
+                reviewer.nextReview(mistakes);
             }
-            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
             //print("Correcto");
             //messageConfirm.text = "¡Bien hecho!";
         }
         else
         {
+            mistakes += 1;
             resetControl();
         }
     }

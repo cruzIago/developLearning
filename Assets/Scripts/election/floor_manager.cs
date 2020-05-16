@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class floor_manager : MonoBehaviour
 {
-    private int MAX_FLOORS = 3;
+    private int MAX_FLOORS = 1;
     private int MAX_CHECKERS = 3;
 
     //List of all objects needed to manage
-    public player_canvas_controll player;
+    public player_controller player;
     public List<GameObject> respawnPositions;
     public List<Text> correctAnswers;
     public List<GameObject> floors;
@@ -28,6 +28,9 @@ public class floor_manager : MonoBehaviour
 
     private int mistakes;
     private float elapsed_time;
+    public bool is_review_stage;
+    public review_manager reviewer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +72,8 @@ public class floor_manager : MonoBehaviour
         clearAnswers();
         for (int i = 0; i < MAX_CHECKERS; i++)
         {
-            currentCheckers.Add(checkers[currentFloor * MAX_FLOORS + i]);
-            currentPivots.Add(pivots[currentFloor * MAX_FLOORS + i]);
+            currentCheckers.Add(checkers[currentFloor * MAX_CHECKERS + i]);
+            currentPivots.Add(pivots[currentFloor * MAX_CHECKERS + i]);
             currentCheckers[i].resetCollision();
             print("Iteracion " + i);
             print("Checker: " + currentCheckers[i]);
@@ -115,21 +118,27 @@ public class floor_manager : MonoBehaviour
 
         if (currentFloor > MAX_FLOORS)
         {
-            int stars = 0;
-            elapsed_time = Time.time - elapsed_time;
-            if (mistakes <= 1)
+            if (!is_review_stage)
             {
-                stars = 3;
+                int stars = 0;
+                elapsed_time = Time.time - elapsed_time;
+                if (mistakes <= 1)
+                {
+                    stars = 3;
+                }
+                else if (mistakes <= 4)
+                {
+                    stars = 2;
+                }
+                else
+                {
+                    stars = 1;
+                }
+                scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
             }
-            else if (mistakes <= 4)
-            {
-                stars = 2;
+            else {
+                reviewer.nextReview(mistakes);
             }
-            else
-            {
-                stars = 1;
-            }
-            scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
         }
     }
 

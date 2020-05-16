@@ -4,13 +4,18 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*Class that manages the boss enemy that appears at the end of each world*/
+/*
+ * Class that manages the boss enemy that appears at the end of each world
+ */
+
 public class boss : MonoBehaviour
 {
-    /*Currently these two variables are constant privates, but they should be public 
+    /*
+     * Currently these two variables are constant privates, but they should be public 
      * if the designer wants to add different number of phases and fails to different
-     * bosses */
-    private int levelPhases = 5; //Phases of the boss. When all of them are finished, the level ends
+     * bosses 
+     */
+    public int levelPhases = 5; //Phases of the boss. When all of them are finished, the level ends
     public int indexOfCurrentText = 0; //Index of the text list
     public Text currentText; //Current text showing on screen
     public bool isCurrentTextQuestion; // false -> The current text is a commentary; true -> is a question
