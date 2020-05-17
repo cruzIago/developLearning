@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class well_checker : MonoBehaviour
 {
-    private int NUM_CONCEPTS = 3;
+    public int NUM_CONCEPTS = 5;
     private Stack<Block> blocks_inside;
 
     public Text[] descriptions;

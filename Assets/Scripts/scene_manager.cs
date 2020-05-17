@@ -13,6 +13,7 @@ public class scene_manager : MonoBehaviour
     public Sprite[] star_rating;
     public GameObject end_game_screen;
     public GameObject pause_game_screen;
+    public GameObject first_time_screen;
 
     public static bool is_pause_menu_on;
 
@@ -36,8 +37,8 @@ public class scene_manager : MonoBehaviour
             //Tutorial
             if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1))))
             {
-                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 1); //TODO CAMBIAR
-                stages.Add(1);
+                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 0); //TODO CAMBIAR
+                stages.Add(0);
 
             }
             else
@@ -48,9 +49,9 @@ public class scene_manager : MonoBehaviour
             {
                 if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i))))
                 {
-                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), 1); //TODO CAMBIAR
+                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1); //TODO CAMBIAR
 
-                    stages.Add(1);
+                    stages.Add(-1);
                 }
                 else
                 {
@@ -87,8 +88,11 @@ public class scene_manager : MonoBehaviour
 
             }
         }
-        else {
+        else if(scene.buildIndex!=1) {
             Instantiate(pause_game_screen, Vector3.zero, Quaternion.identity);
+            if (PlayerPrefs.GetInt(scene.name)<=0 && !scene.name.Contains("boss")) {
+                Instantiate(first_time_screen, Vector3.zero, Quaternion.identity);
+            }
         }
     }
     
@@ -155,8 +159,10 @@ public class scene_manager : MonoBehaviour
 
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, stars);
         stages[SceneManager.GetActiveScene().buildIndex-1] = stars;
-
-        GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = true;
+        if (GameObject.Find("Main").GetComponent<player_controller>() != null)
+        {
+            GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = true;
+        }
         GameObject temp_end_game=(GameObject) Instantiate(end_game_reference, Vector3.zero, Quaternion.identity);
         temp_end_game.GetComponentInChildren<end_game_screen>().changeStars(stars);
 
@@ -184,8 +190,11 @@ public class scene_manager : MonoBehaviour
      */ 
     public static void checkPause(bool paused) {
         is_pause_menu_on = paused;
-        GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = paused;
-        
+
+        if (GameObject.Find("Main").GetComponent<player_controller>() != null)
+        {
+            GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = paused;
+        }   
     }
 
 }

@@ -2434,6 +2434,8 @@ MonoBehaviour:
   pressToContinue: {fileID: 2140212144}
   filled_text: 'Hola '
   background: {fileID: 2039888510}
+  reviewer: {fileID: 0}
+  is_review_stage: 0
 --- !u!1 &1280168295
 GameObject:
   m_ObjectHideFlags: 0

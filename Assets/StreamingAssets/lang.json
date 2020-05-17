@@ -233,11 +233,183 @@
       "text": "¡Vamos! ¡Hay un Nexo que recuperar y muchas cosas que aprender!"
     },
     {
-      "id": "100",
+      "id": "57",
+      "text": "Antes de comenzar hay algo que explicar. En un código, a parte de las VARIABLES, existen las INSTRUCCIONES: Acciones simples que ejecuta el ordenador."
+    },
+    {
+      "id": "58",
+      "text": "En este mundo veremos sobretodo ENTRADA y SALIDA. ENTRADA es cuando le introducimos algo nosotros al ordenador."
+    },
+    {
+      "id": "59",
+      "text": "SALIDA es cuando el ordenador nos muestra algo por la consola. Todo esto lo puedes revisar en el menú de AYUDA."
+    },
+    {
+      "id": "60",
+      "text": "En este tipo de niveles debemos leer atentamente la descripción que aparece en consola y meter en el agujero el bloque que corresponda. ¡Acuerdate de que puedes coger con E y lanzar con F"
+    },
+    {
+      "id": "61",
+      "text": "¡Ah cierto! En estas fases debemos escoger cuál va a ser la SALIDA de la consola y meternos por el agujero correspondiente. ¡Hay que leer bien!"
+    },
+    {
+      "id": "62",
+      "text": "Creo recordar que en estas fases tenemos que ordenar los bloques para que tengan sentido en la consola. Cada color corresponde a una linea en ella. Acuerdate, E para coger, F para lanzar."
+    },
+    {
+      "id": "63",
+      "text": "En estos niveles debemos meter en la caja los bloques que correspondan fijándonos en la consola. Acuerdate, coger con E y lanzar con F."
+    },
+    {
+      "id": "64",
+      "text": "¡Ala! Estos niveles son un poco más largos. Nos servirá de repaso, ya que son todos los otros niveles juntos. ¡Pon aprueba todo lo que sabes!"
+    },
+    {
+      "id": "65",
+      "text": "Hm, creo que nos hemos equivocado de salida, la dirección no tiene sentido. Pone \"www.demasiadaswww.com\". Es como si alguien quisiera gastar una broma...#B"
+    },
+    {
+      "id": "66",
+      "text": "¡JAJAJAJA!¿HABEIS VISTO VUESTRAS CARAS? ERAN COMO...SI, ¡ASÍ! JAJAJAJA.#S"
+    },
+    {
+      "id": "67",
+      "text": "¡Oh no!¡Es SPAM! Le gusta mucho gastar bromas, molestar porque sí y engañar a las personas que navegan tranquilamente.#B"
+    },
+    {
+      "id": "68",
+      "text": "Y TAMBIÉN ME GUSTA GASTAR BROMAS.#S"
+    },
+    {
+      "id": "69",
+      "text": "Eso lo acabo de decir...#B"
+    },
+    {
+      "id": "70",
+      "text": "¡LO SE! JAJAJAJA, MIRA LA CARA QUE SE LE QUEDA AL PERRO ESTE#S"
+    },
+    {
+      "id": "71",
+      "text": "¡Basta! Estoy casi seguro de que eres quien está desetabilizando la red con alguna de tus bromas.#B"
+    },
+    {
+      "id": "72",
+      "text": "¿Y? ES MUY DIVERTIDO VER A A LA GENTE HACER CLICK DONDE NO DEBE JAJAJA#S"
+    },
+    {
+      "id": "73",
+      "text": "Seguro que algún dispositivo por esta sala... igual es esta máquina...#B"
+    },
+    {
+      "id": "74",
+      "text": "PUEDE. PERO PROBABLEMENTE NO SABREIS NI ENCENDERLA.#S"
+    },
+    {
+      "id": "75",
+      "text": "Ya está.#B"
+    },
+    {
+      "id": "76",
+      "text": "¡EH! DA IGUAL, TUS PATITAS PERRUNAS NO PODRÁN ACCEDER AL CÓDIGO.#S"
+    },
+    {
+      "id": "77",
+      "text": "Ahora es tu turno. Esta máquina es algo vieja y solo permite código escrito. ¡Así que habrá que acordarse de lo utilizado!#B"
+    },
+    {
+      "id": "78",
+      "text": "APUESTO A QUE NI SI QUIERA SABE CREAR UNA VARIABLE PARA LA NUEVA CONTRASEÑA JAJAJA.#S"
+    },
+    {
+      "id": "79",
+      "text": "JAJAJA, ¿VES? NI NUEVA NI CONTRASEÑA.#S"
+    },
+    {
+      "id": "80",
+      "text": "¡Vamos! Seguro que solo te falta alguna letra, ¿igual es por VAR o por contraseña?#B"
+    },
+    {
+      "id": "81",
+      "text": "¡EH! NO VALE. PERO DA IGUAL, SEGURO QUE NO SABES COMO RECOGER LA CONTRASEÑA ANTIGUA, AUNQUE TE LA ESCRIBA YO MISMO JAJAJA.#S"
+    },
+    {
+      "id": "82",
+      "text": "¡Ay! Seguro que falta algún paréntesis o algo en la entrada...#B"
+    },
+    {
+      "id": "83",
+      "text": "JAJAJA PERO QUE TORPE ES. NI UTILIZAR MI VARIABLE O LA ENTRADA()#S"
+    },
+    {
+      "id": "84",
+      "text": "¡Bien! Ahora tenemos su contraseña. Probemos a guardarla en nuestra variable por si borra algo.#B"
+    },
+    {
+      "id": "85",
+      "text": "¡Oh no! Algo no cuadra, debe de ser alguna palabra.#B"
+    },
+    {
+      "id": "86",
+      "text": "VENGA YA, NO TOQUES MÁS, NO IGUALES LAS VARIABLES, QUE TENGO QUE BORRARLA.#S"
+    },
+    {
+      "id": "87",
+      "text": "¡Y BORRADA! SI TE LO PERDISTE ES TU PROBLEMA.#S"
+    },
+    {
+      "id": "88",
+      "text": "Venga, solo queda mostrarle la contraseña al sistema y apagarlo.#B"
+    },
+    {
+      "id": "89",
+      "text": "NO ME PUEDO CREER QUE TODAVÍA NO CONSIGAS HACER UNA SALIDA.#S"
+    },
+    {
+      "id": "90",
+      "text": "¡Casi! Creo que la variable debería ir entre los paréntesis de SALIDA(), ¿verdad?#B"
+    },
+    {
+      "id": "91",
+      "text": "¡Vamos a ejecutar el código!#B"
+    },
+    {
+      "id": "92",
+      "text": "Oh vaya, ¿de verdad? Eso no es nada seguro.#B"
+    },
+    {
+      "id": "93",
+      "text": "EH, PERO NADIE SE LO ESPERA JAJAJA#S"
+    },
+    {
+      "id": "94",
+      "text": "¡Eh!¡Qué hay que evitar el colapso!#B"
+    },
+    {
+      "id": "95",
+      "text": "¡Di que SI!#B"
+    },
+    {
+      "id": "96",
+      "text": "¡NOOOOOOOOOOOOOOOOOOOOOOOO, CON LO QUE ME COSTÓ ENGAÑAR A TODO EL MUNDO!#S"
+    },
+    {
+      "id": "97",
+      "text": "¡Sí! Ahora deberíamos poder acceder a la siguiente parte del sistema. Esto le enseñará a SPAM a no fastidiar a los demás.#B"
+    },
+    {
+      "id": "98",
+      "text": "¡JO! SOLO QUERÍA DIVERTIRME.#S"
+    },
+    {
+      "id": "99",
+      "text": "¡Joo! Tenemos que poner más atención cuando volvamos. ¡Seguro que la siguiente lo conseguimos!#B"
+    },
+    {
+      "id": "400",
       "text": "Volver"
     },
     {
-      "id": "101",
+      "id": "401",
       "text": "Cerrar"
     }
   ],
@@ -275,11 +447,11 @@
       "text": "English"
     },
     {
-      "id": "100",
+      "id": "400",
       "text": "Back"
     },
     {
-      "id": "101",
+      "id": "401",
       "text": "Close"
     }
   ]

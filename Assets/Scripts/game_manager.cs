@@ -35,17 +35,13 @@ public class game_manager : MonoBehaviour
     {
         
 
-        print(globalSettings.languages.getString("101")); //To test if languages are working
+        print(globalSettings.languages.getString("-1")); //To test if languages are working
         
         //Application.quitting += OnExitApplication;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
 
     }
 

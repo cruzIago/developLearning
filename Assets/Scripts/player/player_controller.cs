@@ -19,6 +19,7 @@ public class player_controller : MonoBehaviour
     public Block held_item; //Item held to check
 
     public Animator player_animator; //Used to manage animations
+    public GameObject binary; //Used to animate binary
 
     public bool isInputBlocked; //To check if player should be able to move
     void Start()
@@ -86,9 +87,11 @@ public class player_controller : MonoBehaviour
         if (hMovement != 0 || vMovement != 0)
         {
             player_animator.SetBool("moving", true);
+            binary.GetComponent<Animator>().SetBool("walk", true);
         }
         else
         {
+            binary.GetComponent<Animator>().SetBool("walk", false);
             player_animator.SetBool("moving", false);
         }
 

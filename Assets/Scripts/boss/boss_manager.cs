@@ -7,66 +7,107 @@ public class boss_manager : MonoBehaviour
 {
     public enum BOSS_STAGE { SPAM, MISS, VIRUS };
     public BOSS_STAGE stage;
-    public Text texts; //UI Text
+    public Text script_text; //Script text
+    public Text[] console_texts;
+
     public Image boss_image;
     public Image binary_image;
     public Image blinker;
 
     public InputField variable_input;//the "console"
 
+    public int[] console_ids; //Ids where console should be shown
     public int[] text_ids; //Ids that are just text to move forward the scene
-    public int[] help_ids; //Ids that are hints for the player
     public int[] trigger_ids; //Ids where input field should be seen and used
     public string[] solutions; //Strings of solutions
     public int[] anim_ids; //Ids where animation should play
+
+    //https://wiki.unity3d.com/index.php/SerializableDictionary
+    [SerializeField]
+    public IntIntDictionary int_int_animation_rel = IntIntDictionary.New<IntIntDictionary>();
+    public Dictionary<int, int> anim_id //This stablish a connection between which text should come with an animation and which animation
+    {
+        get { return int_int_animation_rel.dictionary; }
+    }
 
     public GameObject boss; //Boss character reference 
     public GameObject main; //player character reference
     public GameObject binary; //Binary character reference
 
-    public Vector3[] main_positions_to_animate; //Positions where the player is headed in animation
+    public Vector3[] positions_to_animate; //Positions where the player is headed in animation
     public float[] time_to_animate; //Time needed for animations to be complete
 
     public int MAX_LINKS = 3; //Number of max tries that player gets for each input
 
     private int links; //lifes or tries that player has
-    private float time; //Reference time to increment
+    private int mistakes;
+    private float elapsed_time;
     private int current_text;
     private int current_question;
     private int current_animation;
+    private int current_console;
 
     private bool isAbleToContinue;
+    private bool isGameOver;
+    private bool isAnswering;
     private Coroutine blink_reference; //To stop the coroutine if needed
 
     void Start()
     {
+        elapsed_time = Time.time;
         current_text = 0;
         current_question = 0;
         current_animation = 0;
+        current_console = 0;
+        mistakes = 0;
         isAbleToContinue = false;
+        isGameOver = false;
         links = MAX_LINKS;
 
         var submiter = new InputField.SubmitEvent();
         submiter.AddListener(SubmitTextToConsole);
         variable_input.onEndEdit = submiter;
-
+        variable_input.gameObject.SetActive(false);
         nextText();
-        blink_reference = StartCoroutine(blinkArrow());
-
-        //LeanTween.move(main, new Vector3(0,0,10.0f), 2.0f).setOnStart(() => startAnimation(0)).setOnComplete(() => stopAnimation(0));
-        //LeanTween.move(binary, new Vector3(0, 0, 10.0f), 2.0f).setOnStart(() => startAnimation(0)).setOnComplete(() => stopAnimation(0));
+        print("nuevacontraseña".Contains("nuevacontra"));
     }
 
     void Update()
     {
-        if (isAbleToContinue && !scene_manager.is_pause_menu_on)
+        if (!isAnswering && isAbleToContinue && !scene_manager.is_pause_menu_on)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+            if (!isGameOver && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
             {
-                StopCoroutine(blink_reference);
+                if (blink_reference != null)
+                {
+                    StopCoroutine(blink_reference);
+                }
                 isAbleToContinue = false;
                 current_text += 1;
                 nextText();
+            }
+            else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+            {
+                isAbleToContinue = false;
+                int stars = 0;
+                if (mistakes <= 4)
+                {
+                    stars = 3;
+                }
+                else if (mistakes <= 7)
+                {
+                    stars = 2;
+                }
+                else if (mistakes > 100)
+                {
+                    stars = 0;
+                }
+                else
+                {
+                    stars = 1;
+                }
+                elapsed_time = Time.time - elapsed_time;
+                scene_manager.checkEndScreen(stars, elapsed_time, mistakes);
             }
         }
     }
@@ -94,37 +135,144 @@ public class boss_manager : MonoBehaviour
 
     }
 
-    void SubmitTextToConsole(string args0)
+    /*
+     * To evaluate each answer to the problem
+     */
+    public void SubmitTextToConsole(string args0)
     {
-        switch (current_question)
-        {
-            case 0:
-                string[] solution = solutions[current_question].Split('/');
-                if (args0.Contains(solution[0]) && (args0.Contains(solution[1]) || args0.Contains(solution[2])))
-                {
-                    current_text += 1;
-                    nextText();
-                    variable_input.gameObject.SetActive(false);
-                }
-                break;
-            default:
-                break;
-        }
-    }
+        string[] solution = solutions[current_question].Split('/');
 
+        if (args0.ToUpper().Contains(solution[0].ToUpper()) &&
+            (args0.ToUpper().Contains(solution[1].ToUpper()) || args0.ToUpper().Contains(solution[2].ToUpper())))
+        {
+            print("correcto");
+            current_question += 1;
+            current_text += 1;
+            links = MAX_LINKS;
+            variable_input.gameObject.SetActive(false);
+            isAnswering = false;
+            nextText();
+        }
+        else
+        {
+            print("incorrecto");
+            links -= 1;
+            mistakes += 1;
+            if (links == 2)
+            {
+                //To change portraits
+                string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text] + 1).Split('#');
+                if (retrieved_text[1].Contains("B"))
+                {
+                    binary_image.gameObject.SetActive(true);
+                    boss_image.gameObject.SetActive(false);
+                }
+                else
+                {
+                    binary_image.gameObject.SetActive(false);
+                    boss_image.gameObject.SetActive(true);
+                }
+                script_text.text = retrieved_text[0];
+            }
+            else if (links == 1)
+            {//To change portraits
+                string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text] + 2).Split('#');
+                if (retrieved_text[1].Contains("B"))
+                {
+                    binary_image.gameObject.SetActive(true);
+                    boss_image.gameObject.SetActive(false);
+                }
+                else
+                {
+                    binary_image.gameObject.SetActive(false);
+                    boss_image.gameObject.SetActive(true);
+                }
+                script_text.text = retrieved_text[0];
+            }
+            else
+            {
+                //Lose state
+                isAnswering = false;
+                mistakes = 1000;
+                current_text = text_ids.Length - 1;
+                isGameOver = true;
+
+                string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text]+1).Split('#');
+
+                script_text.text = retrieved_text[0];
+
+                //To change portraits
+                if (retrieved_text[1].Contains("B"))
+                {
+                    binary_image.gameObject.SetActive(true);
+                    boss_image.gameObject.SetActive(false);
+                }
+                else
+                {
+                    binary_image.gameObject.SetActive(false);
+                    boss_image.gameObject.SetActive(true);
+                }
+                blink_reference = StartCoroutine(blinkArrow());
+                variable_input.gameObject.SetActive(false);
+            }
+        }
+
+    }
+    
     /*
      * Next text in the list 
      */
     void nextText()
     {
-        if (text_ids[current_text] == trigger_ids[current_question])
+        if (current_console < console_ids.Length && text_ids[current_text] == console_ids[current_console])
         {
-            variable_input.gameObject.SetActive(true);
+            print("son el mismo");
+            console_texts[current_console].gameObject.SetActive(true);
+            current_console += 1;
         }
-        else if (text_ids[current_text] == anim_ids[current_animation])
+
+        string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text]).Split('#');
+
+        script_text.text = retrieved_text[0];
+
+        //To change portraits
+        if (retrieved_text[1].Contains("B"))
         {
-            playAnimations(current_animation);
+            binary_image.gameObject.SetActive(true);
+            boss_image.gameObject.SetActive(false);
         }
+        else
+        {
+            binary_image.gameObject.SetActive(false);
+            boss_image.gameObject.SetActive(true);
+        }
+
+        if (current_text != text_ids.Length - 1)
+        {
+            if (current_question < trigger_ids.Length && text_ids[current_text] == trigger_ids[current_question])
+            {
+                isAnswering = true;
+                variable_input.gameObject.SetActive(true);
+                variable_input.ActivateInputField();
+                if(current_animation < anim_ids.Length && text_ids[current_text] == anim_ids[current_animation]) {
+                    playAnimations(anim_id[anim_ids[current_animation]]);
+                }
+            }
+            else if (current_animation < anim_ids.Length && text_ids[current_text] == anim_ids[current_animation])
+            {
+                playAnimations(anim_id[anim_ids[current_animation]]);
+            }
+            else
+            {
+                blink_reference = StartCoroutine(blinkArrow());
+            }
+        }
+        else
+        {
+            isGameOver = true;
+            StartCoroutine(blinkArrow());
+        }
+
     }
 
     /*
@@ -153,14 +301,30 @@ public class boss_manager : MonoBehaviour
         {
             case 0:
                 //Makes SPAM laugh
-                LeanTween.move(boss, boss.transform.position, 2.0f).setOnStart(() => startAnimation(1)).setOnComplete(() => stopAnimation(1));
+                LeanTween.scale(boss, positions_to_animate[current_animation],
+                    time_to_animate[current_animation]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
                 break;
             case 1:
-                //Makes SPAM laugh
-                LeanTween.move(boss, boss.transform.position, 2.0f).setOnStart(() => startAnimation(1)).setOnComplete(() => stopAnimation(1));
+                //Makes SPAM moves towards computer
+                LeanTween.rotate(boss, new Vector3(0, 265.0f, 0), 0.5f);
+                LeanTween.move(boss, positions_to_animate[current_animation],
+                    time_to_animate[current_animation]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
                 break;
             case 2:
-                //Move main character and binary to certain position
+                //Makes player and binary moves towards computer
+                LeanTween.rotate(main, new Vector3(0, -45.0f, 0), 0.5f);
+                LeanTween.move(main, positions_to_animate[current_animation],
+                    time_to_animate[current_animation]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                break;
+            case 3:
+                //Makes binary bark
+                LeanTween.scale(binary, positions_to_animate[current_animation],
+                    time_to_animate[current_animation]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                break;
+            case 4:
+                //Makes binary's head tilt
+                LeanTween.scale(binary, positions_to_animate[current_animation],
+                    time_to_animate[current_animation]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
                 break;
             default:
                 Debug.LogError("There is a problem at pickingSpamStageAnimations(id) at boss_manager");
@@ -168,17 +332,26 @@ public class boss_manager : MonoBehaviour
         }
     }
 
-    
+
     void startAnimation(int id)
     {
         switch (id)
         {
             case 0:
+                boss.GetComponent<Animator>().SetBool("laugh", true);
+                break;
+            case 1:
+                boss.GetComponent<Animator>().SetBool("walk", true);
+                break;
+            case 2:
                 binary.GetComponent<Animator>().SetBool("walk", true);
                 main.GetComponent<Animator>().SetBool("moving", true);
                 break;
-            case 1:
-                boss.GetComponent<Animator>().SetBool("laugh", true);
+            case 3:
+                binary.GetComponent<Animator>().SetBool("bark", true);
+                break;
+            case 4:
+                binary.GetComponent<Animator>().SetBool("tilt", true);
                 break;
             default:
                 Debug.LogError("There is a problem at startAnimation(id) at boss_manager");
@@ -191,16 +364,29 @@ public class boss_manager : MonoBehaviour
         switch (id)
         {
             case 0:
+                boss.GetComponent<Animator>().SetBool("laugh", false);
+                break;
+            case 1:
+                boss.GetComponent<Animator>().SetBool("walk", false);
+                break;
+            case 2:
                 binary.GetComponent<Animator>().SetBool("walk", false);
                 main.GetComponent<Animator>().SetBool("moving", false);
                 break;
-            case 1:
-                boss.GetComponent<Animator>().SetBool("laugh", false);
+            case 3:
+                binary.GetComponent<Animator>().SetBool("bark", false);
+                break;
+            case 4:
+                binary.GetComponent<Animator>().SetBool("tilt", false);
                 break;
             default:
                 Debug.LogError("There is a problem at stopAnimation(id) at boss_manager");
                 break;
-        }
+        }/*
+        current_text += 1;
+        nextText();*/
+        current_animation += 1;
+        blink_reference = StartCoroutine(blinkArrow());
     }
 
 

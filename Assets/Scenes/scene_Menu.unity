@@ -14144,6 +14144,8 @@ MonoBehaviour:
     type: 3}
   pause_game_screen: {fileID: 4515034694143289977, guid: d75a062e0ddbfd544a69bf90dc9d222f,
     type: 3}
+  first_time_screen: {fileID: 7832087328896711639, guid: 745e52717c451fd479acf314fc495f5b,
+    type: 3}
 --- !u!4 &1918493422
 Transform:
   m_ObjectHideFlags: 0
