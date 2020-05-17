@@ -19,7 +19,7 @@ public class tutorial_scene : MonoBehaviour
     private bool isAbleToContinue; //Used to not skip texts on tutorial and let players read it
     private float elapsed_time; //Used for Log reasons
 
-    private bool is_tutorial_ended;
+    private bool isTutorialEnded;
     private Coroutine blink_reference; //Used to be able to stop coroutine
 
     void Start()
@@ -35,7 +35,7 @@ public class tutorial_scene : MonoBehaviour
     {
         if (isAbleToContinue && !scene_manager.is_pause_menu_on)
         {
-            if (!is_tutorial_ended && ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))) && tutorial_player.isInputBlocked)
+            if (!isTutorialEnded && ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))) && tutorial_player.isInputBlocked)
             {
                 StopCoroutine(blink_reference);
                 isAbleToContinue = true;
@@ -44,7 +44,7 @@ public class tutorial_scene : MonoBehaviour
             }
         }
 
-        if (!is_tutorial_ended)
+        if (!isTutorialEnded)
         {
             if (text_id == 38)
             {
@@ -209,7 +209,7 @@ public class tutorial_scene : MonoBehaviour
         }
         else if (text_id == 56)
         {
-            is_tutorial_ended = true;
+            isTutorialEnded = true;
             elapsed_time = Time.time - elapsed_time;
             scene_manager.checkEndScreen(3, elapsed_time, 0);
         }
