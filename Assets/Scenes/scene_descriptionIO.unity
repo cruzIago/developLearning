@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88047f85975cc140a872961e917ea3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NUM_CONCEPTS: 5
   descriptions:
   - {fileID: 1135632187}
   - {fileID: 1848126253}
@@ -791,7 +792,7 @@ MonoBehaviour:
   - "Instrucci\xF3n"
   - Secuencia
   - Programa
-  player_reference: {fileID: 0}
+  player_reference: {fileID: 912553461}
   is_review_stage: 0
   reviewer: {fileID: 0}
 --- !u!1 &773510759

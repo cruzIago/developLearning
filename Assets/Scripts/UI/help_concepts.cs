@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class help_concepts : MonoBehaviour { 
 
     public GameObject thePanel;
-    public string definition;
+    public int definition;
     public Text targetText;
 
     // Start is called before the first frame update
@@ -35,7 +35,6 @@ public class help_concepts : MonoBehaviour {
 
     public void ClosePanel()
     {
-        print("Pinchaste en close");
         LeanTween.scale(thePanel.gameObject, new Vector3(0, 0, 0), 0.2f).setOnComplete(CloseDefPanel);
         
     }
@@ -52,7 +51,7 @@ public class help_concepts : MonoBehaviour {
 
         thePanel.transform.localScale = Vector3.zero;
         LeanTween.scale(thePanel, new Vector3(1, 1, 1), 0.3f); //Scale up UI by tweening
-        targetText.text = definition;
+        targetText.text = game_manager.getStringFromLang(definition);
         targetText.gameObject.SetActive(true);
     }
 }

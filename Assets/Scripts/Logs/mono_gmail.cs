@@ -38,7 +38,7 @@ public class mono_gmail
             { return true; };
         smtpServer.Send(mail);
         Debug.Log("success");
-        File.Delete(logPath);
+        //File.Delete(logPath);
 
     }
 }

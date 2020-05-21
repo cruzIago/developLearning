@@ -76,7 +76,10 @@ public class well_checker : MonoBehaviour
             {
                 if (children.tag != "guide")
                 {
-                    Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), b.GetComponent<BoxCollider>(), true);
+                    if (children.GetComponent<BoxCollider>() != null && b.GetComponent<BoxCollider>() != null)
+                    {
+                        Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), b.GetComponent<BoxCollider>(), true);
+                    }
                 }
             }
             b.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -142,7 +145,10 @@ public class well_checker : MonoBehaviour
         {
             if (children.tag != "guide")
             {
-                Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), other.GetComponent<BoxCollider>(), false);
+                if (children.GetComponent<BoxCollider>() != null && other.GetComponent<BoxCollider>() != null)
+                {
+                    Physics.IgnoreCollision(children.GetComponent<BoxCollider>(), other.GetComponent<BoxCollider>(), false);
+                }
             }
         }
 

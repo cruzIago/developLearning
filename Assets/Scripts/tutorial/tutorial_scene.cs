@@ -38,7 +38,7 @@ public class tutorial_scene : MonoBehaviour
             if (!isTutorialEnded && ((Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))) && tutorial_player.isInputBlocked)
             {
                 StopCoroutine(blink_reference);
-                isAbleToContinue = true;
+                isAbleToContinue = false;
                 blink_reference = StartCoroutine(blinkArrow());
                 nextText();
             }

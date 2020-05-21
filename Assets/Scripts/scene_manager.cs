@@ -88,9 +88,9 @@ public class scene_manager : MonoBehaviour
 
             }
         }
-        else if(scene.buildIndex!=1) {
+        else {
             Instantiate(pause_game_screen, Vector3.zero, Quaternion.identity);
-            if (PlayerPrefs.GetInt(scene.name)<=0 && !scene.name.Contains("boss")) {
+            if (scene.buildIndex != 1 && PlayerPrefs.GetInt(scene.name)<=0 && !scene.name.Contains("boss")) {
                 Instantiate(first_time_screen, Vector3.zero, Quaternion.identity);
             }
         }
@@ -165,7 +165,6 @@ public class scene_manager : MonoBehaviour
         }
         GameObject temp_end_game=(GameObject) Instantiate(end_game_reference, Vector3.zero, Quaternion.identity);
         temp_end_game.GetComponentInChildren<end_game_screen>().changeStars(stars);
-
     }
 
     /*

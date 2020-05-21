@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 18
   targetText: {fileID: 1090891272}
 --- !u!114 &228587801
 MonoBehaviour:
@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 10
   targetText: {fileID: 1090891272}
 --- !u!114 &365579381
 MonoBehaviour:
@@ -3905,7 +3905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 22
   targetText: {fileID: 1090891272}
 --- !u!114 &540167005
 MonoBehaviour:
@@ -5204,6 +5204,7 @@ GameObject:
   - component: {fileID: 753313669}
   - component: {fileID: 753313668}
   - component: {fileID: 753313671}
+  - component: {fileID: 753313672}
   m_Layer: 5
   m_Name: exitButton
   m_TagString: Untagged
@@ -5270,7 +5271,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753313669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 753313672}
+        m_MethodName: OnClickExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753313669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5321,6 +5333,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
+--- !u!114 &753313672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753313666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6c39712be12fb488ae2cecb715682f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753463463
 GameObject:
   m_ObjectHideFlags: 0
@@ -6171,7 +6195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 14
   targetText: {fileID: 1090891272}
 --- !u!114 &867214167
 MonoBehaviour:
@@ -6432,7 +6456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 24
   targetText: {fileID: 1090891272}
 --- !u!114 &872859137
 MonoBehaviour:
@@ -6801,7 +6825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 16
   targetText: {fileID: 1090891272}
 --- !u!114 &934589602
 MonoBehaviour:
@@ -9340,7 +9364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 28
   targetText: {fileID: 1090891272}
 --- !u!114 &1231117972
 MonoBehaviour:
@@ -10773,7 +10797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: "Unidad m\xEDnima de almacenamiento. Permite "
+  definition: 8
   targetText: {fileID: 1090891272}
 --- !u!1 &1481733633
 GameObject:
@@ -11829,7 +11853,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1560107975}
   m_OnClick:
     m_PersistentCalls:
@@ -12549,7 +12573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 12
   targetText: {fileID: 1090891272}
 --- !u!114 &1640075851
 MonoBehaviour:
@@ -13352,7 +13376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 26
   targetText: {fileID: 1090891272}
 --- !u!114 &1743187223
 MonoBehaviour:
@@ -14747,7 +14771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 1300919351}
-  definition: Cosa
+  definition: 20
   targetText: {fileID: 1090891272}
 --- !u!114 &2055329961
 MonoBehaviour:

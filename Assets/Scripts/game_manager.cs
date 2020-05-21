@@ -37,7 +37,8 @@ public class game_manager : MonoBehaviour
 
         print(globalSettings.languages.getString("-1")); //To test if languages are working
         
-        //Application.quitting += OnExitApplication;
+        Application.quitting += OnExitApplication;
+
     }
 
     void Update()
