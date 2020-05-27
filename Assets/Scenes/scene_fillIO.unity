@@ -728,7 +728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &515228363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2430,6 +2430,9 @@ MonoBehaviour:
   - {fileID: 194986219}
   - {fileID: 503600413}
   - {fileID: 579931568}
+  is_number_compared: 
+  numbers_to_compare: 
+  strings_to_compare: []
   gui_fill_input: {fileID: 2106324291}
   pressToContinue: {fileID: 2140212144}
   filled_text: 'Hola '
@@ -4221,7 +4224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2106324290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4241,7 +4244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -163}
+  m_AnchoredPosition: {x: 0, y: -270}
   m_SizeDelta: {x: 300, y: 40.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106324291

@@ -18,7 +18,8 @@ public class scene_manager : MonoBehaviour
     public static bool is_pause_menu_on;
 
     private static List<int> stages;
-    private Button[] stage_buttons; //Just to not lose the reference to the buttons. Could be changed later
+    private Button[] stage_buttons;
+    private Button[] world_buttons;
 
     private static bool is_back_from_game;
     private static GameObject end_game_reference;
@@ -49,9 +50,9 @@ public class scene_manager : MonoBehaviour
             {
                 if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i))))
                 {
-                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1); //TODO CAMBIAR
+                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), 0); //TODO CAMBIAR
 
-                    stages.Add(-1);
+                    stages.Add(0);
                 }
                 else
                 {
@@ -79,7 +80,9 @@ public class scene_manager : MonoBehaviour
         //If the scene loaded is the menu scene...
         if (scene.buildIndex == 0)
         {
-            stage_buttons = GameObject.Find("startingMenu").GetComponent<menu_references>().stage_buttons;
+            menu_references temp_ref = GameObject.Find("startingMenu").GetComponent<menu_references>();
+            stage_buttons = temp_ref.stage_buttons;
+            world_buttons = temp_ref.world_buttons;
             checkAvaliableStages();
             if (is_back_from_game)
             {
@@ -88,14 +91,17 @@ public class scene_manager : MonoBehaviour
 
             }
         }
-        else {
+        else
+        {
             Instantiate(pause_game_screen, Vector3.zero, Quaternion.identity);
-            if (scene.buildIndex != 1 && PlayerPrefs.GetInt(scene.name)<=0 && !scene.name.Contains("boss")) {
+            //Instantiate first time screen for tutorial about how to play each level besides tutorial and boss
+            if (scene.buildIndex != 1 && PlayerPrefs.GetInt(scene.name) <= 0 && !scene.name.Contains("boss"))
+            {
                 Instantiate(first_time_screen, Vector3.zero, Quaternion.identity);
             }
         }
     }
-    
+
 
     /*
      * This will change how user interacts with stage selection so if they didn't solve stage 1_1, they can't play stage 1_2 and so on 
@@ -118,6 +124,18 @@ public class scene_manager : MonoBehaviour
                     }
                 }
             }
+        }
+        if (stages.Count >= 2 && stages[1] != -1)
+        {
+            world_buttons[0].interactable = true;
+        }
+        if (stages.Count >= 8 && stages[7] != -1)
+        {
+            world_buttons[1].interactable = true;
+        }
+        if (stages.Count >= 14 && stages[13] != -1)
+        {
+            world_buttons[2].interactable = true;
         }
     }
 
@@ -158,12 +176,12 @@ public class scene_manager : MonoBehaviour
         game_manager.writeOnFile(log);
 
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, stars);
-        stages[SceneManager.GetActiveScene().buildIndex-1] = stars;
+        stages[SceneManager.GetActiveScene().buildIndex - 1] = stars;
         if (GameObject.Find("Main").GetComponent<player_controller>() != null)
         {
             GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = true;
         }
-        GameObject temp_end_game=(GameObject) Instantiate(end_game_reference, Vector3.zero, Quaternion.identity);
+        GameObject temp_end_game = (GameObject)Instantiate(end_game_reference, Vector3.zero, Quaternion.identity);
         temp_end_game.GetComponentInChildren<end_game_screen>().changeStars(stars);
     }
 
@@ -186,14 +204,15 @@ public class scene_manager : MonoBehaviour
 
     /*
      * For pause menu to avoid player movement
-     */ 
-    public static void checkPause(bool paused) {
+     */
+    public static void checkPause(bool paused)
+    {
         is_pause_menu_on = paused;
 
         if (GameObject.Find("Main").GetComponent<player_controller>() != null)
         {
             GameObject.Find("Main").GetComponent<player_controller>().isInputBlocked = paused;
-        }   
+        }
     }
 
 }

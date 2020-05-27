@@ -26,10 +26,11 @@ public class review_manager : MonoBehaviour
         fails += mistakes;
         if (actual_stage < stages.Length-1)
         {
+            StartCoroutine(changeStage());/*
             stages[actual_stage].SetActive(false);
             actual_stage += 1;
             main.transform.position = respawn_points[actual_stage].transform.position;
-            stages[actual_stage].SetActive(true);
+            stages[actual_stage].SetActive(true);*/
         }
         else {
             int stars = 0;
@@ -48,4 +49,12 @@ public class review_manager : MonoBehaviour
            scene_manager.checkEndScreen(stars,elapsed_time,fails);
         }
     }
+    IEnumerator changeStage() {
+        yield return new WaitForSeconds(1.5f);
+        stages[actual_stage].SetActive(false);
+        actual_stage += 1;
+        main.transform.position = respawn_points[actual_stage].transform.position;
+        stages[actual_stage].SetActive(true);
+    }
 }
+

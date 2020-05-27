@@ -69,7 +69,6 @@ public class boss_manager : MonoBehaviour
         variable_input.onEndEdit = submiter;
         variable_input.gameObject.SetActive(false);
         nextText();
-        print("nuevacontraseña".Contains("nuevacontra"));
     }
 
     void Update()

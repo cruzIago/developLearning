@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 42511424}
   - component: {fileID: 42511423}
   m_Layer: 5
-  m_Name: rearrangeIf_1
+  m_Name: rearrangeVar_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 389989385}
   - component: {fileID: 389989384}
   m_Layer: 5
-  m_Name: rearrangeElseIf_2
+  m_Name: rearrangeVar_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,13 +1084,14 @@ MonoBehaviour:
   - {fileID: 389989384}
   - {fileID: 1651098107}
   - {fileID: 1750286712}
-  answerTexts: []
   pivots:
   - {fileID: 1811913460}
   - {fileID: 262930285}
   - {fileID: 1624728445}
   - {fileID: 516056041}
   messageConfirm: {fileID: 1089365394}
+  is_review_stage: 0
+  reviewer: {fileID: 0}
 --- !u!4 &708685785
 Transform:
   m_ObjectHideFlags: 0
@@ -2439,7 +2440,7 @@ GameObject:
   - component: {fileID: 1651098108}
   - component: {fileID: 1651098107}
   m_Layer: 5
-  m_Name: rearrangeElseIf_3
+  m_Name: rearrangeInput_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2524,7 +2525,7 @@ GameObject:
   - component: {fileID: 1750286713}
   - component: {fileID: 1750286712}
   m_Layer: 5
-  m_Name: rearrangeElse_4
+  m_Name: rearrangeOutput_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3041,7 +3042,7 @@ GameObject:
   - component: {fileID: 4033967377944185398}
   - component: {fileID: 4033967377944185407}
   m_Layer: 0
-  m_Name: reorder_block_elseIf_2
+  m_Name: reorder_block_INPUT_2
   m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3171,7 +3172,7 @@ GameObject:
   - component: {fileID: 4033967378347601527}
   - component: {fileID: 4033967378347601534}
   m_Layer: 0
-  m_Name: reorder_block_else
+  m_Name: reorder_block_OUTPUT
   m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3213,7 +3214,7 @@ GameObject:
   - component: {fileID: 4033967378372797263}
   - component: {fileID: 4033967378372797254}
   m_Layer: 0
-  m_Name: reorder_block_elseIf_1
+  m_Name: reorder_block_VAR_1
   m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3343,7 +3344,7 @@ GameObject:
   - component: {fileID: 8384393679115616845}
   - component: {fileID: 8384393679115616836}
   m_Layer: 0
-  m_Name: reorder_block_if
+  m_Name: reorder_block_VAR
   m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

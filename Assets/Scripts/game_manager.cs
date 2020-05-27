@@ -55,7 +55,7 @@ public class game_manager : MonoBehaviour
     void OnExitApplication()
     {
         writer.closeStream();
-        sender.SendLog(writer.path);
+       sender.SendLog(writer.path);
     }
 
     public static string getStringFromLang(int id) {

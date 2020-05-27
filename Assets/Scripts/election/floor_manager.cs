@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class floor_manager : MonoBehaviour
 {
-    private int MAX_FLOORS = 1;
+    public int MAX_FLOORS = 1;
     private int MAX_CHECKERS = 3;
 
     //List of all objects needed to manage

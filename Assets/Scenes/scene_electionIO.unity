@@ -1145,24 +1145,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a428632cd581de4d8123e6f0d30845a, type: 3}
---- !u!114 &286078596 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2680533803693560045, guid: 3a428632cd581de4d8123e6f0d30845a,
-    type: 3}
-  m_PrefabInstance: {fileID: 286078595}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286078597}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8436a4fdb08dff44987ca5c375d24038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &286078597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2680533803693560034, guid: 3a428632cd581de4d8123e6f0d30845a,
     type: 3}
   m_PrefabInstance: {fileID: 286078595}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &286078598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2680533803693560035, guid: 3a428632cd581de4d8123e6f0d30845a,
+    type: 3}
+  m_PrefabInstance: {fileID: 286078595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286078597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b8c92709d25d54a8ba48a64718f0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290481052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1699,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El rojo es azul
+  m_Text: La tierra es azul
 --- !u!222 &372234702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5502,7 +5502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &956780146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5550,7 +5550,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 20
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5560,12 +5560,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'VAR rojo;
-
-    rojo = "azul";
-
-    SALIDA("El cielo es "+ rojo);'
+    m_LineSpacing: 1.2
+  m_Text: "VAR zona;\nVAR color;\nzona = \"La tierra\";\ncolor = \" es marr\xF3n\";\nSALIDA
+    (zona+color);"
 --- !u!1 &959759934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,7 +6406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1147872957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6913,7 +6910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El cielo es azul
+  m_Text: "La tierra es marr\xF3n"
 --- !u!222 &1221010274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9049,7 +9046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4ebdcaf0155494bbc1af5485095c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 286078596}
+  MAX_FLOORS: 3
+  player: {fileID: 286078598}
   respawnPositions:
   - {fileID: 1954498404}
   - {fileID: 1255289530}
@@ -9101,6 +9099,8 @@ MonoBehaviour:
   - {fileID: 2109951481}
   currentFloor: 0
   chosenAnswer: {fileID: 0}
+  is_review_stage: 0
+  reviewer: {fileID: 0}
 --- !u!1 &1585351576
 GameObject:
   m_ObjectHideFlags: 0
@@ -10182,7 +10182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El cielo es rojo
+  m_Text: "es marr\xF3n La tierra"
 --- !u!222 &1740007047
 CanvasRenderer:
   m_ObjectHideFlags: 0

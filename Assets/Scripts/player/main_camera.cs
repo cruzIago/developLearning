@@ -20,7 +20,7 @@ public class main_camera : MonoBehaviour
 
         if (player == null)
         {
-            print(name + ": No tengo el jugador");
+            print(name + ": player not found");
         }
         else {
             offset = player.transform.position - transform.position;
