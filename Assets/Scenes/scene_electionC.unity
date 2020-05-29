@@ -387,7 +387,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
   m_Text: "VAR n1 = 3;\r\nVAR n2 = 5;\r\nVAR n3 = 2;\r\nSI(n1 - n2 == n3){\r\n   SALIDA(\"Saludos\");\r\n}SI
-    NO, SI(n1 - n2 == n3){\r\n   SALIDA(\"Manzana\");\r\n} SI NO {\r\n   SALIDA(\"Hamburguesa\");\r\n}"
+    NO, SI(n2 - n1 == n3){\r\n   SALIDA(\"Manzana\");\r\n} SI NO {\r\n   SALIDA(\"Hamburguesa\");\r\n}"
 --- !u!1 &130203546
 GameObject:
   m_ObjectHideFlags: 0

@@ -2524,6 +2524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a179b0e59b234482196f4a082d350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 5357244606394504789}
   game_solution: 02000000000000000400000002000000
   blanks_to_fill:
   - {fileID: 1643818767}

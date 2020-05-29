@@ -15,6 +15,7 @@ public class Block : MonoBehaviour
     public GameObject player; //The player who will be picking the object
     public GameObject guide; //Where it needs to be placed once its picked
     public GameObject textGuide; //Text to name the block
+    public GameObject default_parent; //Used for blocks to go back to parent once they detach from player
 
     public bool isPicked; //To check if picked
 
@@ -50,14 +51,14 @@ public class Block : MonoBehaviour
             else if (isPicked
                 && player.GetComponent<player_controller>().isItemHeld
                 && Input.GetKeyDown(KeyCode.E)
-                && Time.timeScale == 1)
+                && !player.GetComponent<player_controller>().isInputBlocked)
             {
                 pickDown();
             }
             else if (isPicked
                 && player.GetComponent<player_controller>().isItemHeld
                 && Input.GetKeyDown(KeyCode.F)
-                && Time.timeScale == 1)
+                && !player.GetComponent<player_controller>().isInputBlocked)
             {
                 toss();
             }
@@ -79,7 +80,14 @@ public class Block : MonoBehaviour
     {
         item.GetComponent<Rigidbody>().useGravity = true;
         item.GetComponent<Rigidbody>().isKinematic = false;
-        item.transform.parent = null;
+        if (default_parent != null)
+        {
+            item.transform.parent = default_parent.transform;
+        }
+        else
+        {
+            item.transform.parent = null;
+        }
         isPicked = false;
         StartCoroutine(dropingItem());
     }
@@ -87,15 +95,15 @@ public class Block : MonoBehaviour
     IEnumerator dropingItem()
     {
         yield return new WaitForSeconds(0.2f);
-        player.GetComponent<player_controller>().isItemHeld = false;
-        player.GetComponent<player_controller>().held_item = null;
-        
-
+        if (player.GetComponent<player_controller>().held_item == this)
+        {
+            player.GetComponent<player_controller>().isItemHeld = false;
+            player.GetComponent<player_controller>().held_item = null;
             player.GetComponent<player_controller>().player_animator.SetFloat("Blend", 0.0f);
-        
-        
             player.GetComponent<player_controller>().player_animator.SetBool("pickingItem", false);
-        
+        }
+
+
     }
 
     public void reset_position()
@@ -143,13 +151,13 @@ public class Block : MonoBehaviour
         player.GetComponent<player_controller>().isItemHeld = true;
         player.GetComponent<player_controller>().held_item = this; //To check which item player is carrying
 
-        
 
-            player.GetComponent<player_controller>().player_animator.SetFloat("Blend", 1.0f);
-        
-        
-            player.GetComponent<player_controller>().player_animator.SetBool("pickingItem", true);
-        
+
+        player.GetComponent<player_controller>().player_animator.SetFloat("Blend", 1.0f);
+
+
+        player.GetComponent<player_controller>().player_animator.SetBool("pickingItem", true);
+
 
     }
 

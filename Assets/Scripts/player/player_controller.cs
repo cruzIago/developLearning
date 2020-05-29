@@ -43,7 +43,7 @@ public class player_controller : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()

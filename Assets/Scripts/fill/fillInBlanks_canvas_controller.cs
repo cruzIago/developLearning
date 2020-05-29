@@ -9,6 +9,7 @@ using UnityEngine.UI;
  */
 public class fillInBlanks_canvas_controller : MonoBehaviour
 {
+    public player_controller main;
     public Block.kinds[] game_solution; // To modify on editor for each minigame. It stablish how blocks should be stored to complete the level
 
     private List<Block> user_solution; // The array that the user will fill throwing cubes to the trigger zone
@@ -21,7 +22,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     public int[] numbers_to_compare; //Used when control blocks need something to compare. Array just in case it needs more than one comparison
     public string[] strings_to_compare;
 
-    private Block.kinds last_kind_block; // To check last block checked
 
     public InputField gui_fill_input; //For the user to make inputs to simulate code running
 
@@ -31,6 +31,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
     public GameObject background; //To animate
 
+    private Block.kinds last_kind_block; // To check last block checked
     private int mistakes; //To check what rating will have the player
     private float elapsed_time;
 
@@ -98,8 +99,8 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 {
                     gui_fill_input.gameObject.SetActive(true);
                     gui_fill_input.ActivateInputField();
-                    Time.timeScale = 0;
-                    yield return new WaitUntil(() => Time.timeScale == 1);
+                    main.isInputBlocked = true;
+                    yield return new WaitUntil(() => !main.isInputBlocked);
                     if (i - 1 >= 0)
                     {
                         user_solution[i - 1].GetComponent<Variable_block>().setVariableValue(gui_fill_input.text);
@@ -133,7 +134,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 isCorrect = false;
                 yield return new WaitForSeconds(1.0f);
                 pressToContinue.gameObject.SetActive(true);
-                Time.timeScale = 0;
+                main.isInputBlocked = true;
                 yield return WaitForKeyPress(KeyCode.Space);
                 break;
             }
@@ -153,7 +154,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f);
             pressToContinue.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            main.isInputBlocked = true;
             yield return WaitForKeyPress(KeyCode.Space);
 
             if (!is_review_stage)
@@ -203,7 +204,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             if (Input.GetKeyDown(key))
             {
                 isPressed = true;
-                Time.timeScale = 1;
+                main.isInputBlocked = false;
                 pressToContinue.gameObject.SetActive(false);
             }
             yield return null;
@@ -216,7 +217,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     void SubmitInputVariable(string args0)
     {
         print(gui_fill_input.text);
-        Time.timeScale = 1;
+        main.isInputBlocked = false;
     }
 
     // Checks which blocks enters on the box and how to fill the GUI

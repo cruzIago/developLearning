@@ -8531,6 +8531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a179b0e59b234482196f4a082d350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 5357244606394504789}
   game_solution: 020000000000000001000000
   blanks_to_fill:
   - {fileID: 2041854667}
@@ -8802,6 +8803,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 433679558}
@@ -11196,6 +11198,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1564731764}
@@ -14134,6 +14137,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1162357789}
@@ -16145,6 +16149,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 980911936}
+  default_parent: {fileID: 635742781}
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 990388410}
@@ -16165,6 +16170,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 1756433027}
+  default_parent: {fileID: 635742781}
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 1098273642}
@@ -16185,6 +16191,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 1333756757}
+  default_parent: {fileID: 635742781}
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 1247690003}
