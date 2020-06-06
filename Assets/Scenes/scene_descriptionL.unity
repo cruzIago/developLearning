@@ -309,7 +309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Condicional
+  m_Text: Bucle infinito
 --- !u!222 &93797944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 464872111}
   - component: {fileID: 464872110}
   m_Layer: 5
-  m_Name: output_desc
+  m_Name: conditional_loop_desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Comunicaci\xF3n desde el ordenador hacia el mundo exterior"
+  m_Text: "Realiza una acci\xF3n hasta que la condici\xF3n se cumpla"
 --- !u!222 &464872111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -789,9 +789,9 @@ MonoBehaviour:
   - {fileID: 222708586}
   concepts:
   - Variable
-  - Entrada
-  - Salida
-  - Condicional
+  - Bucle finito
+  - Bucle condicional
+  - Bucle infinito
   - Comparador
   player_reference: {fileID: 912553461}
   is_review_stage: 0
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 910055794}
   - component: {fileID: 910055793}
   m_Layer: 5
-  m_Name: input_canvas
+  m_Name: finite_loop_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 1037338708}
   - component: {fileID: 1037338707}
   m_Layer: 5
-  m_Name: output_canvas
+  m_Name: conditional_loop_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,7 +1588,7 @@ GameObject:
   - component: {fileID: 1167132003}
   - component: {fileID: 1167132002}
   m_Layer: 5
-  m_Name: conditional_desc
+  m_Name: infinite_loop_desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1644,8 +1644,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Conjunto de acciones que preguntan si algo se cumple o no. Si se cumple
-    pasa algo y si no, otra cosa
+  m_Text: "Realiza una acci\xF3n infinitas veces"
 --- !u!222 &1167132003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1748,6 +1747,11 @@ PrefabInstance:
       propertyPath: variable_written
       value: 
       objectReference: {fileID: 1337348454}
+    - target: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
+        type: 3}
+      propertyPath: lines
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1806,7 +1810,7 @@ PrefabInstance:
     - target: {fileID: 8384393678595129720, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_Name
-      value: output_block
+      value: conditional_loop_block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abff026e57ec5194c9aa4d298370dc04, type: 3}
@@ -1947,7 +1951,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Salida
+  m_Text: Bucle condicional
 --- !u!222 &1337348455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2279,7 +2283,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Entrada
+  m_Text: Bucle finito
 --- !u!222 &1576630627
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2413,6 +2417,11 @@ PrefabInstance:
       propertyPath: variable_written
       value: 
       objectReference: {fileID: 93797943}
+    - target: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
+        type: 3}
+      propertyPath: lines
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2471,7 +2480,7 @@ PrefabInstance:
     - target: {fileID: 8384393678595129720, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_Name
-      value: conditional_block
+      value: infinite_loop_block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abff026e57ec5194c9aa4d298370dc04, type: 3}
@@ -2748,7 +2757,7 @@ GameObject:
   - component: {fileID: 1848126254}
   - component: {fileID: 1848126253}
   m_Layer: 5
-  m_Name: input_desc
+  m_Name: finite_loop_desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2804,7 +2813,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Comunicaci\xF3n desde el mundo exterior hacia el ordenador"
+  m_Text: "Repite la acci\xF3n una cantidad de veces fija"
 --- !u!222 &1848126254
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2827,7 +2836,7 @@ GameObject:
   - component: {fileID: 1896870901}
   - component: {fileID: 1896870900}
   m_Layer: 5
-  m_Name: conditional_canvas
+  m_Name: infinite_loop_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3033,6 +3042,11 @@ PrefabInstance:
       propertyPath: variable_written
       value: 
       objectReference: {fileID: 1576630626}
+    - target: {fileID: 1436354583716357259, guid: abff026e57ec5194c9aa4d298370dc04,
+        type: 3}
+      propertyPath: lines
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8384393678595129719, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3091,7 +3105,7 @@ PrefabInstance:
     - target: {fileID: 8384393678595129720, guid: abff026e57ec5194c9aa4d298370dc04,
         type: 3}
       propertyPath: m_Name
-      value: input_block
+      value: finite_loop_block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abff026e57ec5194c9aa4d298370dc04, type: 3}

@@ -102,7 +102,7 @@
     },
     {
       "id": "24",
-      "text": "Un bucle simple se trata de una repetición de una acción infinitamente hasta que se termine el programa. Deben utilizarse con cuidado.\nEj: \nVAR sumaInfinita;\nREPETIR {\nsumaInfinita = sumaInfinita + 1;\n}\nNunca terminará el bucle."
+      "text": "Un bucle simple se trata de una repetición de una acción infinitamente hasta que se termine el programa. No son comunes y deben utilizarse con cuidado.\nEj: \nVAR sumaInfinita;\nREPETIR {\nsumaInfinita = sumaInfinita + 1;\n}\nNunca terminará el bucle."
     },
     {
       "id": "25",
@@ -403,6 +403,170 @@
     {
       "id": "99",
       "text": "¡Joo! Tenemos que poner más atención cuando volvamos. ¡Seguro que la siguiente lo conseguimos!#B"
+    },
+    {
+      "id": "100",
+      "text": "Uf, menos mal que ya salimos de la zona de SPAM... espero que esté por aquí el Nexo..."
+    },
+    {
+      "id": "101",
+      "text": "Parece que en este mundo nos vamos a encontrar los bloques de CONTROL, con CONDICIONALES. Si no recuerdo mal, esto funciona como el lenguaje natural. Usaremos \"SI\",\"SI NO, SI\" y \"SI NO\""
+    },
+    {
+      "id": "102",
+      "text": "El SI tiene que ir seguido de COMPARACIONES. Por ejemplo SI (2==3){} y dentro de las llaves la acción que va a ocurrir si se cumple. SI NO, SI(2==4){} funciona parecido, simplemente es otra condición extra. SI NO{} es el resto de opciones."
+    },
+    {
+      "id": "103",
+      "text": "Aquí debería estar otra de las terminales, como la que tenía SPAM... Necesitamos desactivarla para poder continuar.#B"
+    },
+    {
+      "id": "104",
+      "text": "¡Eeeeeh! Ni se os ocurra tocar mi terminal.#M"
+    },
+    {
+      "id": "105",
+      "text": "Ugh. Primero SPAM y ahora MISS...#B"
+    },
+    {
+      "id": "106",
+      "text": "Si, y no vais a tocar MI terminal. No hice nada malo. ¡Largo!#M"
+    },
+    {
+      "id": "107",
+      "text": "¡Pero necesitamos desactivarla para poder encontrar el Nexo!#B"
+    },
+    {
+      "id": "108",
+      "text": "No es mi problema. ¡Hasta luego!#M"
+    },
+    {
+      "id": "109",
+      "text": "¡No! Agh, como siempre. Lo único que sabe hacer es huir. ¡Vamos!#B"
+    },
+    {
+      "id": "110",
+      "text": "Vaya, habrá que decidirse por un camino. ¡Creo que la mejor manera sería usando la nueva terminal móvil!#B"
+    },
+    {
+      "id": "111",
+      "text": "Vale, ahora ya se puede tomar una decisión objetivamente. Con los bloques de control que aprendimos, podemos escoger el camino sin problemas.#B"
+    },
+    {
+      "id": "112",
+      "text": "Primero hay que escribir las variables, como siempre. La ENTRADA la escaneará la terminal. ¡Empecemos por el ancho del callejón!#B"
+    },
+    {
+      "id": "113",
+      "text": "Recuerdo que había que escribir una palabra antes del nombre de la variable...#B"
+    },
+    {
+      "id": "114",
+      "text": "Algo relacionado con variable... ¿VAR? Y el nombre, ¿no?#B"
+    },
+    {
+      "id": "115",
+      "text": "Perfecto. Yo puse la variable de las huellas para avanzar. Ahora necesitamos conseguir que la terminal rellene las variables...¿cómo era?#B"
+    },
+    {
+      "id": "116",
+      "text": "A ver, necesitamos algo del mundo anterior... si no es la SALIDA() debe de ser otra cosa.#B"
+    },
+    {
+      "id": "117",
+      "text": "Puede ser que había que igualar la variable a lo que recoge... ¿ENTRADA era?#B"
+    },
+    {
+      "id": "118",
+      "text": "¡Así si! Eso es perfecto, así el terminal podrá recoger la información. Ahora tenemos que programar los bloques de CONTROL.#B"
+    },
+    {
+      "id": "119",
+      "text": "Hay que pensar un poco. Si el ancho del callejón no es el de una persona, no vamos a escoger ese... empecemos por ahí.#B"
+    },
+    {
+      "id": "120",
+      "text": "Este es complicado, sí. Era algo como una condición... preguntar si el ancho es menor que una persona, como en matemáticas, con < ¿no?#B"
+    },
+    {
+      "id": "121",
+      "text": "Hmm... ¿Con SI? Y entre paréntesis las variables a comparar este caso ancho<persona... algo así.#B"
+    },
+    {
+      "id": "122",
+      "text": "¡Ahá! Que bien se nos da esto. Ahora tenemos que decir que es lo que pasa si hay huellas. Si no es el ancho, serán las huellas.#B"
+    },
+    {
+      "id": "123",
+      "text": "Este era un poco lioso, tenía que ver con SI pero había algo antes... pero aquí simplemente decir \"Hay(Huellas)\", pero falta algo seguro.#B"
+    },
+    {
+      "id": "124",
+      "text": "Era como SI NO, SI, ¿no?. Y luego lo que dije de antes entre paréntesis, creo.#B"
+    },
+    {
+      "id": "125",
+      "text": "¡Si! Jo, mira que era difícil, pero ya casi lo tenemos. Solo falta la última condición por si todo falla... creo que casi lo tenemos y todo.#B"
+    },
+    {
+      "id": "126",
+      "text": "¡Ay! Solo falta un detalle, creo que estaba en lo anterior también, pero sin el SI...#B"
+    },
+    {
+      "id": "127",
+      "text": "Debe ser algo....¿SI NO? Puede ser... pero creo que no hace falta nada más.#B"
+    },
+    {
+      "id": "128",
+      "text": "¡Bien! Ya debería estar todo. La terminal rellenará con los programas necesarios esta vez. ¡No nos acostumbremos! Veamos.#B"
+    },
+    {
+      "id": "129",
+      "text": "Mira, es por la izquierda, ¡vamos!#B"
+    },
+    {
+      "id": "130",
+      "text": "¡Te pillamos, MISS! Danos ese terminal ahora mismo.#B"
+    },
+    {
+      "id": "131",
+      "text": "¡AH!¡Qué susto! Tomad si quereis...#M"
+    },
+    {
+      "id": "132",
+      "text": "¿Así tan fácil? ¿Entonces por que saliste corriendo?#B"
+    },
+    {
+      "id": "133",
+      "text": "Si, es vuestra... me perseguíais y me asusté...#M"
+    },
+    {
+      "id": "134",
+      "text": "...#B"
+    },
+    {
+      "id": "135",
+      "text": "...#M"
+    },
+    {
+      "id": "136",
+      "text": "En fin... vamos a reparar el núcleo de esta zona y vayamos a por el Nexo.#B"
+    },
+    {
+      "id": "137",
+      "text": "¿Me devolvéis el terminal luego...?#M"
+    },
+    {
+      "id": "138",
+      "text": "¿No...?#B"
+    },
+    {
+      "id": "139",
+      "text": "Jo...#M"
+    },
+    {
+      "id": "140",
+      "text": "Jo, casi lo conseguimos. La proxima vez que volvamos, seguro que lo hacemos genial. ¡Vamos a prestar más atención y a repasar un poquito.#M"
     },
     {
       "id": "400",

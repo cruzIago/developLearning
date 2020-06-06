@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class main_camera : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject player;
 
     private Vector3 offset;
+
+    [SerializeField]
+    private Transform to_see_through;
+
+    [SerializeField]
     private float damping = 1;
 
     private void Awake()
@@ -22,12 +26,23 @@ public class main_camera : MonoBehaviour
         {
             print(name + ": player not found");
         }
-        else {
+        else
+        {
             offset = player.transform.position - transform.position;
         }
     }
 
     private void LateUpdate()
+    {
+        CameraFollow();
+    }
+
+
+    /*
+     * This camera follow the target/character and smooth it when turning 
+     * https://www.youtube.com/watch?v=wWyx7_cIxP8
+     */
+    private void CameraFollow()
     {
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = player.transform.eulerAngles.y;
@@ -37,5 +52,22 @@ public class main_camera : MonoBehaviour
         transform.position = player.transform.position - (rotation * offset);
 
         transform.LookAt(player.transform);
+    }
+
+    private void SeeThrough()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, 4.5f))
+        {
+            if (hit.collider.gameObject.tag != "Player")
+            {
+                to_see_through = hit.transform;
+                to_see_through.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+            }
+        }
+        else {
+            to_see_through.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        }
     }
 }

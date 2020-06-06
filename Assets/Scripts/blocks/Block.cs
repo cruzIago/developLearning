@@ -17,6 +17,8 @@ public class Block : MonoBehaviour
     public GameObject textGuide; //Text to name the block
     public GameObject default_parent; //Used for blocks to go back to parent once they detach from player
 
+    public int lines = 1; //Number of lines in canvas text
+
     public bool isPicked; //To check if picked
 
     public float tossStrength = 600.0f;
@@ -71,7 +73,7 @@ public class Block : MonoBehaviour
         //Update parent position
         if (textGuide != null)
         {
-            textGuide.transform.position = transform.position + Vector3.up;
+            textGuide.transform.position = transform.position + Vector3.up*(lines);
         }
     }
 

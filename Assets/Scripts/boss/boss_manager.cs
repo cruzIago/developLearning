@@ -16,6 +16,8 @@ public class boss_manager : MonoBehaviour
 
     public InputField variable_input;//the "console"
 
+    public Image background_console;
+
     public int[] console_ids; //Ids where console should be shown
     public int[] text_ids; //Ids that are just text to move forward the scene
     public int[] trigger_ids; //Ids where input field should be seen and used
@@ -25,7 +27,7 @@ public class boss_manager : MonoBehaviour
     //https://wiki.unity3d.com/index.php/SerializableDictionary
     [SerializeField]
     public IntIntDictionary int_int_animation_rel = IntIntDictionary.New<IntIntDictionary>();
-    public Dictionary<int, int> anim_id //This stablish a connection between which text should come with an animation and which animation
+    public Dictionary<int, int> anim_play_id //This stablish a connection between which text should come with an animation and which animation
     {
         get { return int_int_animation_rel.dictionary; }
     }
@@ -46,6 +48,9 @@ public class boss_manager : MonoBehaviour
     private int current_question;
     private int current_animation;
     private int current_console;
+
+    private int current_position;
+    private int current_time;
 
     private bool isAbleToContinue;
     private bool isGameOver;
@@ -196,7 +201,7 @@ public class boss_manager : MonoBehaviour
                 current_text = text_ids.Length - 1;
                 isGameOver = true;
 
-                string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text]+1).Split('#');
+                string[] retrieved_text = game_manager.getStringFromLang(text_ids[current_text] + 1).Split('#');
 
                 script_text.text = retrieved_text[0];
 
@@ -217,7 +222,7 @@ public class boss_manager : MonoBehaviour
         }
 
     }
-    
+
     /*
      * Next text in the list 
      */
@@ -253,13 +258,14 @@ public class boss_manager : MonoBehaviour
                 isAnswering = true;
                 variable_input.gameObject.SetActive(true);
                 variable_input.ActivateInputField();
-                if(current_animation < anim_ids.Length && text_ids[current_text] == anim_ids[current_animation]) {
-                    playAnimations(anim_id[anim_ids[current_animation]]);
+                if (current_animation < anim_ids.Length && text_ids[current_text] == anim_ids[current_animation])
+                {
+                    playAnimations(anim_play_id[anim_ids[current_animation]]);
                 }
             }
             else if (current_animation < anim_ids.Length && text_ids[current_text] == anim_ids[current_animation])
             {
-                playAnimations(anim_id[anim_ids[current_animation]]);
+                playAnimations(anim_play_id[anim_ids[current_animation]]);
             }
             else
             {
@@ -285,7 +291,7 @@ public class boss_manager : MonoBehaviour
         }
         else if (stage == BOSS_STAGE.MISS)
         {
-
+            pickMissStageAnimations(id);
         }
         else if (stage == BOSS_STAGE.VIRUS)
         {
@@ -331,6 +337,108 @@ public class boss_manager : MonoBehaviour
         }
     }
 
+    //MISS stages
+    void pickMissStageAnimations(int id)
+    {
+        switch (id)
+        {
+            case 6:
+                //Makes MISS "run" to the end point
+                LeanTween.rotate(boss, new Vector3(0, 0, 0), time_to_animate[current_time]);
+                current_time += 1;
+
+                void auxiliarMissEnd()
+                {
+                    LeanTween.rotate(boss, new Vector3(0, 90.0f, 0), time_to_animate[current_time]);
+                    current_time += 1;
+                    LeanTween.move(boss, positions_to_animate[current_position], time_to_animate[current_time]);
+                    current_time += 1;
+                    current_position += 1;
+                    LeanTween.rotate(boss, new Vector3(0, 270.0f, 0), time_to_animate[current_time]).setOnComplete(() => stopAnimation(id));
+                    current_time += 1;
+                }
+
+                LeanTween.move(boss, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(auxiliarMissEnd);
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 7:
+                //Makes MISS walks backwards
+                if (boss.GetComponent<miss_special>() != null) {
+                    boss.GetComponent<miss_special>().DropTerminal();
+                }
+
+                LeanTween.move(boss, positions_to_animate[current_position],
+                   time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 8:
+                //Makes MISS do a sigh
+                LeanTween.scale(boss, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 2:
+                //Makes player and binary moves towards fork
+                void playerAux()
+                {
+                    LeanTween.rotate(main, new Vector3(0, 90.0f, 0), time_to_animate[current_time]);
+                    current_time += 1;
+                    LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time]).setOnComplete(() => stopAnimation(id));
+                    current_time += 1;
+                    current_position += 1;
+                }
+
+                LeanTween.move(main, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(playerAux);
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 3:
+                //Makes binary bark
+                LeanTween.scale(binary, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 4:
+                //Makes binary's head tilt
+                LeanTween.scale(binary, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(id)).setOnComplete(() => stopAnimation(id));
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 5:
+                //Makes main character move towards left alley and cross
+                LeanTween.rotate(main, new Vector3(0, 45.0f, 0), time_to_animate[current_time]);
+                current_time += 1;
+
+                void auxiliar_player()
+                {
+                    LeanTween.rotate(main, new Vector3(0, 90.0f, 0), time_to_animate[current_time]);
+                    current_time += 1;
+                    LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time]).setOnComplete(() => stopAnimation(2));
+                    current_time += 1;
+                    current_position += 1;
+                }
+
+                LeanTween.move(main, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(2)).setOnComplete(auxiliar_player);
+                current_time += 1;
+                current_position += 1;
+                break;
+            case -1:
+                background_console.gameObject.SetActive(true);
+                stopAnimation(id);
+                break;
+            default:
+                Debug.LogError("There is a problem at pickingSpamStageAnimations(id) at boss_manager");
+                break;
+        }
+    }
 
     void startAnimation(int id)
     {
@@ -352,8 +460,20 @@ public class boss_manager : MonoBehaviour
             case 4:
                 binary.GetComponent<Animator>().SetBool("tilt", true);
                 break;
+            case 5:
+                boss.GetComponent<Animator>().SetBool("runwalk", true);
+                break;
+            case 6:
+                boss.GetComponent<Animator>().SetBool("backwards", true);
+                break;
+            case 7:
+                boss.GetComponent<Animator>().SetBool("sigh", true);
+                break;
+            case -1:
+                //Just to make somethings "animate" objects appear and things like that
+                break;
             default:
-                Debug.LogError("There is a problem at startAnimation(id) at boss_manager");
+                Debug.LogError("There is a problem at startAnimation(id) at boss_manager or no numbers possible were selected");
                 break;
         }
     }
@@ -378,8 +498,20 @@ public class boss_manager : MonoBehaviour
             case 4:
                 binary.GetComponent<Animator>().SetBool("tilt", false);
                 break;
+            case 5:
+                boss.GetComponent<Animator>().SetBool("runwalk", false);
+                break;
+            case 6:
+                boss.GetComponent<Animator>().SetBool("backwards", false);
+                break;
+            case 7:
+                boss.GetComponent<Animator>().SetBool("sigh", false);
+                break;
+            case -1:
+                //Just to make somethings "animate" objects appear and things like that
+                break;
             default:
-                Debug.LogError("There is a problem at stopAnimation(id) at boss_manager");
+                Debug.LogError("There is a problem at stopAnimation(id) at boss_manager or no numbers possible were selected");
                 break;
         }/*
         current_text += 1;

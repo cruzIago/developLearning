@@ -375,7 +375,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 19
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -385,12 +385,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'VAR color;
-
-    color = "azul";
-
-    SALIDA ("El cielo es " + color);'
+    m_LineSpacing: 1.3
+  m_Text: "VAR n1 = 3;\r\nVAR n2 = 5;\r\nVAR n3 = 2;\r\nSI(n1 - n2 == n3){\r\n   SALIDA(\"Saludos\");\r\n}SI
+    NO, SI(n2 - n1 == n3){\r\n   SALIDA(\"Manzana\");\r\n} SI NO {\r\n   SALIDA(\"Hamburguesa\");\r\n}"
 --- !u!1 &130203546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: La tierra es azul
+  m_Text: 40
 --- !u!222 &372234702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1865,7 +1862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &421896803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1913,22 +1910,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 22
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 118
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'VAR nombre;
-
-    nombre = "SPAM";
-
-    SALIDA("Hola "+nombre);'
+    m_LineSpacing: 1.3
+  m_Text: "VAR suma;\nsuma = 0;\nREPETIR HASTA suma == 2{\n suma++;\n}\nSALIDA(suma);"
 --- !u!1 &427836941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,7 +3230,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SPAM
+  m_Text: 5
 --- !u!222 &590788712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4139,7 +4132,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hola
+  m_Text: Ninguna
 --- !u!222 &723534342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5504,7 +5497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &956780146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5552,7 +5545,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 26
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5562,9 +5555,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
-  m_Text: "VAR zona;\nVAR color;\nzona = \"La tierra\";\ncolor = \" es marr\xF3n\";\nSALIDA
-    (zona+color);"
+    m_LineSpacing: 1.3
+  m_Text: "VAR num1 = 8;\r\nVAR num2 = 5;\r\nSI(EsPar(num2)){\r\n   SALIDA(num1+num2);\r\n}SI
+    NO, SI(EsImpar(num1)){\r\n   SALIDA(num1-num2);\r\n}SI NO {\r\n   SALIDA(num1*num2);\r\n}"
 --- !u!1 &959759934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5908,7 +5901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hola SPAM
+  m_Text: Acaba en A
 --- !u!222 &970569292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6456,7 +6449,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 30
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6466,12 +6459,18 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'VAR nombre;
+    m_LineSpacing: 1.3
+  m_Text: 'VAR suma;
 
-    nombre = "SPAM";
+    suma = 0;
 
-    SALIDA (nombre);'
+    REPETIR 6 VECES{
+
+    suma++
+
+    }
+
+    SALIDA(suma);'
 --- !u!1 &1153660992
 GameObject:
   m_ObjectHideFlags: 0
@@ -6824,7 +6823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: nombre
+  m_Text: 7
 --- !u!222 &1201110753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6912,7 +6911,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "La tierra es marr\xF3n"
+  m_Text: 13
 --- !u!222 &1221010274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8409,7 +8408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SALIDA
+  m_Text: 6
 --- !u!222 &1423349334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9057,10 +9056,10 @@ MonoBehaviour:
   - {fileID: 1046568476}
   - {fileID: 399641080}
   correctAnswers:
-  - {fileID: 590788711}
-  - {fileID: 970569291}
-  - {fileID: 1898504544}
-  - {fileID: 1221010273}
+  - {fileID: 1423349333}
+  - {fileID: 1611341249}
+  - {fileID: 2132564284}
+  - {fileID: 372234701}
   floors:
   - {fileID: 1674838353}
   - {fileID: 1827914141}
@@ -9320,7 +9319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hola nombre
+  m_Text: Empieza por G
 --- !u!222 &1611341250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10184,7 +10183,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "es marr\xF3n La tierra"
+  m_Text: 3
 --- !u!222 &1740007047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11010,7 +11009,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El cielo es color
+  m_Text: Saludos
 --- !u!222 &1877473756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11120,7 +11119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El cielo es azul
+  m_Text: Hamburguesa
 --- !u!222 &1898504545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12663,7 +12662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El color es cielo
+  m_Text: Manzana
 --- !u!222 &2132564285
 CanvasRenderer:
   m_ObjectHideFlags: 0

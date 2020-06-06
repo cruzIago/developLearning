@@ -921,12 +921,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0.7764706}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 84937144953fe7e4c922576b738e8400, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2755,6 +2755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1703091456}
+  to_see_through: {fileID: 0}
+  damping: 1
 --- !u!81 &1956854363
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3065,6 +3067,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1651098107}
@@ -3195,6 +3198,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1750286712}
@@ -3237,6 +3241,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 389989384}
@@ -3367,6 +3372,7 @@ MonoBehaviour:
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
+  default_parent: {fileID: 0}
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 42511423}
