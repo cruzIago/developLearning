@@ -78,6 +78,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     private IEnumerator checkSolutions()
     {
         bool is_control_filled = false;
+        bool is_loop_filled = false;
         int number_comp_index = 0;
         int string_comp_index = 0;
         int compared_index = 0;
@@ -99,8 +100,8 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 {
                     gui_fill_input.gameObject.SetActive(true);
                     gui_fill_input.ActivateInputField();
-                    main.isInputBlocked = true;
                     yield return new WaitUntil(() => !main.isInputBlocked);
+                    main.isInputBlocked = true;
                     if (i - 1 >= 0)
                     {
                         user_solution[i - 1].GetComponent<Variable_block>().setVariableValue(gui_fill_input.text);
@@ -119,11 +120,74 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                             filled_text = user_solution[i].GetComponent<Control_block>().DoComparison(numbers_to_compare[number_comp_index]);
                             number_comp_index += 1;
                         }
-                        else {
+                        else
+                        {
                             filled_text = user_solution[i].GetComponent<Control_block>().DoComparison(strings_to_compare[string_comp_index]);
                             string_comp_index += 1;
                         }
                     }
+                }
+                //If loop block is found
+                else if (game_solution[i] == Block.kinds.LOOP)
+                {
+                    if (user_solution[i].gameObject.GetComponent<Loop_block>().repetitions == -1)
+                    {
+                        bool is_good_number = false;
+                        int number_to_loop;
+                        while (!is_good_number)
+                        {
+                            gui_fill_input.gameObject.SetActive(true);
+                            gui_fill_input.ActivateInputField();
+                            yield return new WaitUntil(() => !main.isInputBlocked);
+                            main.isInputBlocked = true;
+                            if (int.TryParse(gui_fill_input.text, out number_to_loop))
+                            {
+                                user_solution[i].gameObject.GetComponent<Loop_block>().repetitions = number_to_loop;
+                                gui_fill_input.text = "";
+                                gui_fill_input.gameObject.SetActive(false);
+                                is_good_number = true;
+                            }
+                            else {
+                                gui_fill_input.text = "Solo números";
+                            }
+                            
+                        }
+                    }
+
+                    if (i <= blanks_to_fill.Length - 1)
+                    {
+                        if (user_solution[i].gameObject.GetComponent<Loop_block>().state == Loop_block.Statement.FINITE)
+                        {
+                            blanks_to_fill[i].text += " " + user_solution[i].gameObject.GetComponent<Loop_block>().repetitions + " VECES{";
+                        }
+                        else if (user_solution[i].gameObject.GetComponent<Loop_block>().state == Loop_block.Statement.UNTIL)
+                        {
+                            if (user_solution[i].gameObject.GetComponent<Loop_block>().when == Loop_block.Until.EQUAL)
+                            {
+                                blanks_to_fill[i].text += " HASTA numero==" + user_solution[i].gameObject.GetComponent<Loop_block>().repetitions + "{";
+                            }
+                            else if (user_solution[i].gameObject.GetComponent<Loop_block>().when == Loop_block.Until.GREATER)
+                            {
+                                blanks_to_fill[i].text += " HASTA numero>" + user_solution[i].gameObject.GetComponent<Loop_block>().repetitions + "{";
+                            }
+                            else if (user_solution[i].gameObject.GetComponent<Loop_block>().when == Loop_block.Until.LESSER)
+                            {
+                                blanks_to_fill[i].text += " HASTA numero<" + user_solution[i].gameObject.GetComponent<Loop_block>().repetitions + "{";
+                            }
+                        }
+                    }
+
+                    is_loop_filled = true;
+                    string temp_text = "";
+                    for (int j = 0; j < user_solution[i].GetComponent<Loop_block>().repetitions; j++)
+                    {
+                        temp_text = temp_text + filled_text + j;
+                        if (j < user_solution[i].GetComponent<Loop_block>().repetitions - 1)
+                        {
+                            temp_text = temp_text + "\n";
+                        }
+                    }
+                    filled_text = temp_text;
                 }
             }
             else
@@ -134,7 +198,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                 isCorrect = false;
                 yield return new WaitForSeconds(1.0f);
                 pressToContinue.gameObject.SetActive(true);
-                main.isInputBlocked = true;
                 yield return WaitForKeyPress(KeyCode.Space);
                 break;
             }
@@ -142,19 +205,23 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         }
         if (isCorrect)
         {
-            
-            if (!is_control_filled)
+            if (!is_loop_filled)
             {
-                blanks_to_fill[blanks_to_fill.Length - 1].text = filled_text + user_solution[0].GetComponent<Variable_block>().getVariableValue();
+                if (!is_control_filled)
+                {
+                    blanks_to_fill[blanks_to_fill.Length - 1].text = filled_text + user_solution[0].GetComponent<Variable_block>().getVariableValue();
+                }
+                else
+                {
+                    blanks_to_fill[blanks_to_fill.Length - 1].text = user_solution[0].GetComponent<Variable_block>().getVariableValue() + filled_text;
+                }
             }
             else
             {
-                blanks_to_fill[blanks_to_fill.Length - 1].text = user_solution[0].GetComponent<Variable_block>().getVariableValue() + filled_text;
+                blanks_to_fill[blanks_to_fill.Length - 1].text = filled_text;
             }
-
             yield return new WaitForSeconds(1.0f);
             pressToContinue.gameObject.SetActive(true);
-            main.isInputBlocked = true;
             yield return WaitForKeyPress(KeyCode.Space);
 
             if (!is_review_stage)
@@ -182,13 +249,13 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
         }
 
-        
+
 
         LeanTween.moveLocal(background.gameObject, tmp_original_position, 0.2f);
         LeanTween.scale(background.gameObject, new Vector3(1.0f, 1.0f, 1.0f), 0.2f);
-        //animator.SetBool("checking_conditions", false);
         blanks_to_default();
         user_solution.Clear();
+        main.isInputBlocked = false;
         print("done");
 
     }
@@ -204,7 +271,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             if (Input.GetKeyDown(key))
             {
                 isPressed = true;
-                main.isInputBlocked = false;
                 pressToContinue.gameObject.SetActive(false);
             }
             yield return null;
@@ -227,7 +293,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         if (other.gameObject.tag.Equals("item")
             && user_solution.Count < game_solution.Length)
         {
-            
+
             user_solution.Add(other.GetComponent<Block>());
             if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.VARIABLE)
             {
@@ -265,13 +331,17 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
                     blanks_to_fill[user_solution.Count - 1].text = "SI ";
                 }
                 else if (other.gameObject.GetComponent<Control_block>().state == Control_block.Statement.ELSEIF)
-                { 
+                {
                     blanks_to_fill[user_solution.Count - 1].text = "SI NO, SI ";
                 }
                 else
                 {
                     blanks_to_fill[user_solution.Count - 1].text = "SI NO ";
                 }
+            }
+            else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.LOOP)
+            {
+                blanks_to_fill[user_solution.Count - 1].text = "REPETIR";
             }
             else if (other.gameObject.GetComponent<Block>().kind_of_block == Block.kinds.RESET)
             {
@@ -299,6 +369,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
 
             if (user_solution.Count == game_solution.Length)
             {
+                main.isInputBlocked = true;
                 StartCoroutine(checkSolutions());
             }
         }

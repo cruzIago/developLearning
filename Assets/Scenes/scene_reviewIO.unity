@@ -8802,12 +8802,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655dedc592f842b34e36f66aaa661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind_of_block: 5
+  kind_of_block: 6
   item: {fileID: 0}
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
   default_parent: {fileID: 0}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 433679558}
@@ -11199,12 +11200,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655dedc592f842b34e36f66aaa661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind_of_block: 5
+  kind_of_block: 6
   item: {fileID: 0}
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
   default_parent: {fileID: 0}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1564731764}
@@ -14140,12 +14142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655dedc592f842b34e36f66aaa661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind_of_block: 5
+  kind_of_block: 6
   item: {fileID: 0}
   player: {fileID: 0}
   guide: {fileID: 0}
   textGuide: {fileID: 0}
   default_parent: {fileID: 0}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   reorder_text: {fileID: 1162357789}
@@ -16158,6 +16161,7 @@ MonoBehaviour:
   guide: {fileID: 0}
   textGuide: {fileID: 980911936}
   default_parent: {fileID: 635742781}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 990388410}
@@ -16179,6 +16183,7 @@ MonoBehaviour:
   guide: {fileID: 0}
   textGuide: {fileID: 1756433027}
   default_parent: {fileID: 635742781}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 1098273642}
@@ -16200,6 +16205,7 @@ MonoBehaviour:
   guide: {fileID: 0}
   textGuide: {fileID: 1333756757}
   default_parent: {fileID: 635742781}
+  lines: 1
   isPicked: 0
   tossStrength: 600
   variable_written: {fileID: 1247690003}

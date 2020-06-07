@@ -375,7 +375,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 18
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -385,9 +385,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.3
-  m_Text: "VAR n1 = 3;\r\nVAR n2 = 5;\r\nVAR n3 = 2;\r\nSI(n1 - n2 == n3){\r\n   SALIDA(\"Saludos\");\r\n}SI
-    NO, SI(n2 - n1 == n3){\r\n   SALIDA(\"Manzana\");\r\n} SI NO {\r\n   SALIDA(\"Hamburguesa\");\r\n}"
+    m_LineSpacing: 1.1
+  m_Text: "VAR texto;\nVAR suma;\nsuma = 1;\ntexto = \"Hola\";\nREPETIR 200 VECES{\n
+    \ suma++;\n}\nSALIDA(texto+suma);"
 --- !u!1 &130203546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 40
+  m_Text: '"Bucle" infinitas veces'
 --- !u!222 &372234702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1862,7 +1862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &421896803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1921,7 +1921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: "VAR suma;\nsuma = 0;\nREPETIR HASTA suma == 2{\n suma++;\n}\nSALIDA(suma);"
+  m_Text: "VAR suma;\nsuma = 0;\nREPETIR HASTA suma == 2{\n  suma++;\n}\nSALIDA(suma);"
 --- !u!1 &427836941
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,7 +4132,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ninguna
+  m_Text: 5
 --- !u!222 &723534342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5545,19 +5545,28 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dad2ec8c68aa4f4da6be8898ed663a8, type: 3}
-    m_FontSize: 21
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 195
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.3
-  m_Text: "VAR num1 = 8;\r\nVAR num2 = 5;\r\nSI(EsPar(num2)){\r\n   SALIDA(num1+num2);\r\n}SI
-    NO, SI(EsImpar(num1)){\r\n   SALIDA(num1-num2);\r\n}SI NO {\r\n   SALIDA(num1*num2);\r\n}"
+    m_LineSpacing: 1.1
+  m_Text: 'VAR texto;
+
+    texto = "bucle";
+
+    REPETIR INFINITO{
+
+    SALIDA (texto);
+
+    }
+
+'
 --- !u!1 &959759934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Acaba en A
+  m_Text: 1
 --- !u!222 &970569292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6401,7 +6410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1147872957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6460,17 +6469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: 'VAR suma;
-
-    suma = 0;
-
-    REPETIR 6 VECES{
-
-    suma++
-
-    }
-
-    SALIDA(suma);'
+  m_Text: "VAR suma;\nsuma = 0;\nREPETIR 6 VECES{\n  suma++\n}\nSALIDA(suma);"
 --- !u!1 &1153660992
 GameObject:
   m_ObjectHideFlags: 0
@@ -6911,7 +6910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 13
+  m_Text: '"Bucle" mil veces'
 --- !u!222 &1221010274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9319,7 +9318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Empieza por G
+  m_Text: 2
 --- !u!222 &1611341250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10183,7 +10182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: No sale nada
 --- !u!222 &1740007047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11009,7 +11008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Saludos
+  m_Text: Hola 65
 --- !u!222 &1877473756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11119,7 +11118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hamburguesa
+  m_Text: 0 Hola
 --- !u!222 &1898504545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12662,7 +12661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Manzana
+  m_Text: Hola 200
 --- !u!222 &2132564285
 CanvasRenderer:
   m_ObjectHideFlags: 0
