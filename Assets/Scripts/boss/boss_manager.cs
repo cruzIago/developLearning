@@ -35,6 +35,7 @@ public class boss_manager : MonoBehaviour
     public GameObject boss; //Boss character reference 
     public GameObject main; //player character reference
     public GameObject binary; //Binary character reference
+    public GameObject board; //Board object reference
 
     public Vector3[] positions_to_animate; //Positions where the player is headed in animation
     public float[] time_to_animate; //Time needed for animations to be complete
@@ -51,6 +52,8 @@ public class boss_manager : MonoBehaviour
 
     private int current_position;
     private int current_time;
+
+    private bool is_special_launch_finished = false; //used in multiple launch of VIRUS
 
     private bool isAbleToContinue;
     private bool isGameOver;
@@ -73,6 +76,7 @@ public class boss_manager : MonoBehaviour
         submiter.AddListener(SubmitTextToConsole);
         variable_input.onEndEdit = submiter;
         variable_input.gameObject.SetActive(false);
+
         nextText();
     }
 
@@ -295,7 +299,7 @@ public class boss_manager : MonoBehaviour
         }
         else if (stage == BOSS_STAGE.VIRUS)
         {
-
+            pickVirusStageAnimations(id);
         }
     }
 
@@ -365,7 +369,8 @@ public class boss_manager : MonoBehaviour
                 break;
             case 7:
                 //Makes MISS walks backwards
-                if (boss.GetComponent<miss_special>() != null) {
+                if (boss.GetComponent<miss_special>() != null)
+                {
                     boss.GetComponent<miss_special>().DropTerminal();
                 }
 
@@ -440,6 +445,274 @@ public class boss_manager : MonoBehaviour
         }
     }
 
+    //VIRUS stages
+    void pickVirusStageAnimations(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                //Simple VIRUS walk
+                void aux_3_0()
+                {
+                    stopAnimation(1);
+                    nextAnim();
+                }
+                LeanTween.move(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(1)).setOnComplete(() => aux_3_0());
+                current_position += 1;
+                current_time += 1;
+                break;
+            case 1:
+                //Makes binary bark
+                void aux_3_1()
+                {
+                    stopAnimation(3);
+                    nextAnim();
+                }
+                LeanTween.scale(binary, positions_to_animate[current_position],
+                    time_to_animate[current_time]).setOnStart(() => startAnimation(3))
+                    .setOnComplete(() => aux_3_1());
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 2:
+                //Virus rotate and fly
+                void aux_3_2()
+                {
+                    stopAnimation(1);
+                    nextAnim();
+                }
+                void rotateTowardsPlayerVirus()
+                {
+                    stopAnimation(8);
+                    LeanTween.rotate(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(1)).setOnComplete(() => aux_3_2());
+                    current_time += 1;
+                    current_position += 1;
+                }
+
+                void moveTowardsPointVirus()
+                {
+                    stopAnimation(1);
+                    LeanTween.move(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(8)).setOnComplete(rotateTowardsPlayerVirus);
+                    current_time += 1;
+                    current_position += 1;
+                }
+
+                LeanTween.rotate(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(1)).setOnComplete(moveTowardsPointVirus);
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 3:
+                void aux_3_3()
+                {
+                    stopAnimation(2);
+                    nextAnim();
+                }
+                //Main rotate towards board and appear
+                LeanTween.rotate(main, positions_to_animate[current_position], time_to_animate[current_time])
+                   .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_3());
+                current_time += 1;
+                current_position += 1;
+                board.SetActive(true);
+                break;
+            case 4:
+                //Main and board move towards virus, dismount and rotate
+                void aux_3_4()
+                {
+                    stopAnimation(2);
+                    nextAnim();
+                }
+                void dismountAndRotate()
+                {
+                    stopAnimation(9);
+                    board.transform.parent = null;
+                    LeanTween.rotate(main, positions_to_animate[current_position], time_to_animate[current_time]);
+                    current_time += 1;
+                    current_position += 1;
+
+                    LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time])
+                        .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_4());
+                    current_time += 1;
+                    current_position += 1;
+                    board.SetActive(false);
+
+                }
+
+                void moveBoardTowardVirus()
+                {
+                    stopAnimation(2);
+                    board.transform.parent = main.transform;
+                    LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time])
+                        .setOnStart(() => startAnimation(9)).setOnComplete(dismountAndRotate);
+                    current_time += 1;
+                    current_position += 1;
+                }
+
+                LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time])
+                        .setOnStart(() => startAnimation(2)).setOnComplete(moveBoardTowardVirus);
+                current_time += 1;
+                current_position += 1;
+                break;
+
+            case 5:
+                void aux_3_5()
+                {
+                    stopAnimation(0);
+                    nextAnim();
+                }
+                //Virus laugh
+                LeanTween.scale(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(0)).setOnComplete(() => aux_3_5());
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 6:
+                void aux_3_6()
+                {
+                    stopAnimation(2);
+                    nextAnim();
+                }
+
+                void startMoveMainRight()
+                {
+                    startAnimation(10);
+                    LeanTween.scale(boss, new Vector3(2, 2, 2), 0.25f).setOnComplete(() => boss.GetComponent<virus_special>().launchBall(0));
+                    LeanTween.rotate(main, new Vector3(0, -90.0f, 0), 0.25f).setOnComplete(()=>stopAnimation(10));
+                    LeanTween.move(main, new Vector3(161.0f, 0, -15), 0.25f)
+                        .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_6());
+                }
+                //Virus left launch
+                LeanTween.scale(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startMoveMainRight());
+
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 7:
+                void aux_3_7()
+                {
+                    stopAnimation(2);
+                    LeanTween.rotate(main, new Vector3(0, 0, 0), 0.25f).setOnStart(()=>startAnimation(2));
+                    LeanTween.move(main, new Vector3(160.0f, 0, -15), 0.25f).setOnComplete(() => stopAnimation(2));
+                    background_console.gameObject.SetActive(true);
+                    nextAnim();
+                }
+                void startMoveMainLeft()
+                {
+                    startAnimation(11);
+                    LeanTween.scale(boss, new Vector3(2, 2, 2), 0.25f).setOnComplete(() => boss.GetComponent<virus_special>().launchBall(1));
+                    LeanTween.rotate(main, new Vector3(0, 90.0f, 0), 0.25f).setOnComplete(() =>stopAnimation(11));
+                    LeanTween.move(main, new Vector3(159.0f, 0, -15), 0.25f)
+                        .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_7());
+                }
+                //Virus right launch
+                LeanTween.scale(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                 .setOnStart(() => startAnimation(11)).setOnComplete(() => startMoveMainLeft());
+
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 8:
+                //Virus multiple launch and character dodge
+                StartCoroutine(specialLaunch());
+                break;
+            case 9:
+                void aux_3_9()
+                {
+                    stopAnimation(2);
+                    nextAnim();
+                }
+                void fallOffBehindVirus()
+                {
+                    stopAnimation(2);
+                    LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_9());
+                    current_time += 1;
+                    current_position += 1;
+                }
+                LeanTween.move(main, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(2)).setOnComplete(() => fallOffBehindVirus());
+                current_time += 1;
+                current_position += 1;
+                break;
+            case 10:
+                void aux_3_10()
+                {
+                    stopAnimation(8);
+                    nextAnim();
+                }
+                LeanTween.move(boss, positions_to_animate[current_position], time_to_animate[current_time])
+                    .setOnStart(() => startAnimation(8)).setOnComplete(() => aux_3_10());
+                current_time += 1;
+                current_position += 1;
+                break;
+            default:
+                Debug.LogError("There is a problem at pickingSpamStageAnimations(id) at boss_manager");
+                break;
+        }
+    }
+
+
+    IEnumerator specialLaunch()
+    {
+        bool is_dodge_done = true;
+
+        void startMoveMainLeft()
+        {
+            startAnimation(11);
+            LeanTween.rotate(main, new Vector3(0, 90.0f, 0), 0.25f).setOnComplete(() => is_dodge_done = true);
+            LeanTween.move(main, new Vector3(159.0f, 0, -15), 0.25f)
+                .setOnStart(() => startAnimation(2)).setOnComplete(() => stopAnimation(2));
+        }
+
+        void startMoveMainRight()
+        {
+            startAnimation(10);
+            LeanTween.rotate(main, new Vector3(0, -90.0f, 0), 0.25f).setOnComplete(() => is_dodge_done = true);
+            LeanTween.move(main, new Vector3(161.0f, 0, -15), 0.25f)
+                .setOnStart(() => startAnimation(2)).setOnComplete(() => stopAnimation(2));
+        }
+
+        void stopLaunchLeft()
+        {
+            stopAnimation(10);
+            is_special_launch_finished = true;
+        }
+        void stopLaunchRight()
+        {
+            stopAnimation(11);
+            is_special_launch_finished = true;
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitUntil(() => is_dodge_done);
+            is_dodge_done = false;
+            if (i % 2 == 0)
+            {
+                LeanTween.scale(boss, new Vector3(2, 2, 2), 0.5f).
+                    setOnStart(() => startMoveMainRight())
+                    .setOnComplete(() => stopLaunchLeft());
+            }
+            else
+            {
+                LeanTween.scale(boss, new Vector3(2, 2, 2), 0.5f)
+                    .setOnStart(() => startMoveMainLeft())
+                    .setOnComplete(() => stopLaunchRight());
+            }
+            LeanTween.scale(boss, new Vector3(2, 2, 2), 0.25f).setOnComplete(() => boss.GetComponent<virus_special>().launchBall(i));
+            yield return new WaitUntil(() => is_special_launch_finished);
+            is_special_launch_finished = false;
+        }
+        LeanTween.rotate(main, new Vector3(0, 0, 0), 0.25f).setOnStart(() => startAnimation(2));
+        LeanTween.move(main, new Vector3(160.0f, 0, -15), 0.25f).setOnComplete(() => stopAnimation(2));
+        nextAnim();
+        yield return null;
+    }
+
     void startAnimation(int id)
     {
         switch (id)
@@ -469,15 +742,26 @@ public class boss_manager : MonoBehaviour
             case 7:
                 boss.GetComponent<Animator>().SetBool("sigh", true);
                 break;
+            case 8:
+                boss.GetComponent<Animator>().SetBool("fly", true);
+                break;
+            case 9:
+                main.GetComponent<Animator>().SetBool("pickingItem", true);
+                break;
+            case 10:
+                boss.GetComponent<Animator>().SetBool("leftLaunch", true);
+                break;
+            case 11:
+                boss.GetComponent<Animator>().SetBool("rightLaunch", true);
+                break;
             case -1:
-                //Just to make somethings "animate" objects appear and things like that
+                //Just to have one that does nothing just in case is needed as the system needs an stopAnim and start to work
                 break;
             default:
                 Debug.LogError("There is a problem at startAnimation(id) at boss_manager or no numbers possible were selected");
                 break;
         }
     }
-
     void stopAnimation(int id)
     {
         switch (id)
@@ -507,15 +791,30 @@ public class boss_manager : MonoBehaviour
             case 7:
                 boss.GetComponent<Animator>().SetBool("sigh", false);
                 break;
+            case 8:
+                boss.GetComponent<Animator>().SetBool("fly", false);
+                break;
+            case 9:
+                main.GetComponent<Animator>().SetBool("pickingItem", false);
+                break;
+            case 10:
+                boss.GetComponent<Animator>().SetBool("leftLaunch", false);
+                break;
+            case 11:
+                boss.GetComponent<Animator>().SetBool("rightLaunch", false);
+                break;
             case -1:
-                //Just to make somethings "animate" objects appear and things like that
+                //Just to have one that does nothing just in case is needed as the system needs an stopAnim and start to work
                 break;
             default:
                 Debug.LogError("There is a problem at stopAnimation(id) at boss_manager or no numbers possible were selected");
                 break;
-        }/*
-        current_text += 1;
-        nextText();*/
+        }
+    }
+
+    //To advance on the index and nexttext
+    void nextAnim()
+    {
         current_animation += 1;
         blink_reference = StartCoroutine(blinkArrow());
     }

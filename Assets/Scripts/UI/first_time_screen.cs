@@ -20,9 +20,11 @@ public class first_time_screen : MonoBehaviour
         isAbleToContinue = false;
         if (SceneManager.GetActiveScene().name.Contains("description"))
         {
-            scene = 0;
-            next_text = 57;
-            script.text = game_manager.getStringFromLang(57);
+            
+                scene = 0;
+                next_text = 57;
+                script.text = game_manager.getStringFromLang(57);
+            
         }
         else if (SceneManager.GetActiveScene().name.Contains("election"))
         {
@@ -54,7 +56,7 @@ public class first_time_screen : MonoBehaviour
     void Update()
     {
         if (isAbleToContinue && (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))) {
-            if (scene != 0 || next_text==60)
+            if (scene != 0 || next_text==60||next_text==102||next_text==143)
             {
                 if (GameObject.Find("Main").GetComponent<player_controller>() != null)
                 {

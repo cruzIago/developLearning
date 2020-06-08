@@ -54,7 +54,7 @@
     },
     {
       "id": "12",
-      "text": "Acción básica que puede reproducir un ordenador.\nEj: VAR suma=2+2;"
+      "text": "Acción básica que puede reproducir un ordenador.\nEj: VAR suma=2+2\nsuma++ permite sumar 1 a las variables que tengan números en ellas;"
     },
     {
       "id": "13",
@@ -567,6 +567,158 @@
     {
       "id": "140",
       "text": "Jo, casi lo conseguimos. La proxima vez que volvamos, seguro que lo hacemos genial. ¡Vamos a prestar más atención y a repasar un poquito.#M"
+    },
+    {
+      "id": "142",
+      "text": "Aquí parece que están los BUCLES. Son un poco liosos al principio, pero se parecen mucho al mundo real. Usaremos \"REPETIR\" en todos y luego depende del tipo de bucle"
+    },
+    {
+      "id": "143",
+      "text": "Por ejemplo, los BUCLES FINITOS deben ser \"REPETIR X VECES\" donde X es un número entero como 1,2,3, etc. Los BUCLES INFINITOS solo van con \"REPETIR\" pero son raros"
+    },
+    {
+      "id": "144",
+      "text": "Los BUCLES CONDICIONALES son los que deben cumplir una condición para parar. Por ejemplo \"REPETIR HASTA año==2020\" si tuvieramos una variable año que sumase. Acuerdate que podemos usar variable++ para sumar de 1 en 1."
+    },
+    {
+      "id": "145",
+      "text": "¡Por fin! ¡El Nexo está cerca! Tenemos que acercarnos para arreglarlo, la terminal portátil no capta la señal desde aquí.#B"
+    },
+    {
+      "id": "146",
+      "text": "¿Y si llego yo antes?#V"
+    },
+    {
+      "id": "147",
+      "text": "Agh. Estoy hasta el hocico, ¡dejadnos arreglar este desastre! Primero SPAM, después MISS y ahora VIRUS.#B"
+    },
+    {
+      "id": "148",
+      "text": "Me imaginaba que no os pararían, así que vine yo por mi cuenta a solucionarlo.#V"
+    },
+    {
+      "id": "149",
+      "text": "¿Por qué habéis molestado a todo el mundo fastidiando la red?#B"
+    },
+    {
+      "id": "150",
+      "text": "¿Y por qué no? Todo el mundo parece divertirse, pero nosotros no podemos, ¿no? Pff pues os vais a enterar. Llegaré al Nexo antes y lo esconderé muy bien.#V"
+    },
+    {
+      "id": "151",
+      "text": "¡Qué te lo has creido! Creo que necesitaremos ir un poco más rápido... ya lo tengo.#B"
+    },
+    {
+      "id": "152",
+      "text": "Con lo que hemos aprendido, ya puedo programar casi tan bien como tú. ¡Vamos!#B"
+    },
+    {
+      "id": "153",
+      "text": "¡JA JA JA! Ahora es mío y no dejaré que os lo llevéis.#V"
+    },
+    {
+      "id": "154",
+      "text": "Grrr, ¡Eso habrá que verlo!#B"
+    },
+    {
+      "id": "155",
+      "text": "Pues ya veréis. ¡Os voy a lanzar todo lo que tengo!#V"
+    },
+    {
+      "id": "156",
+      "text": "¡EH!#B"
+    },
+    {
+      "id": "157",
+      "text": "¡Pero seguro que no sabeis que también tengo esto!#V"
+    },
+    {
+      "id": "158",
+      "text": "Uf, por los pelos.#B"
+    },
+    {
+      "id": "159",
+      "text": "¡Pero a que no sabes que tengo 10 más!#V"
+    },
+    {
+      "id": "160",
+      "text": "¡Venga ya! Vamos a hacer un programa para esquivarlas mientras se prepara. Como siempre, necesitaremos una variable primero. En este caso para el color de las esferas que lanza#B"
+    },
+    {
+      "id": "161",
+      "text": "Este es sencillo, lo hacemos todo el rato... algo con variable y el color.#B"
+    },
+    {
+      "id": "162",
+      "text": "Ay, claro, era algo con VAR y después un nombre significativo, como color, ¿verdad?#B"
+    },
+    {
+      "id": "163",
+      "text": "Perfecto, ahora necesitaremos un BUCLE. De los que son hacer algo una cantidad de veces y ya está. Dijo que iban a ser... ¡10!#B"
+    },
+    {
+      "id": "164",
+      "text": "Este es difícil, sí. Creo que hay que indicarle las veces que debe REPETIR...#B"
+    },
+    {
+      "id": "165",
+      "text": "Agh, está complicandose, era... REPETIR y número VECES, ¿no?#B"
+    },
+    {
+      "id": "166",
+      "text": "¡Bien! Ahora tenemos que hacer algo un poco más complicado. Debemos esquivar las bolas rojas...eso será con un CONDICIONAL, ¿no?#B"
+    },
+    {
+      "id": "167",
+      "text": "Vaya, seguro que es la condición de SI y depende del color...#B"
+    },
+    {
+      "id": "168",
+      "text": "Claro, debe de ser algo como SI el color el rojo... pero en código.#B"
+    },
+    {
+      "id": "169",
+      "text": "Ahora si. Solo falta decir que pasa si son azules... ¡vamos!#B"
+    },
+    {
+      "id": "170",
+      "text": "Venga, casi lo tenemos. Es la otra parte de los condicionales. Como era... SI algo no pasa, entonces...#B"
+    },
+    {
+      "id": "171",
+      "text": "Hm, SI NO son bolas rojas seguro que son azules... debe de ser eso.#B"
+    },
+    {
+      "id": "172",
+      "text": "¡Bien! Ahora puede lanzarnos las esferas que quiera, que las esquivaremos sin mirar, verás.#B"
+    },
+    {
+      "id": "173",
+      "text": "¡AHORA!#B"
+    },
+    {
+      "id": "174",
+      "text": "¡NOOOOO!#V"
+    },
+    {
+      "id": "175",
+      "text": "¡NOOOO! Estuve tan cerca de ser libre... la próxima vez será mía.#V"
+    },
+    {
+      "id": "176",
+      "text": "¡Si! Por fin tenemos el Nexo. Ahora podemos arreglar todos los problemas que causaron VIRUS, SPAM y MISS.#B"
+    },
+    {
+      "id": "177",
+      "text": "¡Bien! Muchas gracias. Sin ti no hubiese podido restaurar el orden en la RED. Hemos aprendido un montón, ¿verdad? ¡Y lo mejor es que en el mundo real se puede usar!#B"
+    },
+    {
+      "id": "178",
+      "text": "¡Puedes llegar a ser un programador increíble si así lo quieres! Te deseo mucha suerte y seguro que nos volvemos a ver. ¡Muchas gracias!#B"
+    },
+    {
+      "id": "179",
+      "text": "Oof, esto es complicado. Vamos a replantearnos la situación y volvamos a intentarlo otra vez.#B"
     },
     {
       "id": "400",

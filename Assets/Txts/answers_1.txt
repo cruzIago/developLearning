@@ -1,4 +1,0 @@
-var nombre;/
-print(Dame tu nombre);/
-nombre = input();/
-print(Hola + nombre);
