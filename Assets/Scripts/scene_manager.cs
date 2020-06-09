@@ -33,7 +33,7 @@ public class scene_manager : MonoBehaviour
             // Its done by this system so its known which scene has which rating 0 being can be played and no score gotten and -1 can't access
             //Tutorial
             end_game_reference = end_game_screen;
-            PlayerPrefs.DeleteAll(); // To debug
+            //PlayerPrefs.DeleteAll(); // To debug
 
             //Tutorial
             if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1))))
@@ -50,9 +50,9 @@ public class scene_manager : MonoBehaviour
             {
                 if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i))))
                 {
-                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), 0); //TODO CAMBIAR
+                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1); //TODO CAMBIAR
 
-                    stages.Add(0);
+                    stages.Add(-1);
                 }
                 else
                 {
@@ -147,19 +147,20 @@ public class scene_manager : MonoBehaviour
         switch (stars)
         {
             case 0:
-                button.transform.GetChild(1).GetComponent<Image>().sprite = star_rating[0];
+                button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[0];
                 break;
             case 1:
-                button.transform.GetChild(1).GetComponent<Image>().sprite = star_rating[1];
+                button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[1];
                 break;
             case 2:
-                button.transform.GetChild(1).GetComponent<Image>().sprite = star_rating[2];
+                button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[2];
                 break;
             case 3:
-                button.transform.GetChild(1).GetComponent<Image>().sprite = star_rating[3];
+                print(button.transform.GetChild(1).gameObject.name);
+                button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[3];
                 break;
             default:
-                button.transform.GetChild(1).GetComponent<Image>().sprite = star_rating[0];
+                button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[0];
                 string debug = "This shouldn't be happening, star rating not working at scene_manager";
                 Debug.Log(debug);
                 game_manager.writeOnFile(debug);

@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034692436494058
 GameObject:
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034692633775982
 GameObject:
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034692634176458
 GameObject:
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034692644818581
 GameObject:
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: "Unidad m\xEDnima de almacenamiento. Permite "
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034693463298320
 GameObject:
@@ -3090,7 +3090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034693528294670
 GameObject:
@@ -4021,7 +4021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034694031896306
 GameObject:
@@ -4304,7 +4304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034694065936539
 GameObject:
@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034694090940236
 GameObject:
@@ -5456,7 +5456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034694246247729
 GameObject:
@@ -5675,7 +5675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePanel: {fileID: 4515034693629405033}
-  definition: Cosa
+  definition: 0
   targetText: {fileID: 4515034694295662612}
 --- !u!1 &4515034694295662614
 GameObject:

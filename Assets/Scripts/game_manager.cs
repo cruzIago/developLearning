@@ -11,6 +11,9 @@ public class game_manager : MonoBehaviour
     private static file_writer writer;
     private static mono_gmail sender;
 
+    public Sprite[] texts_backgrounds;
+    public Sprite[] console_backgrounds;
+
     private void Awake()
     {
 
@@ -55,7 +58,7 @@ public class game_manager : MonoBehaviour
     void OnExitApplication()
     {
         writer.closeStream();
-       //sender.SendLog(writer.path);
+        sender.SendLog(writer.path);
     }
 
     public static string getStringFromLang(int id) {
@@ -63,8 +66,18 @@ public class game_manager : MonoBehaviour
         return globalSettings.languages.getString(idd);
     }
 
-
-
-
-
+    //To change console and text style
+    public void changeStyle(Image texts, Image console) {
+        if (texts != null) {
+            int temp_text_background = 0;
+            temp_text_background = PlayerPrefs.GetInt("text_backgrounds");
+            texts.sprite = texts_backgrounds[temp_text_background];
+        }
+        if (console != null) {
+            int temp_console_background = 0;
+            temp_console_background = PlayerPrefs.GetInt("console_backgrounds");
+            console.sprite = console_backgrounds[temp_console_background];
+        }
+    }
+    
 }

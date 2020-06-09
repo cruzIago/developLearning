@@ -639,6 +639,7 @@ MonoBehaviour:
   blinker: {fileID: 1225987402}
   variable_input: {fileID: 2083961763}
   background_console: {fileID: 2106862477}
+  background_texts: {fileID: 1993456289}
   console_ids: 73000000760000007a0000007d0000008000000081000000
   text_ids: 6700000068000000690000006a0000006b0000006c0000006d0000006e0000006f000000700000007300000076000000770000007a0000007d000000800000008100000082000000830000008400000085000000860000008700000088000000890000008a0000008b000000
   trigger_ids: 7000000073000000770000007a0000007d000000
@@ -655,6 +656,7 @@ MonoBehaviour:
   boss: {fileID: 1894139113}
   main: {fileID: 2680533803384698938}
   binary: {fileID: 1288667650310146163}
+  board: {fileID: 0}
   positions_to_animate:
   - {x: 0.6, y: 0.6, z: 0.6}
   - {x: 0, y: 0, z: 12}
@@ -2960,7 +2962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47ed356c35c6d7849864dc352b090d23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c91671d7188ac894796d10392c5866f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3812,6 +3814,7 @@ GameObject:
   - component: {fileID: 1511069410}
   - component: {fileID: 1511069409}
   - component: {fileID: 1511069408}
+  - component: {fileID: 1511069412}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3851,7 +3854,7 @@ Camera:
   m_GameObject: {fileID: 1511069407}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.51174796, g: 0.65026104, b: 0.8679245, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -3898,6 +3901,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 26.553001, y: 0, z: 0}
+--- !u!45 &1511069412
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511069407}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &1512099037
 GameObject:
   m_ObjectHideFlags: 0

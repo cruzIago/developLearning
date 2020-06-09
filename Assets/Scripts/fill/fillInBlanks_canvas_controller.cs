@@ -39,6 +39,9 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
     public review_manager reviewer;
     public bool is_review_stage;
 
+    public Image background_texts;
+    public Image background_console;
+    
     private void Start()
     {
         elapsed_time = Time.time;
@@ -47,9 +50,16 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         var submiter = new InputField.SubmitEvent();
         submiter.AddListener(SubmitInputVariable);
         gui_fill_input.onEndEdit = submiter;
-
+        checkStyle();
     }
 
+    void checkStyle()
+    {
+        if (GameObject.Find("game_manager"))
+        {
+            GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(background_texts, background_console);
+        }
+    }
     private void Update()
     {
     }

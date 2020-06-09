@@ -19,11 +19,23 @@ public class rearrange_manager : MonoBehaviour
     public bool is_review_stage;
     public review_manager reviewer;
 
+    public Image background_texts;
+    public Image background_console;
+
     public void Start()
     {
         mistakes = 0;
         elapsed_time = Time.time;
         resetControl();
+        checkStyle();
+    }
+
+    void checkStyle()
+    {
+        if (GameObject.Find("game_manager"))
+        {
+            GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(background_texts, background_console);
+        }
     }
 
     private void Update()

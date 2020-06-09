@@ -285,6 +285,8 @@ MonoBehaviour:
   messageConfirm: {fileID: 1583163326}
   is_review_stage: 1
   reviewer: {fileID: 1844170689}
+  background_texts: {fileID: 0}
+  background_console: {fileID: 1446489716}
 --- !u!1 &50714129
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +922,8 @@ MonoBehaviour:
   player_reference: {fileID: 8028769005065029302}
   is_review_stage: 1
   reviewer: {fileID: 1844170689}
+  background_texts: {fileID: 0}
+  background_console: {fileID: 1981545138}
 --- !u!23 &125241050
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1068,6 +1072,7 @@ GameObject:
   - component: {fileID: 166257114}
   - component: {fileID: 166257113}
   - component: {fileID: 166257112}
+  - component: {fileID: 166257115}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1121,7 +1126,7 @@ Camera:
   m_GameObject: {fileID: 166257110}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.504717, g: 0.697327, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -1154,6 +1159,15 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!45 &166257115
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166257110}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &167678944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5779,6 +5793,7 @@ GameObject:
   - component: {fileID: 805872910}
   - component: {fileID: 805872909}
   - component: {fileID: 805872908}
+  - component: {fileID: 805872911}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5832,7 +5847,7 @@ Camera:
   m_GameObject: {fileID: 805872906}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.504717, g: 0.697327, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -5865,6 +5880,15 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!45 &805872911
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805872906}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &814963774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6205,6 +6229,8 @@ MonoBehaviour:
   chosenAnswer: {fileID: 0}
   is_review_stage: 1
   reviewer: {fileID: 1844170689}
+  background_texts: {fileID: 0}
+  background_console: {fileID: 183581425}
 --- !u!4 &865295575
 Transform:
   m_ObjectHideFlags: 0
@@ -8553,6 +8579,8 @@ MonoBehaviour:
   background: {fileID: 2039888510}
   reviewer: {fileID: 1844170689}
   is_review_stage: 1
+  background_texts: {fileID: 0}
+  background_console: {fileID: 2039888512}
 --- !u!1 &1196360740
 GameObject:
   m_ObjectHideFlags: 0
@@ -10724,6 +10752,7 @@ GameObject:
   - component: {fileID: 1426347839}
   - component: {fileID: 1426347838}
   - component: {fileID: 1426347841}
+  - component: {fileID: 1426347842}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10748,7 +10777,7 @@ Camera:
   m_GameObject: {fileID: 1426347837}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.504717, g: 0.697327, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -10810,6 +10839,15 @@ MonoBehaviour:
   player: {fileID: 8028769005065029302}
   to_see_through: {fileID: 0}
   damping: 1
+--- !u!45 &1426347842
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426347837}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &1426923444
 GameObject:
   m_ObjectHideFlags: 0
@@ -13756,6 +13794,7 @@ GameObject:
   - component: {fileID: 1878025278}
   - component: {fileID: 1878025280}
   - component: {fileID: 1878025279}
+  - component: {fileID: 1878025282}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13772,7 +13811,7 @@ Camera:
   m_GameObject: {fileID: 1878025277}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.504717, g: 0.697327, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -13842,6 +13881,15 @@ Transform:
   m_Father: {fileID: 348348353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 22.379002, y: 0, z: 0}
+--- !u!45 &1878025282
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878025277}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &1883041003
 GameObject:
   m_ObjectHideFlags: 0

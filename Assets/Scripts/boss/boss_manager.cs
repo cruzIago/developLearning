@@ -17,6 +17,7 @@ public class boss_manager : MonoBehaviour
     public InputField variable_input;//the "console"
 
     public Image background_console;
+    public Image background_texts;
 
     public int[] console_ids; //Ids where console should be shown
     public int[] text_ids; //Ids that are just text to move forward the scene
@@ -77,7 +78,15 @@ public class boss_manager : MonoBehaviour
         variable_input.onEndEdit = submiter;
         variable_input.gameObject.SetActive(false);
 
+        checkStyle();
         nextText();
+    }
+
+    void checkStyle()
+    {
+        if (GameObject.Find("game_manager")) {
+            GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(background_texts, background_console);
+        }
     }
 
     void Update()
@@ -580,7 +589,7 @@ public class boss_manager : MonoBehaviour
                 {
                     startAnimation(10);
                     LeanTween.scale(boss, new Vector3(2, 2, 2), 0.25f).setOnComplete(() => boss.GetComponent<virus_special>().launchBall(0));
-                    LeanTween.rotate(main, new Vector3(0, -90.0f, 0), 0.25f).setOnComplete(()=>stopAnimation(10));
+                    LeanTween.rotate(main, new Vector3(0, -90.0f, 0), 0.25f).setOnComplete(() => stopAnimation(10));
                     LeanTween.move(main, new Vector3(161.0f, 0, -15), 0.25f)
                         .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_6());
                 }
@@ -595,7 +604,7 @@ public class boss_manager : MonoBehaviour
                 void aux_3_7()
                 {
                     stopAnimation(2);
-                    LeanTween.rotate(main, new Vector3(0, 0, 0), 0.25f).setOnStart(()=>startAnimation(2));
+                    LeanTween.rotate(main, new Vector3(0, 0, 0), 0.25f).setOnStart(() => startAnimation(2));
                     LeanTween.move(main, new Vector3(160.0f, 0, -15), 0.25f).setOnComplete(() => stopAnimation(2));
                     background_console.gameObject.SetActive(true);
                     nextAnim();
@@ -604,7 +613,7 @@ public class boss_manager : MonoBehaviour
                 {
                     startAnimation(11);
                     LeanTween.scale(boss, new Vector3(2, 2, 2), 0.25f).setOnComplete(() => boss.GetComponent<virus_special>().launchBall(1));
-                    LeanTween.rotate(main, new Vector3(0, 90.0f, 0), 0.25f).setOnComplete(() =>stopAnimation(11));
+                    LeanTween.rotate(main, new Vector3(0, 90.0f, 0), 0.25f).setOnComplete(() => stopAnimation(11));
                     LeanTween.move(main, new Vector3(159.0f, 0, -15), 0.25f)
                         .setOnStart(() => startAnimation(2)).setOnComplete(() => aux_3_7());
                 }

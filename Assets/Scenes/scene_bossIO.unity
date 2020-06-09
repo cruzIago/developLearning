@@ -226,7 +226,8 @@ MonoBehaviour:
   binary_image: {fileID: 963870963}
   blinker: {fileID: 1225987402}
   variable_input: {fileID: 2083961763}
-  background_console: {fileID: 0}
+  background_console: {fileID: 2106862477}
+  background_texts: {fileID: 1993456289}
   console_ids: 5100000054000000570000005b0000005c0000005d000000
   text_ids: 4100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e000000510000005400000057000000580000005b0000005c0000005d000000600000006100000062000000
   trigger_ids: 4e0000005100000054000000580000005d000000
@@ -243,6 +244,7 @@ MonoBehaviour:
   boss: {fileID: 469538718}
   main: {fileID: 2680533803384698938}
   binary: {fileID: 1288667650310146163}
+  board: {fileID: 0}
   positions_to_animate:
   - {x: 0.6, y: 0.6, z: 0.6}
   - {x: 2, y: 2, z: 2}
@@ -2049,7 +2051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47ed356c35c6d7849864dc352b090d23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c91671d7188ac894796d10392c5866f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2214,6 +2216,7 @@ GameObject:
   - component: {fileID: 1511069410}
   - component: {fileID: 1511069409}
   - component: {fileID: 1511069408}
+  - component: {fileID: 1511069412}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2253,7 +2256,7 @@ Camera:
   m_GameObject: {fileID: 1511069407}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.51174796, g: 0.65026104, b: 0.8679245, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -2300,6 +2303,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 26.553001, y: 0, z: 0}
+--- !u!45 &1511069412
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511069407}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f9c898edef9d7b64f89790e4c635834d, type: 2}
 --- !u!1 &1547093221
 GameObject:
   m_ObjectHideFlags: 0

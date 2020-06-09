@@ -11,6 +11,11 @@ public class tutorial_scene : MonoBehaviour
     public player_controller tutorial_player;
     public Image blinker;
 
+    public Image wasd_image;
+    public Image space_image;
+    public Image ef_image;
+    public Image nexus_image;
+
     private int text_id = 35; //35 is where tutorials start in lang.json
 
     private bool isWPressed, isAPressed, isDPressed, isSPressed;
@@ -28,8 +33,16 @@ public class tutorial_scene : MonoBehaviour
         tutorial_player.isInputBlocked = true;
         help_text.text = game_manager.getStringFromLang(text_id);
         blink_reference = StartCoroutine(blinkArrow());
+        checkStyle();
     }
 
+    void checkStyle()
+    {
+        if (GameObject.Find("game_manager"))
+        {
+            GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(help_panel, help_console);
+        }
+    }
 
     void Update()
     {
@@ -46,6 +59,7 @@ public class tutorial_scene : MonoBehaviour
 
         if (!isTutorialEnded)
         {
+            
             if (text_id == 38)
             {
                 WASDTutorial();
@@ -57,6 +71,12 @@ public class tutorial_scene : MonoBehaviour
             if (text_id == 41)
             {
                 EFTutorial();
+            }
+            if (text_id == 35) {
+                nexus_image.gameObject.SetActive(true);
+            }
+            if (text_id == 36) {
+                nexus_image.gameObject.SetActive(false);
             }
         }
 
@@ -107,10 +127,10 @@ public class tutorial_scene : MonoBehaviour
             }
             if (isEPressed && isFPressed && isItemHeldOnce && !tutorial_player.isItemHeld)
             {
-                text_id += 1;
                 isEPressed = false;
                 isFPressed = false;
                 isItemHeldOnce = false;
+                ef_image.gameObject.SetActive(false);
                 StartCoroutine(WaitALittle());
             }
         }
@@ -129,8 +149,8 @@ public class tutorial_scene : MonoBehaviour
             }
             if (isSpacePressed)
             {
-                text_id += 1;
                 isSpacePressed = false;
+                space_image.gameObject.SetActive(false);
                 StartCoroutine(WaitALittle());
             }
         }
@@ -162,12 +182,12 @@ public class tutorial_scene : MonoBehaviour
         }
         if (isWPressed && isAPressed && isDPressed && isSPressed)
         {
-
-            text_id += 1;
+            
             isWPressed = false;
             isSPressed = false;
             isAPressed = false;
             isDPressed = false;
+            wasd_image.gameObject.SetActive(false);
             StartCoroutine(WaitALittle());
         }
     }
@@ -177,8 +197,8 @@ public class tutorial_scene : MonoBehaviour
      */
     IEnumerator WaitALittle()
     {
-
         yield return new WaitForSeconds(2.0f);
+        text_id += 1;
         tutorial_player.isInputBlocked = true;
         help_panel.gameObject.SetActive(true);
         help_text.text = game_manager.getStringFromLang(text_id);
@@ -188,16 +208,19 @@ public class tutorial_scene : MonoBehaviour
     {
         if (text_id == 38)
         {
+            wasd_image.gameObject.SetActive(true);
             help_panel.gameObject.SetActive(false);
             tutorial_player.isInputBlocked = false;
         }
         else if (text_id == 39)
         {
+            space_image.gameObject.SetActive(true);
             help_panel.gameObject.SetActive(false);
             tutorial_player.isInputBlocked = false;
         }
         else if (text_id == 41)
         {
+            ef_image.gameObject.SetActive(true);
             help_panel.gameObject.SetActive(false);
             tutorial_player.isInputBlocked = false;
         }

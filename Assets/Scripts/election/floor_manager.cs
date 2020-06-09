@@ -31,6 +31,9 @@ public class floor_manager : MonoBehaviour
     public bool is_review_stage;
     public review_manager reviewer;
 
+    public Image background_texts;
+    public Image background_console;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +42,15 @@ public class floor_manager : MonoBehaviour
         currentCheckers = new List<answer_checker>();
         currentPivots = new List<GameObject>();
         changeFloor();
+        checkStyle();
+    }
 
+    void checkStyle()
+    {
+        if (GameObject.Find("game_manager"))
+        {
+            GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(background_texts, background_console);
+        }
     }
 
     // Update is called once per frame
