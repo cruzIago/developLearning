@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/*
+ * For platforms to change color and fix block to it 
+ */
 public class rearrange_checker : MonoBehaviour
 {
     Block fixed_block;

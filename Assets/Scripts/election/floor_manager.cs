@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Manages the whole election game 
+ */
 public class floor_manager : MonoBehaviour
 {
     public int MAX_FLOORS = 1;
@@ -33,8 +36,7 @@ public class floor_manager : MonoBehaviour
 
     public Image background_texts;
     public Image background_console;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         elapsed_time = Time.time;
@@ -52,8 +54,7 @@ public class floor_manager : MonoBehaviour
             GameObject.Find("game_manager").GetComponent<game_manager>().changeStyle(background_texts, background_console);
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -61,7 +62,6 @@ public class floor_manager : MonoBehaviour
 
     void changeFloor()
     {
-        print("Current floor: " + currentFloor);
         //Set current Floor to active and hide the rest
         for (int i = 0; i < floors.Count; i++)
         {
@@ -86,9 +86,6 @@ public class floor_manager : MonoBehaviour
             currentCheckers.Add(checkers[currentFloor * MAX_CHECKERS + i]);
             currentPivots.Add(pivots[currentFloor * MAX_CHECKERS + i]);
             currentCheckers[i].resetCollision();
-            print("Iteracion " + i);
-            print("Checker: " + currentCheckers[i]);
-            print("Pivot: " + currentPivots[i]);
         }
         shuffleAnswers();
 
@@ -105,12 +102,10 @@ public class floor_manager : MonoBehaviour
     {
         if (chosenAnswer == currentCorrectAnswer)
         {
-            print("Acertaste");
             correctAnswer();
         }
         else
         {
-            print("La has liao macho");
             wrongAnswer();
         }
     }

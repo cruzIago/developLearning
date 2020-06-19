@@ -89,6 +89,9 @@ public class boss_manager : MonoBehaviour
         }
     }
 
+    /*
+     * To check when the player can click to go through the script.
+     */
     void Update()
     {
         if (!isAnswering && isAbleToContinue && !scene_manager.is_pause_menu_on)
@@ -153,7 +156,7 @@ public class boss_manager : MonoBehaviour
     }
 
     /*
-     * To evaluate each answer to the problem
+     * To evaluate each answer to the problem. If player fails 3 times in a row, they'll lose. 
      */
     public void SubmitTextToConsole(string args0)
     {
@@ -162,7 +165,6 @@ public class boss_manager : MonoBehaviour
         if (args0.ToUpper().Contains(solution[0].ToUpper()) &&
             (args0.ToUpper().Contains(solution[1].ToUpper()) || args0.ToUpper().Contains(solution[2].ToUpper())))
         {
-            print("correcto");
             current_question += 1;
             current_text += 1;
             links = MAX_LINKS;
@@ -172,7 +174,6 @@ public class boss_manager : MonoBehaviour
         }
         else
         {
-            print("incorrecto");
             links -= 1;
             mistakes += 1;
             if (links == 2)
@@ -243,7 +244,6 @@ public class boss_manager : MonoBehaviour
     {
         if (current_console < console_ids.Length && text_ids[current_text] == console_ids[current_console])
         {
-            print("son el mismo");
             console_texts[current_console].gameObject.SetActive(true);
             current_console += 1;
         }
@@ -664,7 +664,9 @@ public class boss_manager : MonoBehaviour
         }
     }
 
-
+    /*
+     * Special behaviour for VIRUS as it needs to launch something. 
+     */
     IEnumerator specialLaunch()
     {
         bool is_dodge_done = true;

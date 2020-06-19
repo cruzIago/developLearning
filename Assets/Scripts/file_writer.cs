@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 /*
- * This class writes on the file to send some information 
+ * This class opens, writes and closes to a file
  */
 public class file_writer
 {

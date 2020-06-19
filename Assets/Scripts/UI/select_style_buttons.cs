@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/*
+ * Change interface settings on Options and PlayerPrefs 
+ */
 public class select_style_buttons : MonoBehaviour
 {
     public Button[] console_bg; //References to change if any is not interactable if its on use

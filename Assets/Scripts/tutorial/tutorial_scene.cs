@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Manages whole tutorial level 
+ */
 public class tutorial_scene : MonoBehaviour
 {
     public Image help_panel;

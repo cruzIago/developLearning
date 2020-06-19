@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Rearrange minigame button, but could be used in some more scenes 
+ */
 public class confirm_button : MonoBehaviour
 {
     public GameObject target_button; //Button in scene to confirm. Should only be needed in rearrange minigame

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Manages review level 
+ */
 public class review_manager : MonoBehaviour
 {
     public GameObject[] stages; //Group stages in roder
@@ -26,11 +29,7 @@ public class review_manager : MonoBehaviour
         fails += mistakes;
         if (actual_stage < stages.Length-1)
         {
-            StartCoroutine(changeStage());/*
-            stages[actual_stage].SetActive(false);
-            actual_stage += 1;
-            main.transform.position = respawn_points[actual_stage].transform.position;
-            stages[actual_stage].SetActive(true);*/
+            StartCoroutine(changeStage());
         }
         else {
             int stars = 0;

@@ -5,25 +5,26 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /**
- * Used to change between scenes, end minigame screen 
+ * Manages everything about scenes: change between them, loading, end game, pause game, etc.
  */
 public class scene_manager : MonoBehaviour
 {
     public static scene_manager instance; //To satisfy singleton needs
-    public Sprite[] star_rating;
-    public GameObject end_game_screen;
-    public GameObject pause_game_screen;
-    public GameObject first_time_screen;
+    public Sprite[] star_rating; //Score sprites from 0 stars to 3 stars
+    public GameObject end_game_screen; //Reference to end game screen
+    public GameObject pause_game_screen; //Reference to pause screen
+    public GameObject first_time_screen; //Reference to first time on level screens
 
-    public static bool is_pause_menu_on;
+    public static bool is_pause_menu_on; //is pause menu at front?
 
-    private static List<int> stages;
-    private Button[] stage_buttons;
-    private Button[] world_buttons;
+    private static List<int> stages; //List of stars in every stage, so game knows if player can access which level
+    private Button[] stage_buttons; //Wprld minigame buttons
+    private Button[] world_buttons; //World menu buttons
 
-    private static bool is_back_from_game;
-    private static GameObject end_game_reference;
+    private static bool is_back_from_game; //is going back through a minigame?
+    private static GameObject end_game_reference; //To instantiate when game is over
 
+    //Singleton
     private void Awake()
     {
         if (instance == null)
@@ -38,7 +39,7 @@ public class scene_manager : MonoBehaviour
             //Tutorial
             if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1))))
             {
-                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 0); //TODO CAMBIAR
+                PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(1)), 0);
                 stages.Add(0);
 
             }
@@ -50,7 +51,7 @@ public class scene_manager : MonoBehaviour
             {
                 if (!PlayerPrefs.HasKey(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i))))
                 {
-                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1); //TODO CAMBIAR
+                    PlayerPrefs.SetInt(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)), -1);
 
                     stages.Add(-1);
                 }
@@ -156,7 +157,6 @@ public class scene_manager : MonoBehaviour
                 button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[2];
                 break;
             case 3:
-                print(button.transform.GetChild(1).gameObject.name);
                 button.transform.GetChild(2).GetComponent<Image>().sprite = star_rating[3];
                 break;
             default:
@@ -168,7 +168,7 @@ public class scene_manager : MonoBehaviour
         }
     }
 
-    /**
+    /*
      * To modify the end game screen and score 
      */
     public static void checkEndScreen(int stars, float elapsed_time, int fails)

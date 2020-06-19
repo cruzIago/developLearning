@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Setups the ground checkers so its known when player falls through them 
+ */
 public class answer_checker : MonoBehaviour
 {
     public floor_manager manager;
     public Text myAnswer;
     private bool onEnterFlag;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         onEnterFlag = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         

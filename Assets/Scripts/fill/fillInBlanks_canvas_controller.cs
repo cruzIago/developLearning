@@ -203,7 +203,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             else
             {
                 blanks_to_fill[i].color = Color.red;
-                print("Fallo");
                 mistakes += 1;
                 isCorrect = false;
                 yield return new WaitForSeconds(1.0f);
@@ -266,7 +265,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
         blanks_to_default();
         user_solution.Clear();
         main.isInputBlocked = false;
-        print("done");
 
     }
 
@@ -292,7 +290,6 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
      */
     void SubmitInputVariable(string args0)
     {
-        print(gui_fill_input.text);
         main.isInputBlocked = false;
     }
 
@@ -362,7 +359,7 @@ public class fillInBlanks_canvas_controller : MonoBehaviour
             }
             else
             {
-                print("ERROR ON CANVAS CONTROLLER, NO KIND OF ITEM ALLOWED");
+                Debug.Log("ERROR ON CANVAS CONTROLLER, NO KIND OF ITEM ALLOWED");
             }
 
             last_kind_block = other.gameObject.GetComponent<Block>().kind_of_block;

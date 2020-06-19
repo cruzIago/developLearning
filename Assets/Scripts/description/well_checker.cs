@@ -5,10 +5,13 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Manages the whole description level
+ */
 public class well_checker : MonoBehaviour
 {
     public int NUM_CONCEPTS = 5;
-    private Stack<Block> blocks_inside;
+    private Stack<Block> blocks_inside; //So order is known
 
     public Text[] descriptions;
     private Text currentDesc;
@@ -46,6 +49,9 @@ public class well_checker : MonoBehaviour
         }
     }
 
+    /*
+     * Get the concepts and descriptions and add them to a dictionary
+     */
     private void initDictionary()
     {
         descriptions_to_check = new Dictionary<string, Text>();
@@ -56,6 +62,9 @@ public class well_checker : MonoBehaviour
         randomizeDictionary();
     }
 
+    /*
+     * Randomize descriptions order 
+     */
     private void randomizeDictionary()
     {
         System.Random rng = new System.Random();
@@ -65,6 +74,9 @@ public class well_checker : MonoBehaviour
         nextConcept();
     }
 
+    /*
+     * If player success 
+     */
     private void nextConcept()
     {
         if (currentDesc != null)
@@ -75,14 +87,15 @@ public class well_checker : MonoBehaviour
         currentConcept = enumerator.Current.ToString();
         descriptions_to_check.TryGetValue(currentConcept, out currentDesc);
         currentDesc.gameObject.SetActive(true);
-        print(currentConcept);
     }
 
+    /*
+     * If player fails 
+     */
     private void ejectBlocks()
     {
         foreach (Block b in blocks_inside)
         {
-            //b.transform.Translate(new Vector3(0,2,7));
 
             foreach (Transform children in player_reference.transform)
             {
@@ -97,7 +110,6 @@ public class well_checker : MonoBehaviour
             b.GetComponent<Rigidbody>().velocity = Vector3.zero;
             b.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1f, -0.2f) * 3000f);
             StartCoroutine(activateCollision(b));
-            print("Moved");
         }
         blocks_inside.Clear();
     }
@@ -109,14 +121,12 @@ public class well_checker : MonoBehaviour
 
         if (blockText != currentConcept)
         {
-            print("EFE: BlockText es " + blockText + " y mi nombre es: " + currentConcept);
             mistakes += 1;
             ejectBlocks();
             randomizeDictionary();
         }
         else if (blocks_inside.Count < NUM_CONCEPTS)
         {
-            print("Todo ok. Cantidad: " + blocks_inside.Count);
             nextConcept();
         }
         else
@@ -144,8 +154,7 @@ public class well_checker : MonoBehaviour
             {
                 reviewer.nextReview(mistakes);
             }
-
-            print("Se ha acabado el juego y has ganado");
+            
         }
     }
 
@@ -165,7 +174,7 @@ public class well_checker : MonoBehaviour
         }
 
         Physics.IgnoreCollision(other.GetComponent<Collider>(), this.GetComponent<Collider>(), false);
-        print("Active collision");
+        
     }
 
     private void OnCollisionEnter(Collision collision)

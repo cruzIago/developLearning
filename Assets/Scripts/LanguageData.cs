@@ -4,6 +4,9 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
+/*
+ * Reads the file and through language_parser.cs, it creates the dictionary with the strings with the script 
+ */
 public class LanguageData
 {
     private Dictionary<string, string> spanish_strings;

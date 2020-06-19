@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Just to show the name above blocks 
+ */
 public class textInWells : MonoBehaviour
 {
     Camera camera;
     Vector3 lockPos;
     Quaternion lockRot;
 
-    // Start is called before the first frame update
     void Start()
     {
         camera = GetComponent<Canvas>().worldCamera;
         lockPos = transform.position;
         lockRot = transform.rotation;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         updateRotation();

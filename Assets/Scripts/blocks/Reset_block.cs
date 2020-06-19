@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Reset_block : Block
 {
-    // Start is called before the first frame update
     void Start()
     {
         base.Start();

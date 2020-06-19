@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Controls player movement. 
+ */
 public class player_controller : MonoBehaviour
 {
     public int speed;
@@ -26,11 +29,6 @@ public class player_controller : MonoBehaviour
     {
 
         rigidbody = GetComponent<Rigidbody>();
-        /*
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionY
-            | RigidbodyConstraints.FreezeRotationX
-            | RigidbodyConstraints.FreezeRotationY
-            | RigidbodyConstraints.FreezeRotationZ;*/
 
         rigidbody.constraints = RigidbodyConstraints.FreezeRotationX
             | RigidbodyConstraints.FreezeRotationY

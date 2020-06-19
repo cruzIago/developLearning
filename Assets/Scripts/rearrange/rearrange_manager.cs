@@ -4,6 +4,9 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
+/*
+ * Manages the whole reorder minigame. 
+ */
 public class rearrange_manager : MonoBehaviour
 {
     public List<Color> colors; // List of colors at manager dispossal
@@ -99,8 +102,6 @@ public class rearrange_manager : MonoBehaviour
                 }
                 reviewer.nextReview(mistakes);
             }
-            //print("Correcto");
-            //messageConfirm.text = "¡Bien hecho!";
         }
         else
         {

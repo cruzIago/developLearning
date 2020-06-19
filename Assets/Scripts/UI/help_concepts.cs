@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Used so if clicked in a concept on Help menu, menu is hidden and concept is shown to read it.
+ */
 public class help_concepts : MonoBehaviour { 
 
     public GameObject thePanel;
     public int definition;
     public Text targetText;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         

@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * To put texts above blocks 
+ */
 public class textInBlocks : MonoBehaviour
 {
     Camera camera;
     Vector3 lockPos;
     Quaternion lockRot;
     
-    // Start is called before the first frame update
     void Start()
     {
         camera = GetComponent<Canvas>().worldCamera;
         lockPos = transform.position;
         lockRot = transform.rotation;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {      
         updateRotation();

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Manages pause screen 
+ */
 public class pause_menu : MonoBehaviour
 {
     public GameObject help_pause_menu;

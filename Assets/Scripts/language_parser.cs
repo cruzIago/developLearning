@@ -10,7 +10,7 @@ using UnityEngine;
 [System.Serializable]
 public class language_parser
 {
-    //Need to be public so the parser can assign them?
+    //Need to be public so the parser can assign them
     public List<language> spanish;
     public List<language> english;
 

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Usual kind of camera, nothing really outstanding 
+ */
 public class main_camera : MonoBehaviour
 {
     public GameObject player;

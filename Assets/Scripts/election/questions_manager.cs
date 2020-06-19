@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Randomizes the questions order. May not be necessary later, but keep it for good sake.
+ */
 public class questions_manager : MonoBehaviour
 {
     public List<Text> questions;

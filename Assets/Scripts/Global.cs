@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/*
+ * Stores some useful information that would be needed through the project 
+ */
 public class Global
 {
     /* List of languages:
@@ -21,7 +24,7 @@ public class Global
         loadLanguages();
     }
 
-        
+    
     private void loadLanguages()
     {
         languages = new LanguageData();

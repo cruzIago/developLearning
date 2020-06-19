@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Keeps some references for scene_manager.cs to retrieve when singleton is back to the menu 
+ */
+
 public class menu_references : MonoBehaviour
 {
     public Button[] stage_buttons;

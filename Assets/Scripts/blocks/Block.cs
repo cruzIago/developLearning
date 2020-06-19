@@ -135,14 +135,11 @@ public class Block : MonoBehaviour
     {
         yield return new WaitForSeconds(2.2f);
         setCollisions(true);
-        print("Corrutina ok");
     }
 
     //Picks up the block
     public void pickUp()
     {
-        print("Jugador: " + player);
-        print("Guia: " + guide);
 
         item.GetComponent<Rigidbody>().useGravity = false;
         item.GetComponent<Rigidbody>().isKinematic = true;
@@ -166,8 +163,6 @@ public class Block : MonoBehaviour
     //Picks down the block
     public void pickDown()
     {
-        print("Jugador: " + player);
-        print("Guia: " + guide);
         releaseBlock();
         item.transform.position = guide.transform.position;
         item.transform.rotation = guide.transform.rotation;

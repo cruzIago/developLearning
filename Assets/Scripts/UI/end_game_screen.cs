@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/*
+ * Manages the appareance of end game screen and its functions
+ */
 public class end_game_screen : MonoBehaviour
 {
     public Button retry_button;

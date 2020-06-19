@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Gives player the ability to change variable names. May be used on sandbox if done.
+ */
 public class player_canvas_controll : MonoBehaviour
 {
     public InputField variable_input;
@@ -55,7 +58,6 @@ public class player_canvas_controll : MonoBehaviour
         if (player.isItemHeld
             && player.held_item != null)
         {
-            print(variable_input.text);
             player.held_item.GetComponent<Variable_block>().setVariableName(variable_input.text);
             givenName = true;
             Time.timeScale = 1;

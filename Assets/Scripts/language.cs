@@ -9,7 +9,7 @@ using UnityEngine;
 [System.Serializable]
 public class language
 {
-    //Need to be public so the parser can assign them?
+    //Need to be public so the parser can assign them
     public string id;
     public string text;
 

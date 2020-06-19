@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ * Manages the first time screens when new level is loaded. May need brute force of some degree. 
+ */
 public class first_time_screen : MonoBehaviour
 {
     public Text script;

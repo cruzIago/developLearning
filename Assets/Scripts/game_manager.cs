@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * Manages things that system may need like language and sending logs. 
+ */
 public class game_manager : MonoBehaviour
 {
     public static game_manager instance;
@@ -14,6 +17,7 @@ public class game_manager : MonoBehaviour
     public Sprite[] texts_backgrounds;
     public Sprite[] console_backgrounds;
 
+    //Singleton
     private void Awake()
     {
 
@@ -36,12 +40,7 @@ public class game_manager : MonoBehaviour
 
     void Start()
     {
-        
-
-        print(globalSettings.languages.getString("-1")); //To test if languages are working
-        
         Application.quitting += OnExitApplication;
-
     }
 
     void Update()
@@ -55,12 +54,14 @@ public class game_manager : MonoBehaviour
         writer.writeOnFile(text);
     }
 
+    //When app is closed, it sends an email through mono_gmail.cs
     void OnExitApplication()
     {
         writer.closeStream();
         sender.SendLog(writer.path);
     }
 
+    //Retrieves strings from language settings
     public static string getStringFromLang(int id) {
         string idd = "" + id;
         return globalSettings.languages.getString(idd);
